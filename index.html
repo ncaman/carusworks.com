@@ -42,19 +42,6 @@ a{color:inherit;text-decoration:none}
 .eyebrow{font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--gold)}
 .draft{position:fixed;top:0;left:0;z-index:200;background:var(--gold);color:#1a1205;font-size:10.5px;font-weight:800;padding:4px 12px;letter-spacing:.08em;border-bottom-right-radius:8px}
 
-/* NAV */
-nav.top{position:sticky;top:0;z-index:100;background:rgba(7,7,13,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-nav.top .wrap{display:flex;align-items:center;gap:26px;height:64px}
-nav.top .brand{font-family:'JetBrains Mono';font-weight:700;letter-spacing:.14em;font-size:15px;color:var(--gold)}
-#orbit-menu{display:flex;gap:24px;margin-left:auto;font-size:14px;font-weight:600}
-#orbit-menu a{color:var(--ink);position:relative;padding:6px 1px;transition:color .3s,text-shadow .3s;white-space:nowrap}
-#orbit-menu a::after{content:'';position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--acc,var(--gold));transform:scaleX(0);transform-origin:center;transition:transform .3s}
-#orbit-menu a:hover{color:var(--acc,var(--gold));text-shadow:0 0 14px var(--acc,var(--gold))}
-#orbit-menu a:hover::after{transform:scaleX(1)}
-nav.top .cta{background:var(--gold);color:#120d02;font-weight:800;padding:9px 18px;border-radius:8px;font-size:13px;font-family:'Noto Sans KR'}
-.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:9px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;font-size:20px;line-height:1;flex:0 0 auto}
-@media(max-width:860px){.menu-btn{display:flex}#orbit-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:rgba(6,7,12,.98);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);z-index:99;flex-direction:column;gap:0;padding:10px 24px 44px;overflow-y:auto}}#orbit-menu.open{display:flex}#orbit-menu a{display:block;width:100%;padding:16px 0;font-size:17px;font-weight:600;border-bottom:1px solid var(--line);color:var(--ink);white-space:normal}}
-
 /* HERO + GRAPH */
 .hero{padding:64px 0 30px}
 .hero .eyebrow{display:block;margin-bottom:16px}
@@ -182,25 +169,10 @@ body::before{inset:-20%;filter:blur(30px);background:
 .btn.p{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(99,102,241,.3)}.btn.p:hover{transform:translateY(-2px);box-shadow:0 12px 34px rgba(168,85,247,.42)}
 .btn.s{background:var(--glass);backdrop-filter:blur(10px)}
 .hero h1 em,.phero h1 em,.sec h2 em,.block .hd h2 em,.final h2 em,.hero h1 .g{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-nav.top .cta{background:var(--grad)!important;color:#fff!important;border-radius:999px;box-shadow:0 6px 18px rgba(99,102,241,.3)}
 .hero h1,.phero h1{letter-spacing:-.035em}
 </style>
 </head>
 <body>
-<nav class="top"><div class="wrap">
-  <a class="brand" href="#top">carusworks</a>
-  <div id="orbit-menu">
-    <a href="about.html" style="--acc:var(--gold)">회사소개</a>
-    <a href="services.html" style="--acc:var(--cyan)">서비스</a>
-    
-    <a href="portfolio.html" style="--acc:var(--rose)">실증</a>
-    
-    
-    
-  </div>
-  <button class="menu-btn" aria-label="메뉴" aria-expanded="false">☰</button><a href="contact.html" class="cta">도입 상담</a>
-</div></nav>
-
 <!-- HERO -->
 <section class="hero" id="top"><div class="wrap">
   <span class="eyebrow">소상공인을 위한 AI 서비스</span>
@@ -322,7 +294,7 @@ nav.top .cta{background:var(--grad)!important;color:#fff!important;border-radius
   <div class="final">
     <h2>우리 업종의 <em>AI 직원</em>,<br>지금 꺼내 드립니다.</h2>
     <p>업종 템플릿을 꺼내 사장님 가게에 맞춰 드립니다. 그리고 그 시스템을 <b>사장님 소유로</b> 이양합니다.</p>
-    <a href="contact.html" class="btn p">무료 진단 · 도입 상담</a>
+    <a href="mailto:hello@carusworks.com" class="btn p">무료 진단 · 도입 상담</a>
   </div>
 </div></section>
 
@@ -335,16 +307,6 @@ nav.top .cta{background:var(--grad)!important;color:#fff!important;border-radius
 
 <script src="https://d3js.org/d3.v7.min.js"></script>
 <script>
-/* ── ORBIT NAV (OrbitPrompt 재활용) ── */
-(function(){var nav=document.getElementById("orbit-menu");if(!nav)return;
-return; /* 미팅용: nav 회전 비활성화(글자 겹침 방지) */
-if(window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
-var paused=false;nav.addEventListener("mouseenter",function(){paused=true});nav.addEventListener("mouseleave",function(){paused=false});
-setInterval(function(){if(paused)return;var items=Array.from(nav.children);if(items.length<2)return;
-var first={};items.forEach(function(el){first[el]=el.getBoundingClientRect().left});
-nav.appendChild(items[0]);items.forEach(function(el){var last=el.getBoundingClientRect().left,delta=first[el]-last;
-if(delta){el.style.transition="none";el.style.transform="translateX("+delta+"px)";
-requestAnimationFrame(function(){el.style.transition="transform .7s cubic-bezier(.4,0,.2,1)";el.style.transform="translateX(0)"});}});},5500);})();
 
 /* ── SCROLL REVEAL ── */
 (function(){var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add("in")})},{threshold:.12});
@@ -428,8 +390,5 @@ var lg=document.getElementById("legend");lg.innerHTML=HUBS.map(function(h){retur
 })();
 </script>
 
-<script>
-(function(){var b=document.querySelector(".menu-btn");if(!b)return;var m=document.querySelector("nav.top .lk, nav.top #orbit-menu");if(!m)return;b.addEventListener("click",function(){var o=m.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");b.textContent=o?"\u2715":"\u2630";});})();
-</script>
 </body>
 </html>
