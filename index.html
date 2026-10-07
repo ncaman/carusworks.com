@@ -5,6 +5,19 @@
 <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=5.0">
 <title>carusworks — AI 에이전트 솔루션 · 1인 지주회사</title>
 <meta name="description" content="카루스웍스 — AI 컨설팅이 아니라, 필드별로 이미 돌아가는 프레임워크 위에 맞춤을 얹어 납품·소유이양하는 수직 솔루션 하우스. 1인 지주회사 구조를 노드 그래프로.">
+<meta name="theme-color" content="#06070c">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%2306070c%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-family%3D%22monospace%22%20font-size%3D%2236%22%20font-weight%3D%22700%22%20fill%3D%22%23f4bf3f%22%20text-anchor%3D%22middle%22%3Ec%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://carusworks.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="carusworks">
+<meta property="og:title" content="carusworks — AI 에이전트 솔루션 · 1인 지주회사">
+<meta property="og:description" content="카루스웍스 — AI 컨설팅이 아니라, 필드별로 이미 돌아가는 프레임워크 위에 맞춤을 얹어 납품·소유이양하는 수직 솔루션 하우스. 1인 지주회사 구조를 노드 그래프로.">
+<meta property="og:url" content="https://carusworks.com/">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="carusworks — AI 에이전트 솔루션 · 1인 지주회사">
+<meta name="twitter:description" content="카루스웍스 — AI 컨설팅이 아니라, 필드별로 이미 돌아가는 프레임워크 위에 맞춤을 얹어 납품·소유이양하는 수직 솔루션 하우스. 1인 지주회사 구조를 노드 그래프로.">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/variable/pretendardvariable.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;800;900&family=JetBrains+Mono:wght@400;500;600;700&family=Playfair+Display:ital@0;1&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
@@ -39,7 +52,8 @@ nav.top .brand{font-family:'JetBrains Mono';font-weight:700;letter-spacing:.14em
 #orbit-menu a:hover{color:var(--acc,var(--gold));text-shadow:0 0 14px var(--acc,var(--gold))}
 #orbit-menu a:hover::after{transform:scaleX(1)}
 nav.top .cta{background:var(--gold);color:#120d02;font-weight:800;padding:9px 18px;border-radius:8px;font-size:13px;font-family:'Noto Sans KR'}
-@media(max-width:860px){#orbit-menu{display:none}}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid var(--line);color:var(--ink);border-radius:9px;width:42px;height:42px;align-items:center;justify-content:center;cursor:pointer;font-size:20px;line-height:1;flex:0 0 auto}
+@media(max-width:860px){.menu-btn{display:flex}#orbit-menu{display:none;position:fixed;top:62px;left:0;right:0;bottom:0;background:rgba(6,7,12,.98);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);z-index:99;flex-direction:column;gap:0;padding:10px 24px 44px;overflow-y:auto}}#orbit-menu.open{display:flex}#orbit-menu a{display:block;width:100%;padding:16px 0;font-size:17px;font-weight:600;border-bottom:1px solid var(--line);color:var(--ink);white-space:normal}}
 
 /* HERO + GRAPH */
 .hero{padding:64px 0 30px}
@@ -184,7 +198,7 @@ nav.top .cta{background:var(--grad)!important;color:#fff!important;border-radius
     <a href="collab.html" style="--acc:var(--purple)">협업</a>
     <a href="counter.html" style="--acc:var(--orange)">vs L사</a>
   </div>
-  <a href="contact.html" class="cta">도입 상담</a>
+  <button class="menu-btn" aria-label="메뉴" aria-expanded="false">☰</button><a href="contact.html" class="cta">도입 상담</a>
 </div></nav>
 
 <!-- HERO -->
@@ -498,6 +512,10 @@ sim.on("tick",draw);draw();
 /* legend */
 var lg=document.getElementById("legend");lg.innerHTML=HUBS.map(function(h){return '<span><b style="background:'+h.color+'"></b>'+h.label+'</span>';}).join('');
 })();
+</script>
+
+<script>
+(function(){var b=document.querySelector(".menu-btn");if(!b)return;var m=document.querySelector("nav.top .lk, nav.top #orbit-menu");if(!m)return;b.addEventListener("click",function(){var o=m.classList.toggle("open");b.setAttribute("aria-expanded",o?"true":"false");b.textContent=o?"\u2715":"\u2630";});})();
 </script>
 </body>
 </html>
