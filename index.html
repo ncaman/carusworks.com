@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>carusworks — 지주회사</title>
-<meta name="description" content="carusworks는 지주회사입니다. 카르스 AS, 카르스 SMOS와 이후 브랜치가 이 페이지로 연결됩니다.">
-<meta name="theme-color" content="#06070c">
+<meta name="description" content="carusworks는 지주회사입니다. 본사 사례 진열은 대기이고, 카르스 AS와 카르스 SMOS가 이 페이지로 연결됩니다.">
+<meta name="theme-color" content="#ffffff">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2214%22%20fill%3D%22%2306070c%22/%3E%3Ctext%20x%3D%2232%22%20y%3D%2244%22%20font-family%3D%22monospace%22%20font-size%3D%2236%22%20font-weight%3D%22700%22%20fill%3D%22%23f4bf3f%22%20text-anchor%3D%22middle%22%3Ec%3C/text%3E%3C/svg%3E">
 <link rel="canonical" href="https://carusworks.com/">
 <meta property="og:type" content="website">
@@ -30,18 +30,15 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#06070c;--bg2:#090b12;--panel:rgba(255,255,255,.045);--line:rgba(255,255,255,.1);
-  --ink:#f2f3f7;--dim:rgba(242,243,247,.72);--muted:rgba(242,243,247,.52);
-  --gold:#f4bf3f;--cyan:#22d3ee;--purple:#a855f7;--green:#4ade80;--blue:#60a5fa;--rose:#f472b6;
-  --grad:linear-gradient(120deg,#22d3ee,#6366f1 42%,#a855f7 72%,#f472b6);
+  --bg:#ffffff;--bg2:#f6f7f9;--panel:#ffffff;--line:#e6e8ec;
+  --ink:#191f28;--dim:#4e5968;--muted:#8b95a1;
+  --gold:#8a6a22;--cyan:#0f766e;--purple:#6d28d9;--green:#15803d;--blue:#1d4ed8;--rose:#be185d;
+  --grad:#191f28;
   --head:66px;--max:1146px;
 }
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif;line-height:1.7;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
-body::before{content:"";position:fixed;inset:-20%;z-index:0;pointer-events:none;filter:blur(30px);background:
-  radial-gradient(38% 30% at 12% 8%,rgba(34,211,238,.14),transparent 60%),
-  radial-gradient(36% 30% at 88% 18%,rgba(99,102,241,.14),transparent 60%),
-  radial-gradient(34% 28% at 70% 80%,rgba(168,85,247,.1),transparent 60%)}
+body{background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Noto Sans KR",sans-serif;line-height:1.7;letter-spacing:-.01em;-webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
+body::before{content:none}
 img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
@@ -52,8 +49,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 em.grad{font-family:"Playfair Display",serif;font-style:italic;font-weight:500}
 
 .topbar{position:fixed;top:0;left:0;right:0;z-index:40;height:var(--head);display:flex;align-items:center;
-  background:linear-gradient(to bottom,rgba(6,7,12,.62),rgba(6,7,12,.12));transition:background .25s,border-color .25s;border-bottom:1px solid transparent}
-.topbar.solid,.topbar:has(#sitenav.open){background:rgba(6,7,12,.9);border-bottom-color:var(--line);backdrop-filter:blur(16px)}
+  background:rgba(255,255,255,.86);transition:background .25s,border-color .25s;border-bottom:1px solid transparent}
+.topbar.solid,.topbar:has(#sitenav.open){background:rgba(255,255,255,.96);border-bottom-color:var(--line);backdrop-filter:blur(16px)}
 .topbar .inner{width:min(var(--max),calc(100% - 32px));margin:0 auto;display:flex;align-items:center;gap:22px}
 .logo{font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:.16em;color:var(--gold);font-size:14px}
 .logo small{margin-left:8px;font-size:10px;letter-spacing:.18em;color:var(--dim);font-weight:700}
@@ -64,31 +61,30 @@ em.grad{font-family:"Playfair Display",serif;font-style:italic;font-weight:500}
 .dropbtn{display:flex;align-items:center;gap:6px}
 .dropbtn i{font-style:normal;font-size:9px;opacity:.7}
 .dropmenu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:300px;padding:8px;flex-direction:column;
-  background:#0c0e16;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.45);z-index:50}
+  background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(25,31,40,.08);z-index:50}
 .dropmenu a{padding:10px 12px;border-radius:10px;font-size:13.5px;font-weight:600;color:var(--dim);white-space:nowrap}
-.dropmenu a:hover{background:rgba(255,255,255,.06);color:#fff}
+.dropmenu a:hover{background:#f4f5f7;color:var(--ink)}
 .dropmenu a b{display:inline-block;width:1.6em;color:var(--gold);font-family:"JetBrains Mono",monospace;font-weight:700}
 .drop.open > .dropmenu{display:flex}
-.pill{background:var(--grad);color:#fff !important;border-radius:999px;padding:8px 16px;font-weight:750;opacity:1 !important;box-shadow:0 8px 22px rgba(99,102,241,.28)}
+.pill{background:#191f28;color:#fff !important;border-radius:999px;padding:8px 16px;font-weight:750;opacity:1 !important}
 .burger{display:none;margin-left:auto;width:42px;height:42px;border-radius:999px;border:1px solid var(--line);align-items:center;justify-content:center;flex-direction:column;gap:5px}
-.burger span{display:block;width:16px;height:1.5px;background:#fff}
+.burger span{display:block;width:16px;height:1.5px;background:#191f28}
 
-.hero{position:relative;min-height:100dvh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;isolation:isolate}
-.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#06070c url("assets/hero.jpg") center/cover no-repeat}
-.scrim{position:absolute;inset:0;z-index:1;background:
-  linear-gradient(90deg,rgba(6,7,12,.84) 0%,rgba(6,7,12,.5) 46%,rgba(6,7,12,.12) 74%,rgba(6,7,12,.28) 100%),
-  linear-gradient(to top,rgba(6,7,12,.94) 0%,rgba(6,7,12,.28) 34%,rgba(6,7,12,.18) 100%)}
-.hero-copy{position:relative;z-index:2;padding:0 0 28px}
-.hero h1{font-size:clamp(32px,4.7vw,64px);line-height:1.12;font-weight:800;letter-spacing:-.04em;max-width:14em;margin:14px 0 16px}
-.hero .lead{max-width:40rem;color:rgba(242,243,247,.86);font-size:clamp(15.5px,1.4vw,18px)}
+.hero{position:relative;display:block;padding:calc(var(--head) + 56px) 0 0;background:#fff;overflow:hidden}
+.hero-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:36px;align-items:center;padding-bottom:28px}
+.hero-still{border-radius:28px;overflow:hidden;background:#f4f5f7;border:1px solid var(--line)}
+.hero-still img{width:100%;aspect-ratio:16/10;object-fit:cover}
+.hero-copy{position:relative;z-index:2;padding:0}
+.hero h1{font-size:clamp(32px,4.7vw,60px);line-height:1.12;font-weight:800;letter-spacing:-.04em;max-width:12em;margin:14px 0 16px}
+.hero .lead{max-width:38rem;color:var(--dim);font-size:clamp(15.5px,1.4vw,18px)}
 .btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
 .btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 22px;border-radius:999px;font-weight:750;font-size:14.5px;transition:transform .2s,box-shadow .2s}
-.btn.p{background:var(--grad);color:#fff;box-shadow:0 8px 24px rgba(99,102,241,.32)}
+.btn.p{background:#191f28;color:#fff}
 .btn.p:hover{transform:translateY(-2px)}
-.btn.s{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(10px)}
+.btn.s{background:#fff;border:1px solid var(--line);color:var(--ink)}
 .hero .note{margin-top:16px;font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);letter-spacing:.02em}
 
-.proofbar{position:relative;z-index:2;display:flex;align-items:center;gap:18px;border-top:1px solid rgba(255,255,255,.12);background:rgba(6,7,12,.72);backdrop-filter:blur(8px);overflow:hidden;min-height:58px;flex:0 0 auto}
+.proofbar{position:relative;z-index:2;display:flex;align-items:center;gap:18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;overflow:hidden;min-height:58px}
 .proof-k{flex:0 0 auto;padding-left:max(20px,calc((100% - var(--max)) / 2));font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.22em;color:var(--gold);font-weight:700}
 .mq{overflow:hidden;flex:1;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .mq-track{display:flex;width:max-content;gap:0;animation:mq 36s linear infinite}
@@ -96,10 +92,10 @@ em.grad{font-family:"Playfair Display",serif;font-style:italic;font-weight:500}
 .mq-track span::before{content:"·";margin-right:22px;color:var(--gold)}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-.stats{position:relative;z-index:2;border-bottom:1px solid var(--line);background:rgba(8,10,16,.9)}
-.stats .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:28px 0 8px}
+.stats{position:relative;z-index:2;border-bottom:1px solid var(--line);background:var(--bg2)}
+.stats .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:28px 0 8px}
 .stat{text-align:center;padding:8px 4px}
-.stat .n{font-weight:800;font-size:clamp(28px,3vw,40px);letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat .n{font-weight:800;font-size:clamp(28px,3vw,40px);letter-spacing:-.04em;color:var(--ink)}
 .stat .n span{font-size:.55em}
 .stat .l{margin-top:4px;font-size:13px;color:var(--dim)}
 .stats .cap{padding:4px 0 26px;text-align:center;color:var(--muted);font-size:12.5px}
@@ -107,26 +103,25 @@ em.grad{font-family:"Playfair Display",serif;font-style:italic;font-weight:500}
 .sec{position:relative;z-index:2;padding:92px 0}
 .sec h2{font-size:clamp(28px,3.6vw,44px);font-weight:800;letter-spacing:-.035em;line-height:1.2;margin:12px 0 14px}
 .sec .sub{color:var(--dim);max-width:42rem;font-size:16.5px;margin-bottom:36px}
-.band{background:rgba(8,9,16,.72);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.band{background:var(--bg2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 
 .graphwrap{position:relative;height:min(78vh,760px);min-height:560px;border:1px solid var(--line);border-radius:24px;overflow:hidden;
   background:
-    radial-gradient(circle,rgba(244,191,63,.22) .7px,transparent .9px) 0 0 / 22px 22px,
-    radial-gradient(ellipse at 50% 45%,rgba(244,191,63,.07),transparent 62%),
-    #07080f}
+    radial-gradient(circle,rgba(25,31,40,.16) .7px,transparent .9px) 0 0 / 22px 22px,
+    #f7f8fa}
 #gcanvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none}
 #gcanvas:active{cursor:grabbing}
-.tick{position:absolute;width:16px;height:16px;z-index:4;pointer-events:none;border:1.5px solid rgba(244,191,63,.75)}
+.tick{position:absolute;width:16px;height:16px;z-index:4;pointer-events:none;border:1.5px solid rgba(25,31,40,.35)}
 .tick.tl{top:12px;left:12px;border-right:0;border-bottom:0}
 .tick.tr{top:12px;right:12px;border-left:0;border-bottom:0}
 .tick.bl{bottom:12px;left:12px;border-right:0;border-top:0}
 .tick.br{bottom:12px;right:12px;border-left:0;border-top:0}
 .graphwrap .hint{position:absolute;top:16px;left:36px;z-index:3;font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.08em;color:var(--muted)}
 .legend{position:relative;z-index:3;display:flex;gap:12px 14px;flex-wrap:wrap;justify-content:center;
-  width:fit-content;max-width:100%;margin:14px auto 0;background:rgba(6,7,12,.72);border:1px solid var(--line);border-radius:999px;padding:8px 14px;
+  width:fit-content;max-width:100%;margin:14px auto 0;background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;
   font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--dim)}
 .legend b{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:middle}
-#ginfo{position:absolute;top:48px;right:16px;z-index:3;width:min(280px,46vw);background:rgba(7,8,14,.92);border:1px solid var(--line);border-radius:14px;padding:12px 14px;opacity:0;pointer-events:none;transition:opacity .2s}
+#ginfo{position:absolute;top:48px;right:16px;z-index:3;width:min(280px,46vw);background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;opacity:0;pointer-events:none;transition:opacity .2s;box-shadow:0 10px 30px rgba(25,31,40,.08)}
 #ginfo.on{opacity:1}
 #ginfo .l{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.16em;color:var(--gold)}
 #ginfo .t{font-weight:800;margin:3px 0 2px}
@@ -140,46 +135,47 @@ em.grad{font-family:"Playfair Display",serif;font-style:italic;font-weight:500}
 .card .k{font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--cc,var(--gold))}
 .card h3{font-size:20px;font-weight:800;letter-spacing:-.03em;margin:8px 0 8px}
 .card p{color:var(--dim);font-size:14.5px}
-.card .more{display:inline-flex;margin-top:14px;font-size:13.5px;font-weight:750;color:#fff;border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px}
+.card .more{display:inline-flex;margin-top:14px;font-size:13.5px;font-weight:750;color:var(--ink);border-bottom:1px solid rgba(25,31,40,.28);padding-bottom:2px}
 .card .fine{margin-top:12px;font-size:12.5px;color:var(--muted);border-top:1px dashed var(--line);padding-top:10px}
 .svc-shot{margin:-22px -22px 16px;aspect-ratio:16/9;overflow:hidden}
 .svc-shot img{width:100%;height:100%;object-fit:cover}
 
 .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}
 .step{border:1px dashed var(--line);border-radius:16px;padding:14px 16px;color:var(--dim);font-size:14px}
-.step b{display:block;color:#fff;font-size:13px;letter-spacing:.08em;font-family:"JetBrains Mono",monospace;margin-bottom:4px}
+.step b{display:block;color:var(--ink);font-size:13px;letter-spacing:.08em;font-family:"JetBrains Mono",monospace;margin-bottom:4px}
 
 .cases{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .case{background:var(--panel);border:1px solid var(--line);border-radius:22px;overflow:hidden}
-.case img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#111}
+.case img{width:100%;aspect-ratio:16/10;object-fit:cover;background:#f4f5f7}
+.cases.pair{grid-template-columns:1fr 1fr}
 .case .bd{padding:16px 18px 18px}
 .case .tag{font-family:"JetBrains Mono",monospace;font-size:10.5px;letter-spacing:.14em;color:var(--gold);font-weight:700}
 .case h3{font-size:18px;margin:4px 0}
 .case p{color:var(--dim);font-size:14px}
+.case .more{display:inline-flex;margin-top:12px;font-size:13.5px;font-weight:750;color:var(--ink);border-bottom:1px solid rgba(25,31,40,.28);padding-bottom:2px}
 
 .cmp-note{display:none;font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--muted);margin:-18px 0 10px}
-.cmp{overflow:auto;border:1px solid var(--line);border-radius:18px;background:rgba(0,0,0,.2)}
+.cmp{overflow:auto;border:1px solid var(--line);border-radius:18px;background:#fff}
 table{width:100%;border-collapse:collapse;min-width:680px;font-size:14.5px}
 th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-thead th{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.06em;background:rgba(255,255,255,.04)}
+thead th{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.06em;background:#f6f7f9}
 thead th:last-child{color:var(--gold)}
 td:first-child{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted);white-space:nowrap}
-td:last-child{color:#fff;font-weight:650}
+td:last-child{color:var(--ink);font-weight:650}
 tr:last-child td{border-bottom:0}
 
-.final{border:1px solid var(--line);border-radius:28px;padding:64px 28px;text-align:center;
-  background:radial-gradient(ellipse at 50% 0%,rgba(244,191,63,.12),transparent 62%),rgba(255,255,255,.04)}
+.final{border:1px solid var(--line);border-radius:28px;padding:64px 28px;text-align:center;background:#f6f7f9}
 .final h2{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.035em}
 .final p{color:var(--dim);max-width:36rem;margin:14px auto 26px}
 
-.mid{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border:1px solid var(--line);border-radius:24px;padding:32px;background:rgba(255,255,255,.03)}
+.mid{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;border:1px solid var(--line);border-radius:24px;padding:32px;background:#fff}
 .mid h2{font-size:clamp(24px,3vw,34px);margin:8px 0 0;max-width:16em}
 
 footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:42px 0 56px;color:var(--muted);font-size:13.5px}
 .foot{display:grid;grid-template-columns:1.4fr 1fr;gap:18px 28px}
 .brand{font-family:"JetBrains Mono",monospace;color:var(--gold);letter-spacing:.16em;font-weight:700;margin-bottom:8px}
 .footlinks{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
-.footlinks a:hover{color:#fff}
+.footlinks a:hover{color:var(--ink)}
 .copy{grid-column:1 / -1;margin-top:8px}
 
 section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
@@ -190,7 +186,7 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
 @media(max-width:1023px){
   .burger{display:flex}
   #sitenav{display:none;position:absolute;top:var(--head);left:0;right:0;margin:0;flex-direction:column;align-items:stretch;gap:4px;
-    background:rgba(6,7,12,.97);border-bottom:1px solid var(--line);padding:10px 16px 18px}
+    background:#fff;border-bottom:1px solid var(--line);padding:10px 16px 18px}
   #sitenav.open{display:flex}
   #sitenav > a,.dropbtn{padding:12px 8px;text-align:left;font-size:16px}
   .dropmenu{position:static;transform:none;min-width:0;background:transparent;border:0;box-shadow:none;padding:0 0 6px 10px}
@@ -214,23 +210,23 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
   td{padding:3px 0;border:0;white-space:normal}
   td:first-child{color:var(--gold);font-size:11px;letter-spacing:.12em;margin-bottom:4px}
   td:nth-child(2)::before{content:"상주형 · ";color:var(--muted);font-weight:650}
-  td:nth-child(3){color:#fff;font-weight:750}
+  td:nth-child(3){color:var(--ink);font-weight:750}
   td:nth-child(3)::before{content:"carusworks · ";color:var(--gold);font-weight:700}
   .wrap{width:min(var(--max),calc(100% - 32px))}
 }
 .mix{max-width:560px;margin:4px auto 22px}
-.mixbar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08)}
+.mixbar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:#e6e8ec}
 .mixbar i{display:block;height:100%}
 .mixbar .a{width:82%}
 .mixbar .b{width:18%;background:var(--cyan)}
 .mixbar .a{background:var(--gold)}
 .mix p{margin-top:8px;text-align:center;color:var(--muted);font-size:12.5px}
-.strip{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#07080f}
+.strip{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
 .strip-track{display:flex;gap:12px;width:max-content;animation:mq 46s linear infinite;padding:16px 0}
 .strip-track img{width:300px;height:168px;object-fit:cover;border-radius:18px}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
 .chips button{border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--dim);font-size:13px;font-weight:700}
-.chips button.on{background:#fff;color:#14120a;border-color:#fff}
+.chips button.on{background:#191f28;color:#fff;border-color:#191f28}
 .case.hide{display:none}
 .stage{min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
 .stage .en{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--cc,var(--gold));font-weight:700}
@@ -239,43 +235,44 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
 .svcrow .copy{grid-area:copy}
 .svcrow .shot{grid-area:shot}
 .rows .svcrow:nth-child(even){grid-template-areas:"shot copy"}
-.svcrow .shot{border-radius:22px;overflow:hidden;min-height:220px;background:
-  radial-gradient(circle at 30% 30%,rgba(244,191,63,.18),transparent 55%),
-  radial-gradient(circle at 70% 70%,rgba(34,211,238,.14),transparent 50%),#10131c}
+.svcrow .shot{border-radius:22px;overflow:hidden;min-height:220px;background:#f4f5f7;border:1px solid var(--line)}
 .svcrow img{width:100%;height:100%;min-height:240px;object-fit:cover;display:block}
-.svcrow .num{font-family:"Playfair Display",serif;font-style:italic;font-size:42px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.svcrow .num{font-family:"Playfair Display",serif;font-style:italic;font-size:42px;line-height:1;color:var(--ink)}
 .svcrow .en{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:700;margin-top:10px}
 .svcrow h3{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;line-height:1.25;margin:8px 0 10px}
 .svcrow p{color:var(--dim);font-size:15.5px}
-.svcrow .more{display:inline-flex;margin-top:16px;font-weight:750;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px}
+.svcrow .more{display:inline-flex;margin-top:16px;font-weight:750;border-bottom:1px solid rgba(25,31,40,.28);padding-bottom:2px}
 .svcrow .fine{margin-top:12px;font-size:13px;color:var(--muted)}
-.shot .ph{min-height:240px;display:flex;align-items:flex-end;padding:22px;color:#fff;font-weight:750;letter-spacing:-.02em}
+.shot .ph{min-height:240px;display:flex;align-items:flex-end;padding:22px;color:var(--ink);font-weight:750;letter-spacing:-.02em}
 .wizbar button[disabled]{opacity:.38;cursor:default;transform:none}
-.svcrow .gap{color:#fff}
-.gap{margin-top:12px;color:#fff;font-size:14.5px}
+.svcrow .gap{color:var(--ink)}
+.gap{margin-top:12px;color:var(--ink);font-size:14.5px}
 .gap b{color:var(--gold);font-weight:750}
 .mband{margin-top:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
 .mband .mq-track{padding:12px 0}
 .mband .rev{animation-direction:reverse;animation-duration:48s}
 .briefs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.wiz{border:1px solid var(--line);border-radius:28px;padding:28px;background:rgba(255,255,255,.035)}
+.wiz{border:1px solid var(--line);border-radius:28px;padding:28px;background:#fff}
 .wiz .en{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:700}
 .wiz .q{display:none}
 .wiz .q.on{display:block}
 .wiz h3{font-size:clamp(22px,3vw,32px);letter-spacing:-.03em;margin:8px 0}
 .opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
 .opts button{border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--dim);font-weight:700}
-.opts button.on{background:var(--grad);color:#fff;border-color:transparent}
-.wiz input{width:100%;margin-top:12px;background:rgba(0,0,0,.35);border:1px solid var(--line);color:#fff;border-radius:14px;padding:12px 14px;font:inherit}
+.opts button.on{background:#191f28;color:#fff;border-color:#191f28}
+.wiz input{width:100%;margin-top:12px;background:#fff;border:1px solid var(--line);color:var(--ink);border-radius:14px;padding:12px 14px;font:inherit}
 .wizbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}
 .wizmeta{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted)}
 .faq details{border-bottom:1px solid var(--line);padding:14px 0}
 .faq summary{cursor:pointer;font-weight:750;letter-spacing:-.02em}
 .faq details p{color:var(--dim);margin-top:8px;max-width:46rem}
 @media(max-width:1023px){
-  #sitenav{background:#06070c;box-shadow:0 28px 48px rgba(0,0,0,.55)}
+  #sitenav{background:#fff;box-shadow:0 28px 48px rgba(25,31,40,.06)}
   #sitenav.open{min-height:calc(100dvh - var(--head));overflow:auto}
   .dropmenu a{white-space:normal}
+}
+@media(max-width:860px){
+  .hero-layout,.cases.pair{grid-template-columns:1fr}
 }
 @media(max-width:420px){
   .hero h1{font-size:25px;letter-spacing:-.05em;max-width:none}
@@ -323,26 +320,27 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
 </header>
 
 <section class="hero" id="top">
-  <video poster="assets/hero.jpg" autoplay muted loop playsinline preload="auto" aria-label="밤의 가게 카운터. 펜던트 조명과 청록 창빛.">
-    <source src="assets/hero-loop.mp4" type="video/mp4">
-  </video>
-  <div class="scrim" aria-hidden="true"></div>
-  <div class="hero-copy wrap">
-    <span class="eyebrow">Holding Company</span>
-    <h1>지주회사는 여기입니다.<br><em class="grad">브랜치는 여기서 이어집니다.</em></h1>
-    <p class="lead">카르스 AS와 카르스 SMOS가 지금 붙은 브랜치입니다. 다음에 생기는 브랜치도 이 페이지에 이름을 올리고, 각 사이트는 다시 여기로 돌아옵니다. 그룹이 하는 일은 하나입니다. 시스템을 맡기지 않고 에이전트를 이양합니다.</p>
-    <div class="btns">
-      <a class="btn p" href="#solutions">서비스 여섯</a>
-      <a class="btn s" href="#inquiry">문의 시작</a>
+  <div class="wrap hero-layout">
+    <div class="hero-copy">
+      <span class="eyebrow">Holding · Standby</span>
+      <h1>지주회사는 여기입니다.<br><em class="grad">본사는 대기입니다.</em></h1>
+      <p class="lead">사례 진열은 내렸습니다. 지금 열린 문은 카르스 AS와 카르스 SMOS입니다. 다음에 생기는 브랜치도 이 페이지에 이름을 올리고, 각 사이트는 다시 여기로 돌아옵니다.</p>
+      <div class="btns">
+        <a class="btn p" href="#solutions">서비스 여섯</a>
+        <a class="btn s" href="#inquiry">문의 시작</a>
+      </div>
+      <p class="note">브랜치 2 · 템플릿 5 · 스태프 모듈 28 · 런타임 0원</p>
     </div>
-    <p class="note">브랜치 2 · 템플릿 5 · 스태프 모듈 28 · 런타임 0원</p>
+    <figure class="hero-still">
+      <img src="assets/hero.jpg" alt="하얀 탁자 위의 빈 노트와 펜">
+    </figure>
   </div>
-  <div class="proofbar" aria-label="실증 호야당, 에브럼, 무시 프로덕션, gohsy, namoneygoal, phoneparis">
-    <div class="proof-k">PROOF</div>
+  <div class="proofbar" aria-label="여섯 단계">
+    <div class="proof-k">STAGE</div>
     <div class="mq" aria-hidden="true">
       <div class="mq-track">
-        <span>호야당 빵집</span><span>에브럼</span><span>무시 프로덕션</span><span>gohsy</span><span>namoneygoal</span><span>phoneparis</span>
-        <span>호야당 빵집</span><span>에브럼</span><span>무시 프로덕션</span><span>gohsy</span><span>namoneygoal</span><span>phoneparis</span>
+        <span>Idea · 업종 템플릿</span><span>Growth · 스태프</span><span>Expansion · 디바이스</span><span>Renovation · 공장 이양</span><span>말로 지시</span><span>Reference · 모듈 소유</span>
+        <span>Idea · 업종 템플릿</span><span>Growth · 스태프</span><span>Expansion · 디바이스</span><span>Renovation · 공장 이양</span><span>말로 지시</span><span>Reference · 모듈 소유</span>
       </div>
     </div>
   </div>
@@ -380,7 +378,6 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
     <div class="grid">
       <div class="stat"><div class="n" data-n="2">2</div><div class="l">브랜치</div></div>
       <div class="stat"><div class="n" data-n="5">5</div><div class="l">업종 템플릿</div></div>
-      <div class="stat"><div class="n" data-n="5">5</div><div class="l">이름 있는 실증</div></div>
       <div class="stat"><div class="n" data-n="28">28</div><div class="l">스태프 모듈</div></div>
       <div class="stat"><div class="n">0<span>원</span></div><div class="l">런타임</div></div>
       <div class="stat"><div class="n" data-n="1">1</div><div class="l">턴키 디바이스</div></div>
@@ -395,18 +392,18 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
 
 <section class="strip" aria-hidden="true">
   <div class="strip-track">
-    <img src="assets/bakery.jpg" alt="">
-    <img src="assets/kitchen.jpg" alt="">
-    <img src="assets/studio.jpg" alt="">
-    <img src="assets/realty.jpg" alt="">
-    <img src="assets/phones.jpg" alt="">
+    <img src="assets/boards.jpg" alt="">
+    <img src="assets/card.jpg" alt="">
     <img src="assets/tablet.jpg" alt="">
-    <img src="assets/bakery.jpg" alt="">
-    <img src="assets/kitchen.jpg" alt="">
-    <img src="assets/studio.jpg" alt="">
-    <img src="assets/realty.jpg" alt="">
-    <img src="assets/phones.jpg" alt="">
+    <img src="assets/box.jpg" alt="">
+    <img src="assets/mic.jpg" alt="">
+    <img src="assets/table.jpg" alt="">
+    <img src="assets/boards.jpg" alt="">
+    <img src="assets/card.jpg" alt="">
     <img src="assets/tablet.jpg" alt="">
+    <img src="assets/box.jpg" alt="">
+    <img src="assets/mic.jpg" alt="">
+    <img src="assets/table.jpg" alt="">
   </div>
 </section>
 
@@ -533,9 +530,9 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
           <h3>업종 템플릿 이양</h3>
           <p>빵집, 요식, 부동산, 폰리테일, 스튜디오. 주차 단위의 완성 약속을 하지 않습니다. 이미 돌아간 틀을 복제해 그 가게에 맞춘 뒤 통째로 넘깁니다.</p>
           <p class="gap"><b>상주형 SI</b>는 초기 프로토타입을 납품하고 빠집니다. 여기는 틀의 소유가 고객에게 남습니다.</p>
-          <a class="more" href="#cases">다섯 실증 보기</a>
+          <a class="more" href="#cases">진열은 대기</a>
         </div>
-        <div class="shot"><img src="assets/bakery.jpg" alt="오븐과 빵이 놓인 밤 작업대" loading="lazy"></div>
+        <div class="shot"><img src="assets/boards.jpg" alt="하얀 탁자 위에 쌓인 빈 보드" loading="lazy"></div>
       </article>
       <article class="svcrow" id="svc-staff">
         <div class="copy">
@@ -546,7 +543,7 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
           <p class="gap"><b>상주형 SI</b>는 AI를 프로젝트로 붙여 견적합니다. 여기는 필요한 모듈만 쿠폰으로 켭니다.</p>
           <a class="more" href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">스태프 스토어</a>
         </div>
-        <div class="shot"><img src="assets/kitchen.jpg" alt="김이 오르는 조리대와 국자" loading="lazy"></div>
+        <div class="shot"><img src="assets/card.jpg" alt="글자 없는 크림색 카드" loading="lazy"></div>
       </article>
       <article class="svcrow" id="svc-device">
         <div class="copy">
@@ -557,18 +554,17 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
           <p class="gap"><b>상주형 SI</b>는 빈 인력 자리를 팀 케어로 채웁니다. 여기는 그 자리를 디바이스 소유로 닫습니다.</p>
           <a class="more" href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">디바이스 키트</a>
         </div>
-        <div class="shot"><img src="assets/tablet.jpg" alt="나무 카운터 위의 태블릿과 스탠드 조명" loading="lazy"></div>
+        <div class="shot"><img src="assets/tablet.jpg" alt="화면이 비어 있는 태블릿" loading="lazy"></div>
       </article>
       <article class="svcrow" id="svc-hand">
         <div class="copy">
           <div class="num">04</div>
           <div class="en">RENOVATION</div>
           <h3>공장·소유 이양</h3>
-          <p>페이지와 채널과 작업 공장을 고객 앞으로 넘깁니다. 새 사업의 지분은 가져가지 않습니다. phoneparis가 이 순서로 먼저 가 있습니다.</p>
+          <p>페이지와 채널과 작업 공장을 고객 앞으로 넘깁니다. 새 사업의 지분은 가져가지 않습니다. 가게 이름을 사례로 올리지 않습니다.</p>
           <p class="gap"><b>상주형 SI</b>는 비IT 조직의 신사업을 같이 안고 갑니다. 여기는 공장을 넘기고 빠집니다.</p>
-          <a class="more" href="#case-phones">phoneparis 보기</a>
         </div>
-        <div class="shot"><img src="assets/phones.jpg" alt="중고 전화기가 진열된 유리장" loading="lazy"></div>
+        <div class="shot"><img src="assets/box.jpg" alt="뚜껑이 조금 열린 빈 흰 상자" loading="lazy"></div>
       </article>
       <article class="svcrow" id="svc-voice">
         <div class="copy">
@@ -577,9 +573,9 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
           <h3>화면 구현 · 말로 지시</h3>
           <p>시안과 명세 파일을 조건으로 두지 않습니다. 말하면 스태프가 실행하고, 화면은 그 결과로 나옵니다. 조작 화면을 따로 배우지 않아도 됩니다.</p>
           <p class="gap"><b>상주형 SI</b>는 시안 파일을 입력으로 받습니다. 여기는 말이 입력입니다.</p>
-          <p class="fine">옆 사진은 화면 시안이 아닙니다. 이미 돌아가는 스튜디오의 공기입니다.</p>
+          <p class="fine">옆 사진은 화면 시안이 아닙니다. 빈 마이크입니다.</p>
         </div>
-        <div class="shot"><img src="assets/studio.jpg" alt="의류 행거가 늘어선 빈 스튜디오" loading="lazy"></div>
+        <div class="shot"><img src="assets/mic.jpg" alt="하얀 탁자 위의 흰 마이크" loading="lazy"></div>
       </article>
       <article class="svcrow" id="svc-public">
         <div class="copy">
@@ -614,38 +610,26 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
 <section class="sec band" id="cases">
   <div class="wrap">
     <span class="eyebrow">Portfolio</span>
-    <h2>제안서 전에, <em class="grad">이미 붙은 간판</em>입니다.</h2>
-    <p class="sub">템플릿 다섯은 이름 있는 자리에서 먼저 돌았습니다. 사진 위의 글은 페이지가 올립니다. 태블릿은 여섯 번째 가게가 아닙니다.</p>
-    <div class="chips" role="tablist" aria-label="포트폴리오 분류">
-      <button type="button" class="on" data-k="all">전체</button>
-      <button type="button" data-k="industry">업종</button>
-      <button type="button" data-k="handoff">이양</button>
-      <button type="button" data-k="device">디바이스</button>
-    </div>
-    <div class="cases">
-      <article class="case" id="case-bakery" data-k="industry">
-        <img src="assets/bakery.jpg" alt="오븐과 빵이 놓인 밤 작업대" loading="lazy">
-        <div class="bd"><div class="tag">BAKERY</div><h3>호야당</h3><p>빵집 템플릿. 브랜드 영상과 음성 라인까지 한 세트로 돌아갑니다.</p></div>
+    <h2>사례 진열은 <em class="grad">대기입니다.</em></h2>
+    <p class="sub">가게 이름을 사례로 올리지 않습니다. 본사 진열은 비워 두었습니다. 지금 열린 것은 브랜치 둘입니다.</p>
+    <div class="cases pair">
+      <article class="case">
+        <img src="assets/card.jpg" alt="글자 없는 크림색 카드" loading="lazy">
+        <div class="bd">
+          <div class="tag">01 · LIVE</div>
+          <h3>carusworks AS</h3>
+          <p>에이전틱 스태프. 모듈 하나, 쿠폰 한 장. 이 사이트는 지주 페이지로 돌아옵니다.</p>
+          <a class="more" href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">브랜치 사이트</a>
+        </div>
       </article>
-      <article class="case" id="case-kitchen" data-k="industry">
-        <img src="assets/kitchen.jpg" alt="김이 오르는 조리대와 국자" loading="lazy">
-        <div class="bd"><div class="tag">KITCHEN</div><h3>에브럼</h3><p>요식 템플릿. 주문, 정산, 홍보를 스태프 모듈로 나눕니다.</p></div>
-      </article>
-      <article class="case" id="case-studio" data-k="industry">
-        <img src="assets/studio.jpg" alt="의류 행거가 늘어선 빈 스튜디오" loading="lazy">
-        <div class="bd"><div class="tag">STUDIO</div><h3>무시 · gohsy</h3><p>스튜디오 템플릿. 촬영 공간의 콘텐츠 라인을 업종 틀로 고정합니다.</p></div>
-      </article>
-      <article class="case" id="case-realty" data-k="industry">
-        <img src="assets/realty.jpg" alt="지도와 뱅커스 램프가 있는 책상" loading="lazy">
-        <div class="bd"><div class="tag">REALTY</div><h3>namoneygoal</h3><p>부동산 템플릿. 지역 매물과 콘텐츠를 같은 틀에서 다룹니다.</p></div>
-      </article>
-      <article class="case" id="case-phones" data-k="handoff">
-        <img src="assets/phones.jpg" alt="중고 전화기가 진열된 유리장" loading="lazy">
-        <div class="bd"><div class="tag">HANDOFF</div><h3>phoneparis</h3><p>폰리테일. 공장을 통째로 넘기고, 가게는 가게 주인 것으로 남습니다.</p></div>
-      </article>
-      <article class="case" id="case-device" data-k="device">
-        <img src="assets/tablet.jpg" alt="카운터 위 태블릿의 추상 화면" loading="lazy">
-        <div class="bd"><div class="tag">DEVICE</div><h3>SMOS</h3><p>여섯 번째 가게가 아닙니다. 다섯 모듈을 담아 넘기는 디바이스입니다.</p></div>
+      <article class="case">
+        <img src="assets/tablet.jpg" alt="화면이 비어 있는 태블릿" loading="lazy">
+        <div class="bd">
+          <div class="tag">02 · LIVE</div>
+          <h3>carusworks SMOS</h3>
+          <p>턴키 디바이스. 태블릿 한 대. 이 사이트도 지주 페이지로 돌아옵니다.</p>
+          <a class="more" href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">브랜치 사이트</a>
+        </div>
       </article>
     </div>
   </div>
@@ -683,7 +667,7 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
         <div class="k">01</div>
         <h3>업종을 고른다</h3>
         <p>빵집, 요식, 부동산, 폰리테일, 스튜디오. 빈 과제가 아니라 이미 돈 자리입니다.</p>
-        <a class="more" href="#cases">실증 보기</a>
+        <a class="more" href="#cases">진열은 대기</a>
       </article>
       <article class="card" style="--cc:var(--gold)">
         <div class="k">02</div>
@@ -711,7 +695,7 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
       <article class="card" style="--cc:var(--gold)">
         <div class="k">01</div>
         <h3>주차가 아니라 켜는 날</h3>
-        <p>상주형 SI는 프로젝트의 주차를 팝니다. carusworks는 호야당, 에브럼, 무시·gohsy, namoneygoal, phoneparis에서 이미 돈 틀을 복제합니다. 시계는 고객의 복제본이 켜지는 날부터입니다. 6주 MVP를 약속하지 않습니다.</p>
+        <p>상주형 SI는 프로젝트의 주차를 팝니다. carusworks는 이미 돌아간 업종 틀을 복제합니다. 가게 이름을 사례로 걸지 않습니다. 본사 진열은 대기입니다. 시계는 고객의 복제본이 켜지는 날부터입니다. 6주 MVP를 약속하지 않습니다.</p>
       </article>
       <article class="card" style="--cc:var(--cyan)">
         <div class="k">02</div>
@@ -1019,7 +1003,7 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
     public:"기능 입력만. 판단과 제출은 고객"
   };
   var GOTO={template:"#svc-template",staff:"#svc-staff",device:"#svc-device",hand:"#svc-hand",media:"#cases",public:"#svc-public"};
-  var LEAFGOTO={"빵집":"#case-bakery","요식":"#case-kitchen","부동산":"#case-realty","폰리테일":"#case-phones","스튜디오":"#case-studio","SMOS":"#svc-device","온디바이스":"#svc-device","레인1 공공":"#svc-public","레인2 콘텐츠":"#svc-staff","쿠폰":"#svc-staff","런타임 0":"#approach","내 가게":"#svc-hand","영상":"#cases","음성":"#cases","SNS":"#cases","복지":"#svc-public","민원":"#svc-public","지원사업":"#svc-public"};
+  var LEAFGOTO={"빵집":"#svc-template","요식":"#svc-template","부동산":"#svc-template","폰리테일":"#svc-template","스튜디오":"#svc-template","SMOS":"#svc-device","온디바이스":"#svc-device","레인1 공공":"#svc-public","레인2 콘텐츠":"#svc-staff","쿠폰":"#svc-staff","런타임 0":"#approach","내 가게":"#svc-hand","영상":"#cases","음성":"#cases","SNS":"#cases","복지":"#svc-public","민원":"#svc-public","지원사업":"#svc-public"};
 
   var nodes=[{id:"center",type:"center",r:28,color:GOLD,label:"carusworks",x:0,y:0,fx:0,fy:0,homeX:0,homeY:0}];
   var links=[], R=210;
@@ -1158,14 +1142,14 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
       if(!s||!t||s.x==null||t.x==null) return;
       var on=!connected || (connected[s.id] && connected[t.id]);
       ctx.beginPath(); ctx.moveTo(s.x,s.y); ctx.lineTo(t.x,t.y);
-      ctx.strokeStyle = l.dash ? (on?"rgba(255,255,255,.16)":"rgba(255,255,255,.03)") : (on?"rgba(242,243,247,.28)":"rgba(242,243,247,.05)");
+      ctx.strokeStyle = l.dash ? (on?"rgba(25,31,40,.28)":"rgba(25,31,40,.06)") : (on?"rgba(25,31,40,.38)":"rgba(25,31,40,.08)");
       ctx.lineWidth=(l.dash?0.7:1.05)/transform.k;
       if(l.dash) ctx.setLineDash([3/transform.k, 4/transform.k]); else ctx.setLineDash([]);
       ctx.stroke();
     });
     ctx.setLineDash([]);
     ctx.beginPath(); ctx.arc(0,0,86,0,Math.PI*2);
-    ctx.strokeStyle="rgba(244,191,63,.16)"; ctx.lineWidth=0.6/transform.k; ctx.stroke();
+    ctx.strokeStyle="rgba(138,106,34,.35)"; ctx.lineWidth=0.6/transform.k; ctx.stroke();
     ctx.fillStyle=GOLD;
     ctx.font="italic "+(18/transform.k)+"px 'Playfair Display', serif";
     ctx.textAlign="center"; ctx.textBaseline="middle";
@@ -1184,7 +1168,7 @@ section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
       }
       var showLabel = n.type==="hub" || (connected && connected[n.id]);
       if(showLabel){
-        ctx.fillStyle = n.type==="leaf" ? n.color : "#fff";
+        ctx.fillStyle = n.type==="leaf" ? n.color : "#191f28";
         ctx.font = ((n.type==="leaf"?11:12)/transform.k)+"px Pretendard, 'Noto Sans KR', sans-serif";
         ctx.textAlign="center"; ctx.textBaseline="top";
         ctx.fillText(n.label, n.x, n.y+n.r+6/transform.k);
