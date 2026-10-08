@@ -57,15 +57,15 @@ em.grad{font-family:"Playfair Display",serif;font-style:italic;font-weight:500}
 .topbar .inner{width:min(var(--max),calc(100% - 32px));margin:0 auto;display:flex;align-items:center;gap:22px}
 .logo{font-family:"JetBrains Mono",monospace;font-weight:700;letter-spacing:.16em;color:var(--gold);font-size:14px}
 .logo small{margin-left:8px;font-size:10px;letter-spacing:.18em;color:var(--dim);font-weight:700}
-#sitenav{margin-left:auto;display:flex;align-items:center;gap:22px;font-size:14.5px;font-weight:650}
+#sitenav{margin-left:auto;display:flex;align-items:center;gap:16px;font-size:14px;font-weight:650}
 #sitenav > a,#sitenav .dropbtn{opacity:.88}
 #sitenav > a:hover,#sitenav .dropbtn:hover{opacity:1}
 .drop{position:relative}
 .dropbtn{display:flex;align-items:center;gap:6px}
 .dropbtn i{font-style:normal;font-size:9px;opacity:.7}
-.dropmenu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:248px;padding:8px;flex-direction:column;
+.dropmenu{display:none;position:absolute;top:calc(100% + 10px);left:50%;transform:translateX(-50%);min-width:300px;padding:8px;flex-direction:column;
   background:#0c0e16;border:1px solid var(--line);border-radius:16px;box-shadow:0 18px 50px rgba(0,0,0,.45);z-index:50}
-.dropmenu a{padding:10px 12px;border-radius:10px;font-size:13.5px;font-weight:600;color:var(--dim)}
+.dropmenu a{padding:10px 12px;border-radius:10px;font-size:13.5px;font-weight:600;color:var(--dim);white-space:nowrap}
 .dropmenu a:hover{background:rgba(255,255,255,.06);color:#fff}
 .dropmenu a b{display:inline-block;width:1.6em;color:var(--gold);font-family:"JetBrains Mono",monospace;font-weight:700}
 .drop.open > .dropmenu{display:flex}
@@ -97,7 +97,7 @@ em.grad{font-family:"Playfair Display",serif;font-style:italic;font-weight:500}
 @keyframes mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
 .stats{position:relative;z-index:2;border-bottom:1px solid var(--line);background:rgba(8,10,16,.9)}
-.stats .grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;padding:28px 0 8px}
+.stats .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;padding:28px 0 8px}
 .stat{text-align:center;padding:8px 4px}
 .stat .n{font-weight:800;font-size:clamp(28px,3vw,40px);letter-spacing:-.04em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .stat .n span{font-size:.55em}
@@ -182,7 +182,7 @@ footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:42px
 .footlinks a:hover{color:#fff}
 .copy{grid-column:1 / -1;margin-top:8px}
 
-section[id],.card[id],.case[id]{scroll-margin-top:84px}
+section[id],.card[id],.case[id],.svcrow[id]{scroll-margin-top:84px}
 .reveal{opacity:0;transform:translateY(18px);animation:rise .7s ease forwards}
 .reveal:nth-child(2){animation-delay:.05s}
 @keyframes rise{to{opacity:1;transform:none}}
@@ -197,9 +197,9 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
   .pill{text-align:center;margin-top:6px}
 }
 @media(max-width:860px){
-  .g3,.cases,.steps,.branches{grid-template-columns:1fr}
+  .g3,.cases,.steps,.branches,.svcrow,.briefs{grid-template-columns:1fr}
+  .svcrow,.rows .svcrow:nth-child(even){grid-template-areas:"copy" "shot"}
   .stats .grid{grid-template-columns:1fr 1fr}
-  .stat:last-child{grid-column:1 / -1}
   .mid{flex-direction:column;align-items:flex-start}
   .foot{grid-template-columns:1fr}
   .graphwrap{height:68dvh;min-height:460px}
@@ -218,9 +218,80 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
   td:nth-child(3)::before{content:"carusworks · ";color:var(--gold);font-weight:700}
   .wrap{width:min(var(--max),calc(100% - 32px))}
 }
+.mix{max-width:560px;margin:4px auto 22px}
+.mixbar{display:flex;height:10px;border-radius:999px;overflow:hidden;background:rgba(255,255,255,.08)}
+.mixbar i{display:block;height:100%}
+.mixbar .a{width:82%}
+.mixbar .b{width:18%;background:var(--cyan)}
+.mixbar .a{background:var(--gold)}
+.mix p{margin-top:8px;text-align:center;color:var(--muted);font-size:12.5px}
+.strip{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#07080f}
+.strip-track{display:flex;gap:12px;width:max-content;animation:mq 46s linear infinite;padding:16px 0}
+.strip-track img{width:300px;height:168px;object-fit:cover;border-radius:18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.chips button{border:1px solid var(--line);border-radius:999px;padding:8px 14px;color:var(--dim);font-size:13px;font-weight:700}
+.chips button.on{background:#fff;color:#14120a;border-color:#fff}
+.case.hide{display:none}
+.stage{min-height:210px;display:flex;flex-direction:column;justify-content:space-between}
+.stage .en{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--cc,var(--gold));font-weight:700}
+.rows{margin-top:18px}
+.svcrow{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center;padding:42px 0;border-top:1px solid var(--line);grid-template-areas:"copy shot"}
+.svcrow .copy{grid-area:copy}
+.svcrow .shot{grid-area:shot}
+.rows .svcrow:nth-child(even){grid-template-areas:"shot copy"}
+.svcrow .shot{border-radius:22px;overflow:hidden;min-height:220px;background:
+  radial-gradient(circle at 30% 30%,rgba(244,191,63,.18),transparent 55%),
+  radial-gradient(circle at 70% 70%,rgba(34,211,238,.14),transparent 50%),#10131c}
+.svcrow img{width:100%;height:100%;min-height:240px;object-fit:cover;display:block}
+.svcrow .num{font-family:"Playfair Display",serif;font-style:italic;font-size:42px;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.svcrow .en{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:700;margin-top:10px}
+.svcrow h3{font-size:clamp(26px,3vw,36px);letter-spacing:-.03em;line-height:1.25;margin:8px 0 10px}
+.svcrow p{color:var(--dim);font-size:15.5px}
+.svcrow .more{display:inline-flex;margin-top:16px;font-weight:750;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px}
+.svcrow .fine{margin-top:12px;font-size:13px;color:var(--muted)}
+.shot .ph{min-height:240px;display:flex;align-items:flex-end;padding:22px;color:#fff;font-weight:750;letter-spacing:-.02em}
+.wizbar button[disabled]{opacity:.38;cursor:default;transform:none}
+.svcrow .gap{color:#fff}
+.gap{margin-top:12px;color:#fff;font-size:14.5px}
+.gap b{color:var(--gold);font-weight:750}
+.mband{margin-top:26px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+.mband .mq-track{padding:12px 0}
+.mband .rev{animation-direction:reverse;animation-duration:48s}
+.briefs{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.wiz{border:1px solid var(--line);border-radius:28px;padding:28px;background:rgba(255,255,255,.035)}
+.wiz .en{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:700}
+.wiz .q{display:none}
+.wiz .q.on{display:block}
+.wiz h3{font-size:clamp(22px,3vw,32px);letter-spacing:-.03em;margin:8px 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.opts button{border:1px solid var(--line);border-radius:999px;padding:10px 14px;color:var(--dim);font-weight:700}
+.opts button.on{background:var(--grad);color:#fff;border-color:transparent}
+.wiz input{width:100%;margin-top:12px;background:rgba(0,0,0,.35);border:1px solid var(--line);color:#fff;border-radius:14px;padding:12px 14px;font:inherit}
+.wizbar{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:22px}
+.wizmeta{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted)}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:750;letter-spacing:-.02em}
+.faq details p{color:var(--dim);margin-top:8px;max-width:46rem}
+@media(max-width:1023px){
+  #sitenav{background:#06070c;box-shadow:0 28px 48px rgba(0,0,0,.55)}
+  #sitenav.open{min-height:calc(100dvh - var(--head));overflow:auto}
+  .dropmenu a{white-space:normal}
+}
+@media(max-width:420px){
+  .hero h1{font-size:25px;letter-spacing:-.05em;max-width:none}
+}
+@media(max-width:860px){
+  .svcrow,
+  .rows .svcrow:nth-child(even){
+    grid-template-columns:1fr;
+    grid-template-areas:"copy" "shot";
+  }
+  .briefs{grid-template-columns:1fr}
+  .svcrow img{min-height:200px}
+}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .mq-track,.reveal{animation:none}
+  .mq-track,.strip-track,.reveal{animation:none}
   .reveal{opacity:1;transform:none}
 }
 </style>
@@ -231,22 +302,22 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
     <a class="logo" href="#top">carusworks<small>지주</small></a>
     <button class="burger" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button>
     <nav id="sitenav">
-      <a href="#branches">브랜치</a>
-      <a href="#system">구조</a>
+      <a href="#branches">회사</a>
       <div class="drop">
-        <button class="dropbtn" type="button" aria-expanded="false" aria-haspopup="true">솔루션 <i>▾</i></button>
+        <button class="dropbtn" type="button" aria-expanded="false" aria-haspopup="true">서비스 <i>▾</i></button>
         <div class="dropmenu" role="menu">
-          <a href="#svc-template" role="menuitem"><b>01</b> 업종 템플릿 이양</a>
-          <a href="#svc-staff" role="menuitem"><b>02</b> 에이전틱 스태프</a>
-          <a href="#svc-device" role="menuitem"><b>03</b> SMOS 디바이스</a>
-          <a href="#svc-hand" role="menuitem"><b>04</b> 공장·소유 이양</a>
-          <a href="#svc-voice" role="menuitem"><b>05</b> 말로 지시</a>
-          <a href="#svc-public" role="menuitem"><b>06</b> 공공 기능 레인</a>
+          <a href="#svc-template" role="menuitem"><b>01</b> Idea · 업종 템플릿</a>
+          <a href="#svc-staff" role="menuitem"><b>02</b> Growth · 스태프</a>
+          <a href="#svc-device" role="menuitem"><b>03</b> Expansion · 디바이스</a>
+          <a href="#svc-hand" role="menuitem"><b>04</b> Renovation · 공장 이양</a>
+          <a href="#svc-voice" role="menuitem"><b>05</b> 화면 구현 · 말로 지시</a>
+          <a href="#svc-public" role="menuitem"><b>06</b> Reference · 모듈 소유</a>
         </div>
       </div>
-      <a href="#cases">사례</a>
-      <a href="#approach">방식</a>
-      <a class="pill" href="mailto:contact@carusworks.com">도입 상담</a>
+      <a href="#academy">아카데미</a>
+      <a href="#cases">포트폴리오</a>
+      <a href="#brief">브리프</a>
+      <a class="pill" href="#inquiry">문의하기</a>
     </nav>
   </div>
 </header>
@@ -261,8 +332,8 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
     <h1>지주회사는 여기입니다.<br><em class="grad">브랜치는 여기서 이어집니다.</em></h1>
     <p class="lead">카르스 AS와 카르스 SMOS가 지금 붙은 브랜치입니다. 다음에 생기는 브랜치도 이 페이지에 이름을 올리고, 각 사이트는 다시 여기로 돌아옵니다. 그룹이 하는 일은 하나입니다. 시스템을 맡기지 않고 에이전트를 이양합니다.</p>
     <div class="btns">
-      <a class="btn p" href="#branches">브랜치 보기</a>
-      <a class="btn s" href="mailto:contact@carusworks.com">도입 상담</a>
+      <a class="btn p" href="#solutions">서비스 여섯</a>
+      <a class="btn s" href="#inquiry">문의 시작</a>
     </div>
     <p class="note">브랜치 2 · 템플릿 5 · 스태프 모듈 28 · 런타임 0원</p>
   </div>
@@ -307,13 +378,35 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
 <section class="stats">
   <div class="wrap">
     <div class="grid">
-      <div class="stat"><div class="n">5</div><div class="l">업종 템플릿</div></div>
-      <div class="stat"><div class="n">5</div><div class="l">이름 있는 실증</div></div>
-      <div class="stat"><div class="n">28</div><div class="l">스태프 모듈</div></div>
+      <div class="stat"><div class="n" data-n="2">2</div><div class="l">브랜치</div></div>
+      <div class="stat"><div class="n" data-n="5">5</div><div class="l">업종 템플릿</div></div>
+      <div class="stat"><div class="n" data-n="5">5</div><div class="l">이름 있는 실증</div></div>
+      <div class="stat"><div class="n" data-n="28">28</div><div class="l">스태프 모듈</div></div>
       <div class="stat"><div class="n">0<span>원</span></div><div class="l">런타임</div></div>
-      <div class="stat"><div class="n">1</div><div class="l">턴키 디바이스</div></div>
+      <div class="stat"><div class="n" data-n="1">1</div><div class="l">턴키 디바이스</div></div>
     </div>
-    <p class="cap">28은 사람 수가 아닙니다. 레인 1 공공 23개, 레인 2 콘텐츠 5개. 모듈 하나의 값입니다.</p>
+    <div class="mix" aria-label="스태프 모듈 구성. 공공 23, 콘텐츠 5">
+      <div class="mixbar"><i class="a"></i><i class="b"></i></div>
+      <p>공공 23 · 콘텐츠 5</p>
+    </div>
+    <p class="cap">28은 사람 수가 아닙니다. 레인 1 공공 23개, 레인 2 콘텐츠 5개. 모듈 하나의 값입니다. 0원은 공개된 실행 자리의 런타임입니다.</p>
+  </div>
+</section>
+
+<section class="strip" aria-hidden="true">
+  <div class="strip-track">
+    <img src="assets/bakery.jpg" alt="">
+    <img src="assets/kitchen.jpg" alt="">
+    <img src="assets/studio.jpg" alt="">
+    <img src="assets/realty.jpg" alt="">
+    <img src="assets/phones.jpg" alt="">
+    <img src="assets/tablet.jpg" alt="">
+    <img src="assets/bakery.jpg" alt="">
+    <img src="assets/kitchen.jpg" alt="">
+    <img src="assets/studio.jpg" alt="">
+    <img src="assets/realty.jpg" alt="">
+    <img src="assets/phones.jpg" alt="">
+    <img src="assets/tablet.jpg" alt="">
   </div>
 </section>
 
@@ -356,6 +449,16 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
         <div class="step"><b>STEP 02</b>필요한 스태프만 쿠폰으로 붙입니다.</div>
         <div class="step"><b>STEP 03</b>디바이스와 공장을 고객 앞으로 넘깁니다.</div>
       </div>
+      <div class="mband" aria-hidden="true">
+        <div class="mq"><div class="mq-track">
+          <span>소유 이양</span><span>런타임 0원</span><span>말로 지시</span><span>쿠폰 한 장</span><span>기능은 도구</span><span>판단은 고객</span><span>팀 구독 없음</span><span>시안 없이 시작</span>
+          <span>소유 이양</span><span>런타임 0원</span><span>말로 지시</span><span>쿠폰 한 장</span><span>기능은 도구</span><span>판단은 고객</span><span>팀 구독 없음</span><span>시안 없이 시작</span>
+        </div></div>
+        <div class="mq"><div class="mq-track rev">
+          <span>시안 없이 시작</span><span>팀 구독 없음</span><span>판단은 고객</span><span>기능은 도구</span><span>쿠폰 한 장</span><span>말로 지시</span><span>런타임 0원</span><span>소유 이양</span>
+          <span>시안 없이 시작</span><span>팀 구독 없음</span><span>판단은 고객</span><span>기능은 도구</span><span>쿠폰 한 장</span><span>말로 지시</span><span>런타임 0원</span><span>소유 이양</span>
+        </div></div>
+      </div>
     </div>
   </div>
 </section>
@@ -363,45 +466,131 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
 <section class="sec band" id="solutions">
   <div class="wrap">
     <span class="eyebrow">Solution</span>
-    <h2>여섯 노드는 <em class="grad">한 세트</em>입니다.</h2>
-    <p class="sub">따로 견적 내는 용역 메뉴가 아닙니다. 업종을 고르고, 스태프를 붙이고, 디바이스에 담아 소유권을 넘기는 순서입니다.</p>
+    <h2>여섯 단계는 <em class="grad">같은 자리</em>, 다른 산출입니다.</h2>
+    <p class="sub">인력 상주형 SI가 나누는 여섯 범주를 같은 순서로 둡니다. 견적과 투입 인력 대신, 이미 가진 것을 복제해 고객 앞으로 넘깁니다.</p>
     <div class="g3">
-      <article class="card" id="svc-template" style="--cc:var(--green)">
-        <div class="k">01</div>
-        <h3>업종 템플릿 이양</h3>
-        <p>빵집, 요식, 부동산, 폰리테일, 스튜디오. 빈 화면에서 견적하지 않습니다. 이미 돌아간 템플릿을 복제해 그 가게에 맞춘 뒤 통째로 넘깁니다.</p>
-        <a class="more" href="#cases">다섯 실증 보기</a>
+      <article class="card stage" style="--cc:var(--green)">
+        <div>
+          <div class="en">IDEA</div>
+          <div class="k">01</div>
+          <h3>업종 템플릿 이양</h3>
+          <p>빈 화면의 프로토타입이 아닙니다. 이미 돌아간 업종 틀을 복제해 그 가게에 맞춘 뒤 통째로 넘깁니다.</p>
+        </div>
+        <a class="more" href="#svc-template">이 범주 보기</a>
       </article>
-      <article class="card" id="svc-staff" style="--cc:var(--gold)">
-        <div class="k">02</div>
-        <h3>에이전틱 스태프</h3>
-        <p>스태프 1명 = 모듈 1개 = 쿠폰 1장. 레인 1 공공 23개, 레인 2 콘텐츠 5개. 주니어 3,000원부터, 시니어 5,000원부터, 전문가는 주문형입니다.</p>
-        <p class="fine">PC에서 MCP로 연결합니다. 언어 모델은 고객이 가져옵니다.</p>
-        <a class="more" href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">스태프 스토어</a>
+      <article class="card stage" style="--cc:var(--gold)">
+        <div>
+          <div class="en">GROWTH</div>
+          <div class="k">02</div>
+          <h3>에이전틱 스태프</h3>
+          <p>운영 전환을 프로젝트로 붙이지 않습니다. 스태프 하나, 모듈 하나, 쿠폰 한 장입니다.</p>
+        </div>
+        <a class="more" href="#svc-staff">이 범주 보기</a>
       </article>
-      <article class="card" id="svc-device" style="--cc:var(--cyan)">
-        <div class="svc-shot"><img src="assets/tablet.jpg" alt="나무 카운터 위의 태블릿과 스탠드 조명" loading="lazy"></div>
-        <div class="k">03</div>
-        <h3>SMOS 디바이스</h3>
-        <p>태블릿 한 대에 다섯 모듈이 설치되어 도착합니다. 홍보 영상, SNS, 디자인·메뉴판, 고객 응대, 장부·매출.</p>
-        <a class="more" href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">디바이스 키트</a>
+      <article class="card stage" style="--cc:var(--cyan)">
+        <div>
+          <div class="en">EXPANSION</div>
+          <div class="k">03</div>
+          <h3>SMOS 디바이스</h3>
+          <p>빈 자리를 팀 구독으로 채우지 않습니다. 태블릿 한 대를 소유합니다.</p>
+        </div>
+        <a class="more" href="#svc-device">이 범주 보기</a>
       </article>
-      <article class="card" id="svc-hand" style="--cc:var(--blue)">
-        <div class="k">04</div>
-        <h3>공장·소유 이양</h3>
-        <p>납품 뒤에 구독으로 붙잡지 않습니다. 페이지와 채널과 작업 공장을 고객 앞으로 넘깁니다. phoneparis가 이 모델로 먼저 가 있습니다.</p>
-        <a class="more" href="#case-phones">phoneparis 보기</a>
+      <article class="card stage" style="--cc:var(--blue)">
+        <div>
+          <div class="en">RENOVATION</div>
+          <div class="k">04</div>
+          <h3>공장·소유 이양</h3>
+          <p>새 사업을 같이 안고 가지 않습니다. 페이지, 채널, 공장을 넘기고 지분은 가져가지 않습니다.</p>
+        </div>
+        <a class="more" href="#svc-hand">이 범주 보기</a>
       </article>
-      <article class="card" id="svc-voice" style="--cc:var(--rose)">
-        <div class="k">05</div>
-        <h3>말로 지시</h3>
-        <p>화면 시안과 명세 파일을 주고받는 입력이 아닙니다. 말하면 스태프가 실행합니다. 조작 화면을 배우지 않아도 됩니다.</p>
+      <article class="card stage" style="--cc:var(--rose)">
+        <div>
+          <div class="en">VOICE</div>
+          <div class="k">05</div>
+          <h3>화면 구현 · 말로 지시</h3>
+          <p>시안 파일이 입력이 아닙니다. 말이 입력이고, 화면은 그 결과입니다.</p>
+        </div>
+        <a class="more" href="#svc-voice">이 범주 보기</a>
       </article>
-      <article class="card" id="svc-public" style="--cc:var(--purple)">
-        <div class="k">06</div>
-        <h3>공공 기능 레인</h3>
-        <p>복지, 민원, 지원사업을 먼저 둡니다. 전자소송·등기·국세·상표·특허는 고위험이라 전문가 검토 뒤에 둡니다.</p>
-        <p class="fine">기능 자동화 도구이며 법률·세무 자문이 아닙니다. 판단과 최종 제출은 고객에게 있습니다.</p>
+      <article class="card stage" style="--cc:var(--purple)">
+        <div>
+          <div class="en">REFERENCE</div>
+          <div class="k">06</div>
+          <h3>모듈 소유</h3>
+          <p>있는 서비스를 다시 개발하지 않습니다. 공공 23, 콘텐츠 5를 쿠폰으로 소유합니다.</p>
+        </div>
+        <a class="more" href="#svc-public">이 범주 보기</a>
+      </article>
+    </div>
+
+    <div class="rows">
+      <article class="svcrow" id="svc-template">
+        <div class="copy">
+          <div class="num">01</div>
+          <div class="en">IDEA</div>
+          <h3>업종 템플릿 이양</h3>
+          <p>빵집, 요식, 부동산, 폰리테일, 스튜디오. 주차 단위의 완성 약속을 하지 않습니다. 이미 돌아간 틀을 복제해 그 가게에 맞춘 뒤 통째로 넘깁니다.</p>
+          <p class="gap"><b>상주형 SI</b>는 초기 프로토타입을 납품하고 빠집니다. 여기는 틀의 소유가 고객에게 남습니다.</p>
+          <a class="more" href="#cases">다섯 실증 보기</a>
+        </div>
+        <div class="shot"><img src="assets/bakery.jpg" alt="오븐과 빵이 놓인 밤 작업대" loading="lazy"></div>
+      </article>
+      <article class="svcrow" id="svc-staff">
+        <div class="copy">
+          <div class="num">02</div>
+          <div class="en">GROWTH</div>
+          <h3>에이전틱 스태프</h3>
+          <p>스태프 1 = 모듈 1 = 쿠폰 1. 레인 1 공공 23개, 레인 2 콘텐츠 5개. 주니어 3,000원부터, 시니어 5,000원부터, 전문가는 주문형입니다. PC에서 MCP로 연결하고, 언어 모델은 고객이 가져옵니다.</p>
+          <p class="gap"><b>상주형 SI</b>는 AI를 프로젝트로 붙여 견적합니다. 여기는 필요한 모듈만 쿠폰으로 켭니다.</p>
+          <a class="more" href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">스태프 스토어</a>
+        </div>
+        <div class="shot"><img src="assets/kitchen.jpg" alt="김이 오르는 조리대와 국자" loading="lazy"></div>
+      </article>
+      <article class="svcrow" id="svc-device">
+        <div class="copy">
+          <div class="num">03</div>
+          <div class="en">EXPANSION</div>
+          <h3>SMOS 디바이스</h3>
+          <p>태블릿 한 대에 다섯 모듈이 설치되어 도착합니다. 홍보 영상, SNS, 디자인·메뉴판, 고객 응대, 장부·매출. 월 팀 구독이 없습니다. 디바이스는 고객 것입니다.</p>
+          <p class="gap"><b>상주형 SI</b>는 빈 인력 자리를 팀 케어로 채웁니다. 여기는 그 자리를 디바이스 소유로 닫습니다.</p>
+          <a class="more" href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">디바이스 키트</a>
+        </div>
+        <div class="shot"><img src="assets/tablet.jpg" alt="나무 카운터 위의 태블릿과 스탠드 조명" loading="lazy"></div>
+      </article>
+      <article class="svcrow" id="svc-hand">
+        <div class="copy">
+          <div class="num">04</div>
+          <div class="en">RENOVATION</div>
+          <h3>공장·소유 이양</h3>
+          <p>페이지와 채널과 작업 공장을 고객 앞으로 넘깁니다. 새 사업의 지분은 가져가지 않습니다. phoneparis가 이 순서로 먼저 가 있습니다.</p>
+          <p class="gap"><b>상주형 SI</b>는 비IT 조직의 신사업을 같이 안고 갑니다. 여기는 공장을 넘기고 빠집니다.</p>
+          <a class="more" href="#case-phones">phoneparis 보기</a>
+        </div>
+        <div class="shot"><img src="assets/phones.jpg" alt="중고 전화기가 진열된 유리장" loading="lazy"></div>
+      </article>
+      <article class="svcrow" id="svc-voice">
+        <div class="copy">
+          <div class="num">05</div>
+          <div class="en">VOICE</div>
+          <h3>화면 구현 · 말로 지시</h3>
+          <p>시안과 명세 파일을 조건으로 두지 않습니다. 말하면 스태프가 실행하고, 화면은 그 결과로 나옵니다. 조작 화면을 따로 배우지 않아도 됩니다.</p>
+          <p class="gap"><b>상주형 SI</b>는 시안 파일을 입력으로 받습니다. 여기는 말이 입력입니다.</p>
+          <p class="fine">옆 사진은 화면 시안이 아닙니다. 이미 돌아가는 스튜디오의 공기입니다.</p>
+        </div>
+        <div class="shot"><img src="assets/studio.jpg" alt="의류 행거가 늘어선 빈 스튜디오" loading="lazy"></div>
+      </article>
+      <article class="svcrow" id="svc-public">
+        <div class="copy">
+          <div class="num">06</div>
+          <div class="en">REFERENCE</div>
+          <h3>모듈 소유</h3>
+          <p>비싼 서비스를 다시 만들지 않습니다. 공공 23개와 콘텐츠 5개를 쿠폰으로 소유합니다. 복지, 민원, 지원사업을 먼저 둡니다. 전자소송·등기·국세·상표·특허는 고위험이라 전문가 검토 뒤에 둡니다.</p>
+          <p class="gap"><b>상주형 SI</b>는 참고 앱을 새로 개발합니다. 여기는 있는 모듈의 소유를 넘깁니다.</p>
+          <p class="fine">기능 자동화 도구이며 법률·세무 자문이 아닙니다. 판단과 최종 제출은 고객에게 있습니다.</p>
+        </div>
+        <div class="shot"><div class="ph">공공 23 · 콘텐츠 5<br>쿠폰으로 소유</div></div>
       </article>
     </div>
   </div>
@@ -414,38 +603,47 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
         <span class="eyebrow">Next</span>
         <h2>견적서 대신, <em class="grad">이양 범위</em>를 정합니다.</h2>
       </div>
-      <a class="btn p" href="mailto:contact@carusworks.com">메일로 범위 보내기</a>
+      <div class="btns">
+        <a class="btn p" href="#inquiry">문의 시작</a>
+        <a class="btn s" href="mailto:contact@carusworks.com">메일로 바로 쓰기</a>
+      </div>
     </div>
   </div>
 </section>
 
 <section class="sec band" id="cases">
   <div class="wrap">
-    <span class="eyebrow">Proof</span>
+    <span class="eyebrow">Portfolio</span>
     <h2>제안서 전에, <em class="grad">이미 붙은 간판</em>입니다.</h2>
-    <p class="sub">템플릿 다섯은 이름 있는 자리에서 먼저 돌았습니다. 사진 위의 글은 페이지가 올립니다.</p>
+    <p class="sub">템플릿 다섯은 이름 있는 자리에서 먼저 돌았습니다. 사진 위의 글은 페이지가 올립니다. 태블릿은 여섯 번째 가게가 아닙니다.</p>
+    <div class="chips" role="tablist" aria-label="포트폴리오 분류">
+      <button type="button" class="on" data-k="all">전체</button>
+      <button type="button" data-k="industry">업종</button>
+      <button type="button" data-k="handoff">이양</button>
+      <button type="button" data-k="device">디바이스</button>
+    </div>
     <div class="cases">
-      <article class="case" id="case-bakery">
+      <article class="case" id="case-bakery" data-k="industry">
         <img src="assets/bakery.jpg" alt="오븐과 빵이 놓인 밤 작업대" loading="lazy">
         <div class="bd"><div class="tag">BAKERY</div><h3>호야당</h3><p>빵집 템플릿. 브랜드 영상과 음성 라인까지 한 세트로 돌아갑니다.</p></div>
       </article>
-      <article class="case" id="case-kitchen">
+      <article class="case" id="case-kitchen" data-k="industry">
         <img src="assets/kitchen.jpg" alt="김이 오르는 조리대와 국자" loading="lazy">
         <div class="bd"><div class="tag">KITCHEN</div><h3>에브럼</h3><p>요식 템플릿. 주문, 정산, 홍보를 스태프 모듈로 나눕니다.</p></div>
       </article>
-      <article class="case" id="case-studio">
+      <article class="case" id="case-studio" data-k="industry">
         <img src="assets/studio.jpg" alt="의류 행거가 늘어선 빈 스튜디오" loading="lazy">
         <div class="bd"><div class="tag">STUDIO</div><h3>무시 · gohsy</h3><p>스튜디오 템플릿. 촬영 공간의 콘텐츠 라인을 업종 틀로 고정합니다.</p></div>
       </article>
-      <article class="case" id="case-realty">
+      <article class="case" id="case-realty" data-k="industry">
         <img src="assets/realty.jpg" alt="지도와 뱅커스 램프가 있는 책상" loading="lazy">
         <div class="bd"><div class="tag">REALTY</div><h3>namoneygoal</h3><p>부동산 템플릿. 지역 매물과 콘텐츠를 같은 틀에서 다룹니다.</p></div>
       </article>
-      <article class="case" id="case-phones">
+      <article class="case" id="case-phones" data-k="handoff">
         <img src="assets/phones.jpg" alt="중고 전화기가 진열된 유리장" loading="lazy">
         <div class="bd"><div class="tag">HANDOFF</div><h3>phoneparis</h3><p>폰리테일. 공장을 통째로 넘기고, 가게는 가게 주인 것으로 남습니다.</p></div>
       </article>
-      <article class="case" id="case-device">
+      <article class="case" id="case-device" data-k="device">
         <img src="assets/tablet.jpg" alt="카운터 위 태블릿의 추상 화면" loading="lazy">
         <div class="bd"><div class="tag">DEVICE</div><h3>SMOS</h3><p>여섯 번째 가게가 아닙니다. 다섯 모듈을 담아 넘기는 디바이스입니다.</p></div>
       </article>
@@ -457,20 +655,184 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
   <div class="wrap">
     <span class="eyebrow">Counter</span>
     <h2>인력 상주형 SI와 <em class="grad">축이 다릅니다.</em></h2>
-    <p class="sub">같은 일을 더 싸게 하는 비교가 아닙니다. 산출이 문서와 투입 인력이 아니라, 고객 소유의 에이전트입니다.</p>
-    <p class="cmp-note">표를 가로로 밉니다</p>
+    <p class="sub">같은 여섯 범주입니다. 왼쪽은 투입과 납품이고, 오른쪽은 고객이 켜고 갖는 것입니다.</p>
     <div class="cmp">
       <table>
         <thead><tr><th>축</th><th>인력 상주형 SI</th><th>carusworks</th></tr></thead>
         <tbody>
-          <tr><td>산출</td><td>견적, 투입, 납품</td><td>업종 템플릿을 복제해 이양</td></tr>
-          <tr><td>기간</td><td>프로젝트 주차</td><td>디바이스를 켜는 날부터 소유</td></tr>
-          <tr><td>유지</td><td>팀 구독, 재계약</td><td>런타임 0원, 고객 소유</td></tr>
-          <tr><td>AI</td><td>기능을 용역으로 추가</td><td>스태프 1명 = 모듈 1개, 쿠폰</td></tr>
-          <tr><td>입력</td><td>화면 파일, 명세</td><td>말로 지시</td></tr>
-          <tr><td>책임</td><td>개발사가 판단까지 안는 구조</td><td>기능은 도구, 판단과 제출은 고객</td></tr>
+          <tr><td>Idea</td><td>6주 MVP 납품</td><td>이미 돌아간 템플릿 이양</td></tr>
+          <tr><td>Growth</td><td>AI를 프로젝트로 붙임</td><td>스태프 1 = 쿠폰 1</td></tr>
+          <tr><td>Expansion</td><td>팀 케어 구독</td><td>디바이스를 소유</td></tr>
+          <tr><td>Renovation</td><td>신사업을 같이 안고 감</td><td>공장과 채널을 넘김</td></tr>
+          <tr><td>화면</td><td>시안과 명세가 입력</td><td>말이 입력</td></tr>
+          <tr><td>Reference</td><td>SaaS를 다시 개발</td><td>있는 모듈을 쿠폰으로 소유</td></tr>
+          <tr><td>책임</td><td>개발사가 판단</td><td>기능은 도구, 판단과 제출은 고객</td></tr>
         </tbody>
       </table>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="academy">
+  <div class="wrap">
+    <span class="eyebrow">Academy</span>
+    <h2>강의 대신, <em class="grad">운영 지도</em>입니다.</h2>
+    <p class="sub">유료 강의가 아닙니다. 순서는 셋입니다. 업종을 고르고, 스태프를 붙이고, 디바이스를 넘깁니다. 판단과 최종 제출은 고객에게 남습니다.</p>
+    <div class="g3">
+      <article class="card" style="--cc:var(--green)">
+        <div class="k">01</div>
+        <h3>업종을 고른다</h3>
+        <p>빵집, 요식, 부동산, 폰리테일, 스튜디오. 빈 과제가 아니라 이미 돈 자리입니다.</p>
+        <a class="more" href="#cases">실증 보기</a>
+      </article>
+      <article class="card" style="--cc:var(--gold)">
+        <div class="k">02</div>
+        <h3>스태프를 붙인다</h3>
+        <p>모듈 하나, 쿠폰 한 장. 언어 모델은 고객이 가져옵니다.</p>
+        <a class="more" href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">AS 스토어</a>
+      </article>
+      <article class="card" style="--cc:var(--cyan)">
+        <div class="k">03</div>
+        <h3>디바이스를 넘긴다</h3>
+        <p>태블릿 한 대가 다섯 모듈을 담아 도착합니다. 런타임 청구는 0원입니다.</p>
+        <a class="more" href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">SMOS</a>
+      </article>
+    </div>
+    <p class="sub" style="margin-top:28px;margin-bottom:0">지도의 그림은 <a href="#system">노드 구조</a>에 있습니다. 기능 자동화 도구이며 법률·세무 자문이 아닙니다.</p>
+  </div>
+</section>
+
+<section class="sec" id="brief">
+  <div class="wrap">
+    <span class="eyebrow">Brief</span>
+    <h2>글 세 편. <em class="grad">저장소에 있는 말</em>만.</h2>
+    <p class="sub">게시판이 아닙니다. 이 페이지가 반복하는 세 가지를 글로 펼칩니다.</p>
+    <div class="briefs">
+      <article class="card" style="--cc:var(--gold)">
+        <div class="k">01</div>
+        <h3>주차가 아니라 켜는 날</h3>
+        <p>상주형 SI는 프로젝트의 주차를 팝니다. carusworks는 호야당, 에브럼, 무시·gohsy, namoneygoal, phoneparis에서 이미 돈 틀을 복제합니다. 시계는 고객의 복제본이 켜지는 날부터입니다. 6주 MVP를 약속하지 않습니다.</p>
+      </article>
+      <article class="card" style="--cc:var(--cyan)">
+        <div class="k">02</div>
+        <h3>팀 구독이 아니라 디바이스</h3>
+        <p>빈 인력 자리를 다음 달에도 청구하는 구조가 아닙니다. SMOS는 태블릿 한 대입니다. 홍보 영상, SNS, 디자인·메뉴판, 고객 응대, 장부·매출. 디바이스는 고객 소유이고, 공개된 페이지·텔레그램·유튜브·디스코드의 런타임은 0원입니다. 비용은 초기 이양과 스태프 쿠폰입니다.</p>
+      </article>
+      <article class="card" style="--cc:var(--purple)">
+        <div class="k">03</div>
+        <h3>기능과 자문을 나누는 이유</h3>
+        <p>도구는 기능 입력만 합니다. 법률·세무 자문이 아닙니다. 전자소송, 등기, 국세, 상표·특허는 고위험이라 전문가 검토 뒤에 둡니다. 판단과 최종 제출은 고객에게 있습니다. 언어 모델도 고객이 가져옵니다. 그래서 쿠폰은 변호사 수임이 아니라 모듈 하나의 값입니다.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec band" id="inquiry">
+  <div class="wrap">
+    <span class="eyebrow">Inquiry</span>
+    <h2>일곱 걸음 뒤, <em class="grad">메일 한 통</em>입니다.</h2>
+    <p class="sub">서버에 저장하지 않습니다. 마지막에 메일 앱이 열리고, 고른 답이 본문에 들어갑니다. 주소는 contact@carusworks.com 입니다.</p>
+    <div class="wiz" id="wiz">
+      <div class="q on" data-k="cat">
+        <div class="en">01</div>
+        <h3>어느 범주부터 이양할까요.</h3>
+        <div class="opts">
+          <button type="button">Idea · 업종 템플릿</button>
+          <button type="button">Growth · 스태프</button>
+          <button type="button">Expansion · 디바이스</button>
+          <button type="button">Renovation · 공장 이양</button>
+          <button type="button">말로 지시</button>
+          <button type="button">Reference · 모듈 소유</button>
+        </div>
+      </div>
+      <div class="q" data-k="trade">
+        <div class="en">02</div>
+        <h3>업종은 어디입니까.</h3>
+        <div class="opts">
+          <button type="button">빵집</button>
+          <button type="button">요식</button>
+          <button type="button">스튜디오</button>
+          <button type="button">부동산</button>
+          <button type="button">폰리테일</button>
+          <button type="button">그 외</button>
+        </div>
+      </div>
+      <div class="q" data-k="branch">
+        <div class="en">03</div>
+        <h3>어느 브랜치부터 볼까요.</h3>
+        <div class="opts">
+          <button type="button">carusworks AS</button>
+          <button type="button">carusworks SMOS</button>
+          <button type="button">둘 다</button>
+          <button type="button">아직</button>
+        </div>
+      </div>
+      <div class="q" data-k="staff">
+        <div class="en">04</div>
+        <h3>스태프는 얼마나 필요합니까.</h3>
+        <div class="opts">
+          <button type="button">아직 모름</button>
+          <button type="button">몇 개만</button>
+          <button type="button">공공 레인 포함</button>
+        </div>
+      </div>
+      <div class="q" data-k="device">
+        <div class="en">05</div>
+        <h3>디바이스는 어느 쪽입니까.</h3>
+        <div class="opts">
+          <button type="button">필요</button>
+          <button type="button">이미 있음</button>
+          <button type="button">나중</button>
+        </div>
+      </div>
+      <div class="q" data-k="input">
+        <div class="en">06</div>
+        <h3>시작 입력은 무엇입니까.</h3>
+        <div class="opts">
+          <button type="button">말로 시작</button>
+          <button type="button">화면이 이미 있음</button>
+        </div>
+      </div>
+      <div class="q" data-k="mail">
+        <div class="en">07</div>
+        <h3>답장 받을 주소와, 한 줄.</h3>
+        <input id="wizmail" type="email" autocomplete="email" placeholder="name@company.com">
+        <input id="wiznote" type="text" placeholder="업종과 넘기고 싶은 범위">
+      </div>
+      <div class="wizbar">
+        <button class="btn s" type="button" id="wizprev" disabled>이전</button>
+        <div class="wizmeta" id="wizmeta">1 / 7</div>
+        <button class="btn p" type="button" id="wiznext">다음</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">FAQ</span>
+    <h2>자주 오는 질문, <em class="grad">있는 답</em>만.</h2>
+    <div class="faq">
+      <details>
+        <summary>6주 안에 MVP를 만들어 주나요.</summary>
+        <p>아닙니다. 기간을 팔지 않습니다. 이미 돌아간 업종 템플릿을 복제해 이양합니다.</p>
+      </details>
+      <details>
+        <summary>팀을 월 구독으로 붙일 수 있나요.</summary>
+        <p>아닙니다. 상주 팀 구독은 없습니다. 디바이스를 소유하고, 스태프는 쿠폰으로 모듈 단위입니다.</p>
+      </details>
+      <details>
+        <summary>화면 시안이 있어야 시작하나요.</summary>
+        <p>아닙니다. 말이 입력입니다. 시안 파일은 시작 조건이 아닙니다.</p>
+      </details>
+      <details>
+        <summary>소송이나 세무 신고를 대신 해주나요.</summary>
+        <p>아닙니다. 기능 입력 도구입니다. 법률·세무 자문이 아니고, 판단과 최종 제출은 고객에게 있습니다. 전자소송·등기·국세·상표·특허는 전문가 검토 뒤에 둡니다.</p>
+      </details>
+      <details>
+        <summary>다음 브랜치는 어디에 붙나요.</summary>
+        <p>사이트가 생기면 이 페이지의 빈 칸에 붙습니다. 각 브랜치 사이트는 다시 이 지주 페이지로 연결됩니다.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -480,7 +842,7 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
     <div class="final">
       <span class="eyebrow">Contact</span>
       <h2>범위를 <em class="grad">메일 한 통</em>으로 정합니다.</h2>
-      <p>업종, 필요한 스태프, 디바이스. 세 가지만 적어 주십시오. 상담 주소는 contact@carusworks.com 입니다.</p>
+      <p>위 일곱 걸음이 길면, 업종과 필요한 스태프와 디바이스만 적어도 됩니다. 상담 주소는 contact@carusworks.com 입니다.</p>
       <a class="btn p" href="mailto:contact@carusworks.com">도입 상담</a>
     </div>
   </div>
@@ -493,10 +855,11 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
       <p>지주회사. 브랜치가 갈라지고, 다시 이 페이지로 모입니다.</p>
     </div>
     <div class="footlinks">
-      <a href="#branches">브랜치</a>
-      <a href="#system">구조</a>
-      <a href="#solutions">솔루션</a>
-      <a href="#cases">사례</a>
+      <a href="#branches">회사</a>
+      <a href="#solutions">서비스</a>
+      <a href="#academy">아카데미</a>
+      <a href="#cases">포트폴리오</a>
+      <a href="#brief">브리프</a>
       <a href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">스태프 스토어</a>
       <a href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">SMOS 디바이스</a>
       <a href="mailto:contact@carusworks.com">contact@carusworks.com</a>
@@ -544,6 +907,92 @@ section[id],.card[id],.case[id]{scroll-margin-top:84px}
       if(b) b.setAttribute("aria-expanded","false");
     });
   });
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function countTo(el){
+    var target = parseInt(el.getAttribute("data-n"), 10);
+    if(reduceMotion || !target && target !== 0){ el.textContent = String(target); return; }
+    var t0 = null;
+    function step(ts){
+      if(!t0) t0 = ts;
+      var p = Math.min(1, (ts - t0) / 700);
+      el.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+      if(p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var nums = document.querySelectorAll("[data-n]");
+  if(reduceMotion || !("IntersectionObserver" in window)){
+    nums.forEach(countTo);
+  }else{
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(!en.isIntersecting) return;
+        io.unobserve(en.target);
+        countTo(en.target);
+      });
+    }, {threshold:0.5});
+    nums.forEach(function(el){ io.observe(el); });
+  }
+
+  document.querySelectorAll(".chips button").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      document.querySelectorAll(".chips button").forEach(function(b){ b.classList.remove("on"); b.setAttribute("aria-selected","false"); });
+      btn.classList.add("on");
+      btn.setAttribute("aria-selected","true");
+      var k = btn.getAttribute("data-k");
+      document.querySelectorAll(".case").forEach(function(c){
+        c.classList.toggle("hide", k !== "all" && c.getAttribute("data-k") !== k);
+      });
+    });
+  });
+
+  var qs = Array.prototype.slice.call(document.querySelectorAll("#wiz .q"));
+  var step = 0;
+  var meta = document.getElementById("wizmeta");
+  var prev = document.getElementById("wizprev");
+  var next = document.getElementById("wiznext");
+  function showStep(){
+    qs.forEach(function(q, n){ q.classList.toggle("on", n === step); });
+    meta.textContent = (step + 1) + " / 7";
+    prev.disabled = step === 0;
+    next.textContent = step === qs.length - 1 ? "메일로 보내기" : "다음";
+  }
+  document.querySelectorAll("#wiz .opts").forEach(function(group){
+    group.addEventListener("click", function(e){
+      var b = e.target.closest("button");
+      if(!b || !group.contains(b)) return;
+      group.querySelectorAll("button").forEach(function(x){ x.classList.remove("on"); });
+      b.classList.add("on");
+    });
+  });
+  function picked(k){
+    var q = document.querySelector('#wiz .q[data-k="'+k+'"]');
+    var on = q && q.querySelector(".opts button.on");
+    return on ? on.textContent.trim() : "";
+  }
+  prev.addEventListener("click", function(){ if(step > 0){ step--; showStep(); } });
+  next.addEventListener("click", function(){
+    var q = qs[step];
+    if(q.querySelector(".opts") && !q.querySelector(".opts button.on")) return;
+    if(step < qs.length - 1){ step++; showStep(); return; }
+    var mail = (document.getElementById("wizmail").value || "").trim();
+    var note = (document.getElementById("wiznote").value || "").trim();
+    var body = [
+      "범주: " + picked("cat"),
+      "업종: " + picked("trade"),
+      "브랜치: " + picked("branch"),
+      "스태프: " + picked("staff"),
+      "디바이스: " + picked("device"),
+      "입력: " + picked("input"),
+      "이메일: " + mail,
+      "한 줄: " + note
+    ].join("\n");
+    var href = "mailto:contact@carusworks.com?subject=" + encodeURIComponent("carusworks 도입 문의") + "&body=" + encodeURIComponent(body);
+    document.getElementById("wiz").setAttribute("data-mailto", href);
+    location.href = href;
+  });
+  showStep();
 })();
 
 (function(){
