@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>carusworks 에셋 라이브러리</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f4f4;color:#161616;font-family:"Pretendard Variable",Pretendard,sans-serif;line-height:1.5}
+header,main{width:min(1146px,calc(100% - 32px));margin:0 auto}
+header{padding:32px 0 8px}
+h1{font-size:28px;letter-spacing:-.03em;margin:0 0 8px}
+p{color:#525252;margin:0}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:24px 0 48px}
+.card{background:#fff;border:1px solid #e0e0e0;padding:12px}
+.card h2{font-size:15px;margin:10px 0 2px}
+.card p{font-size:13px}
+img,video{width:100%;height:auto;background:#fff;display:block}
+.wide{grid-column:1 / -1}
+@media(max-width:800px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <h1>에셋 라이브러리</h1>
+  <p>로고 3안, 히어로 10초 루프, 카드 3장, 도입 아이콘 4종, OG 1장. 휴대폰 화면 목업은 여기에 없습니다.</p>
+</header>
+<main>
+  <div class="grid">
+    <article class="card"><img src="01-logo-a.png" alt="로고 A안, 노드로 만든 C와 carusworks" width="1024" height="1024"><h2>1. 로고 A안</h2><p>노드 C · 1:1</p></article>
+    <article class="card"><img src="02-logo-b.png" alt="로고 B안, 휴대폰 실루엣과 carusworks" width="1024" height="1024"><h2>2. 로고 B안</h2><p>모바일 · 1:1</p></article>
+    <article class="card"><img src="03-logo-c.png" alt="로고 C안, carusworks 워드마크" width="1024" height="1024"><h2>3. 로고 C안</h2><p>워드마크 · 1:1</p></article>
+    <article class="card wide">
+      <video controls muted loop playsinline poster="04-hero.jpg" width="848" height="480">
+        <source src="04-hero.webm" type="video/webm">
+        <source src="04-hero.mp4" type="video/mp4">
+      </video>
+      <h2>4. 히어로</h2>
+      <p>10초 무음 루프 · 16:9. 스틸은 04-hero.jpg</p>
+    </article>
+    <article class="card"><img src="05-b2g.jpg" alt="공공기관 담당자가 휴대폰을 보는 장면" width="1109" height="832"><h2>5. B2G</h2><p>4:3</p></article>
+    <article class="card"><img src="06-b2b.jpg" alt="유리 사무실을 걸으며 휴대폰을 보는 관리자" width="1109" height="832"><h2>6. B2B</h2><p>4:3</p></article>
+    <article class="card"><img src="07-b2c.jpg" alt="빵집 사장님이 거치된 태블릿에 말하는 장면" width="1109" height="832"><h2>7. B2C</h2><p>4:3</p></article>
+    <article class="card"><img src="08-icon-diagnosis.png" alt="돋보기와 흐름도 아이콘" width="1024" height="1024"><h2>8. 업무 진단</h2><p>1:1</p></article>
+    <article class="card"><img src="09-icon-build.png" alt="쌓인 블록 아이콘" width="1024" height="1024"><h2>9. 설계·개발</h2><p>1:1</p></article>
+    <article class="card"><img src="10-icon-integrate.png" alt="맞물리는 플러그 아이콘" width="1024" height="1024"><h2>10. 연동·테스트</h2><p>1:1</p></article>
+    <article class="card"><img src="11-icon-handover.png" alt="열쇠를 건네는 두 손 아이콘" width="1024" height="1024"><h2>11. 이양·운영</h2><p>1:1</p></article>
+    <article class="card wide"><img src="12-og.jpg" alt="OG 썸네일, 왼쪽은 비어 있고 오른쪽에 휴대폰" width="1200" height="630"><h2>12. OG 썸네일</h2><p>1200×630 · 글자 없음</p></article>
+  </div>
+</main>
+</body>
+</html>
