@@ -336,7 +336,7 @@ footer a:hover{color:#fff}
 .demo li{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:start;opacity:.28;transition:opacity .3s}
 .demo li.on{opacity:1}
 .demo li b{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;color:#5fd3a3}
-.demo li.gate b{color:#ffc35a}
+.demo li.chk b{color:#ffc35a}
 .demo li em{font-style:normal;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10.5px;color:#8fa2bb;letter-spacing:.06em}
 .demo .ok{display:none;margin-top:12px;align-items:center;gap:12px;background:#132c4a;border:1px solid #2a4a74;padding:10px 12px}
 .demo .ok.on{display:flex}
@@ -857,7 +857,7 @@ var FORM_ENDPOINT = "";
   function render(d){
     list.innerHTML = d.steps.map(function(s){
       var g = s[2]==="GATE";
-      return '<li class="'+(g?"gate":"")+'"><b>'+(g?"◆":"✓")+'</b><span><strong>'+s[0]+'</strong> · '+s[1]+'</span><em>'+(g?"":s[2])+'</em></li>';
+      return '<li class="'+(g?"chk":"")+'"><b>'+(g?"◆":"✓")+'</b><span><strong>'+s[0]+'</strong> · '+s[1]+'</span><em>'+(g?"":s[2])+'</em></li>';
     }).join("");
   }
   function finish(d, items){
