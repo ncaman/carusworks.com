@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"carusworks","alternateName":"카루스웍스","url":"https://carusworks.com/","logo":"https://carusworks.com/assets/brand/mark.svg","email":"contact@carusworks.com","description":"공공기관, 기업, 소상공인을 위한 맞춤형 AI 에이전틱 솔루션.","subOrganization":[{"@type":"Organization","name":"carusworks AS","url":"https://ncaman.github.io/carusworks-AS/"},{"@type":"Organization","name":"carusworks SMOS","url":"https://ncaman.github.io/carusworks-SMOS/"}]}
+{"@context":"https://schema.org","@type":"Organization","name":"carusworks","alternateName":"카루스웍스","url":"https://carusworks.com/","logo":"https://carusworks.com/assets/brand/logo-a.png","email":"contact@carusworks.com","description":"공공기관, 기업, 소상공인을 위한 맞춤형 AI 에이전틱 솔루션.","subOrganization":[{"@type":"Organization","name":"carusworks AS","url":"https://ncaman.github.io/carusworks-AS/"},{"@type":"Organization","name":"carusworks SMOS","url":"https://ncaman.github.io/carusworks-SMOS/"}]}
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -53,7 +53,7 @@ button{background:none;border:0;cursor:pointer}
 .topbar.solid,.topbar:has(#sitenav.open){background:#fff;border-bottom-color:var(--line)}
 .topbar .inner{width:min(var(--max),calc(100% - 32px));margin:0 auto;display:flex;align-items:center;gap:20px}
 .logo{display:inline-flex;align-items:center;gap:10px;font-family:"Pretendard Variable",Pretendard,sans-serif;font-weight:750;letter-spacing:-.03em;font-size:18px;color:var(--navy)}
-.logo .mark{width:28px;height:28px;display:block}
+.logo .mark{height:40px;width:auto;display:block}
 #sitenav{margin-left:auto;display:flex;align-items:center;gap:18px;font-size:14px;font-weight:650}
 #sitenav > a{color:var(--dim)}
 #sitenav > a:hover{color:var(--ink)}
@@ -91,7 +91,7 @@ button{background:none;border:0;cursor:pointer}
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{background:#fff;border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:12px;min-width:0}
 .cards .card{padding:0;gap:0;overflow:hidden}
-.cardshot{width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center 28%}
+.cardshot{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center}
 .card .pad{padding:20px 24px 24px;display:flex;flex-direction:column;gap:12px;flex:1;min-width:0}
 .band .card{background:#fff}
 .card h3{font-size:22px;line-height:1.35;letter-spacing:-.03em;font-weight:750}
@@ -103,7 +103,7 @@ button{background:none;border:0;cursor:pointer}
 
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .step{border-top:2px solid var(--blue);padding-top:16px}
-.ico{width:32px;height:32px;display:block;margin-bottom:12px}
+.ico{width:56px;height:56px;display:block;margin-bottom:12px}
 .step b{display:block;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;color:var(--navy);margin-bottom:8px}
 .step h3{font-size:18px;letter-spacing:-.02em;margin-bottom:8px}
 .step p{color:var(--dim);font-size:14.5px}
@@ -222,7 +222,7 @@ footer a:hover{color:#fff}
 <a class="skip" href="#main">본문으로</a>
 <header class="topbar" id="topbar">
   <div class="inner">
-    <a class="logo" href="#top"><img class="mark" src="assets/brand/mark.svg" alt="" width="28" height="28">carusworks</a>
+    <a class="logo" href="#top"><img class="mark" src="assets/brand/logo-a.png" alt="carusworks" width="818" height="301"></a>
     <button class="burger" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button>
     <nav id="sitenav">
       <a href="#solutions">솔루션</a>
@@ -249,11 +249,11 @@ footer a:hover{color:#fff}
       </div>
     </div>
     <figure class="film">
-      <video class="hero-film" autoplay muted loop playsinline poster="assets/brand/hero-poster.jpg" width="848" height="480">
-        <source src="assets/brand/hero.webm" type="video/webm">
-        <source src="assets/brand/hero.mp4" type="video/mp4">
+      <video class="hero-film" autoplay muted loop playsinline poster="assets/library/04-hero.jpg" width="848" height="480">
+        <source src="assets/library/04-hero.webm" type="video/webm">
+        <source src="assets/library/04-hero.mp4" type="video/mp4">
       </video>
-      <img class="hero-still" src="assets/brand/hero-poster.jpg" alt="" width="1280" height="720">
+      <img class="hero-still" src="assets/library/04-hero.jpg" alt="" width="1280" height="720">
       <figcaption>휴대폰으로 에이전트 작업을 보고 승인하는 장면입니다. 글자가 있는 화면 예시는 아래 모바일 제어에 있습니다.</figcaption>
     </figure>
   </div>
@@ -278,7 +278,7 @@ footer a:hover{color:#fff}
     <p class="sub">같은 에이전틱 엔진 위에, 공공·기업·개인의 업무 방식에 맞춘 세 가지 솔루션을 만듭니다.</p>
     <div class="cards">
       <article class="card">
-        <img class="cardshot" src="assets/brand/b2g.jpg" alt="밝은 민원 창구에서 담당자가 휴대폰으로 업무를 검토하는 장면" width="1248" height="832">
+        <img class="cardshot" src="assets/library/05-b2g.jpg" alt="밝은 민원 창구에서 담당자가 휴대폰으로 업무를 검토하는 장면" width="1109" height="832">
         <div class="pad">
         <p class="kicker">B2G</p>
         <h3>민원과 행정, 에이전트가 먼저 처리합니다.</h3>
@@ -293,7 +293,7 @@ footer a:hover{color:#fff}
         </div>
       </article>
       <article class="card">
-        <img class="cardshot" src="assets/brand/b2b.jpg" alt="유리 사무실을 걸으며 휴대폰으로 업무 현황을 보는 관리자" width="1248" height="832">
+        <img class="cardshot" src="assets/library/06-b2b.jpg" alt="유리 사무실을 걸으며 휴대폰으로 업무 현황을 보는 관리자" width="1109" height="832">
         <div class="pad">
         <p class="kicker">B2B</p>
         <h3>팀 하나만큼 일하는 AI 스태프.</h3>
@@ -308,7 +308,7 @@ footer a:hover{color:#fff}
         </div>
       </article>
       <article class="card">
-        <img class="cardshot" src="assets/brand/b2c.jpg" alt="빵집 카운터에서 사장님이 거치된 태블릿에 말하는 장면" width="1248" height="832">
+        <img class="cardshot" src="assets/library/07-b2c.jpg" alt="빵집 카운터에서 사장님이 거치된 태블릿에 말하는 장면" width="1109" height="832">
         <div class="pad">
         <p class="kicker">B2C</p>
         <h3>태블릿 한 대, 말 한마디로 가게 운영.</h3>
@@ -403,10 +403,10 @@ footer a:hover{color:#fff}
     <h2>상담부터 이양까지, 네 단계.</h2>
     <p class="en">From briefing to handover, in four steps.</p>
     <div class="steps" style="margin-top:32px">
-      <article class="step"><svg class="ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="10" cy="11" r="6.5" stroke="#0B1F3A" stroke-width="2"/><path d="M14.6 15.6 19 20" stroke="#2F6BFF" stroke-width="2" stroke-linecap="round"/><rect x="16" y="22" width="6" height="6" rx="1.2" stroke="#0B1F3A" stroke-width="2"/><rect x="24" y="22" width="6" height="6" rx="1.2" stroke="#0B1F3A" stroke-width="2"/><path d="M22 25h2" stroke="#2F6BFF" stroke-width="2" stroke-linecap="round"/></svg><b>01</b><h3>업무 진단</h3><p>어떤 일을 에이전트에게 맡길지 함께 고릅니다.</p></article>
-      <article class="step"><svg class="ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="4" y="23" width="24" height="5" rx="1.2" stroke="#0B1F3A" stroke-width="2"/><rect x="8" y="14" width="16" height="5" rx="1.2" stroke="#0B1F3A" stroke-width="2"/><rect x="11" y="5" width="10" height="5" rx="1.2" stroke="#2F6BFF" stroke-width="2"/></svg><b>02</b><h3>설계·개발</h3><p>검증된 모듈과 템플릿 위에 맞춤형으로 쌓습니다.</p></article>
-      <article class="step"><svg class="ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><rect x="2" y="12" width="7" height="8" rx="1.5" stroke="#0B1F3A" stroke-width="2"/><path d="M9 14.5h3.2M9 17.5h3.2" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round"/><path d="M12.2 16h7.6" stroke="#2F6BFF" stroke-width="2" stroke-linecap="round"/><path d="M19.8 14.5H23M19.8 17.5H23" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round"/><rect x="23" y="12" width="7" height="8" rx="1.5" stroke="#0B1F3A" stroke-width="2"/></svg><b>03</b><h3>연동·테스트</h3><p>기존 시스템과 연결하고 승인 흐름을 점검합니다. 점검은 모바일 화면에서도 합니다.</p></article>
-      <article class="step"><svg class="ico" viewBox="0 0 32 32" fill="none" aria-hidden="true"><circle cx="8" cy="16" r="3.4" stroke="#0B1F3A" stroke-width="2"/><circle cx="8" cy="16" r="1.2" fill="#2F6BFF"/><path d="M11.4 16h6" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round"/><path d="M14.2 16v2.8M17.4 16v2" stroke="#0B1F3A" stroke-width="2" stroke-linecap="round"/><path d="M20 16h4" stroke="#2F6BFF" stroke-width="2" stroke-linecap="round"/><path d="M22.4 13.6 26 16l-3.6 2.4" stroke="#2F6BFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>04</b><h3>이양·운영</h3><p>코드, 채널, 디바이스의 소유를 고객에게 넘기고 필요한 만큼만 지원합니다.</p></article>
+      <article class="step"><img class="ico" src="assets/brand/ico-diagnosis.png" alt="" width="56" height="56"><b>01</b><h3>업무 진단</h3><p>어떤 일을 에이전트에게 맡길지 함께 고릅니다.</p></article>
+      <article class="step"><img class="ico" src="assets/brand/ico-build.png" alt="" width="56" height="56"><b>02</b><h3>설계·개발</h3><p>검증된 모듈과 템플릿 위에 맞춤형으로 쌓습니다.</p></article>
+      <article class="step"><img class="ico" src="assets/brand/ico-integrate.png" alt="" width="56" height="56"><b>03</b><h3>연동·테스트</h3><p>기존 시스템과 연결하고 승인 흐름을 점검합니다. 점검은 모바일 화면에서도 합니다.</p></article>
+      <article class="step"><img class="ico" src="assets/brand/ico-handover.png" alt="" width="56" height="56"><b>04</b><h3>이양·운영</h3><p>코드, 채널, 디바이스의 소유를 고객에게 넘기고 필요한 만큼만 지원합니다.</p></article>
     </div>
   </div>
 </section>
