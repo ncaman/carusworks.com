@@ -7,7 +7,7 @@
 <meta name="description" content="카루스웍스는 공공기관, 기업, 소상공인을 위한 맞춤형 AI 에이전틱 솔루션을 설계하고 개발합니다. 반복 업무는 에이전트가 실행하고, 승인과 지시는 모바일에서 합니다.">
 <meta name="theme-color" content="#ffffff">
 <link rel="icon" href="assets/brand/mark.svg" type="image/svg+xml">
-<link rel="preload" as="image" href="assets/library/04-hero.jpg?v=ko" fetchpriority="high">
+<link rel="preload" as="image" href="assets/library/04-hero.jpg?v=b2" fetchpriority="high">
 <link rel="canonical" href="https://carusworks.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="carusworks">
@@ -15,19 +15,19 @@
 <meta property="og:description" content="일하는 AI를 만들고, 손안에서 지휘합니다. 공공기관, 기업, 소상공인을 위한 맞춤형 AI 에이전틱 솔루션.">
 <meta property="og:url" content="https://carusworks.com/">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:image" content="https://carusworks.com/assets/brand/og.jpg">
+<meta property="og:image" content="https://carusworks.com/assets/brand/og.jpg?v=b2">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="carusworks. 일하는 AI를 만들고, 손안에서 지휘하세요.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="carusworks — AI 에이전틱 솔루션">
 <meta name="twitter:description" content="일하는 AI를 만들고, 손안에서 지휘합니다. 공공기관, 기업, 소상공인을 위한 맞춤형 AI 에이전틱 솔루션.">
-<meta name="twitter:image" content="https://carusworks.com/assets/brand/og.jpg">
+<meta name="twitter:image" content="https://carusworks.com/assets/brand/og.jpg?v=b2">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"carusworks","alternateName":"카루스웍스","url":"https://carusworks.com/","logo":"https://carusworks.com/assets/brand/logo-a.png","email":"contact@carusworks.com","description":"공공기관, 기업, 소상공인을 위한 맞춤형 AI 에이전틱 솔루션.","subOrganization":[{"@type":"Organization","name":"carusworks AS","url":"https://ncaman.github.io/carusworks-AS/"},{"@type":"Organization","name":"carusworks SMOS","url":"https://ncaman.github.io/carusworks-SMOS/"}]}
+{"@context":"https://schema.org","@type":"Organization","name":"carusworks","alternateName":"카루스웍스","url":"https://carusworks.com/","logo":"https://carusworks.com/assets/brand/logo-b.png","email":"contact@carusworks.com","description":"공공기관, 기업, 소상공인을 위한 맞춤형 AI 에이전틱 솔루션.","subOrganization":[{"@type":"Organization","name":"carusworks AS","url":"https://ncaman.github.io/carusworks-AS/"},{"@type":"Organization","name":"carusworks SMOS","url":"https://ncaman.github.io/carusworks-SMOS/"}]}
 </script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -54,9 +54,9 @@ h2{text-wrap:balance}
 
 .topbar{position:fixed;top:0;left:0;right:0;z-index:40;height:var(--head);display:flex;align-items:center;background:rgba(255,255,255,.86);backdrop-filter:saturate(1.2) blur(16px);border-bottom:1px solid transparent}
 .topbar.solid,.topbar:has(#sitenav.open){background:rgba(255,255,255,.96);border-bottom-color:var(--line)}
-.topbar .inner{width:min(var(--max),calc(100% - 40px));margin:0 auto;display:flex;align-items:center;gap:28px}
+.topbar .inner{width:min(var(--max),calc(100% - 48px));margin:0 auto;display:flex;align-items:center;gap:28px}
 .logo{display:inline-flex;align-items:center;color:var(--navy)}
-.logo .mark{height:36px;width:auto;display:block}
+.logo .mark{height:40px;width:auto;display:block}
 #sitenav{margin-left:auto;display:flex;align-items:center;gap:22px;font-size:14px;font-weight:600}
 #sitenav > a{color:var(--dim)}
 #sitenav > a:hover{color:var(--ink)}
@@ -65,8 +65,8 @@ h2{text-wrap:balance}
 .burger{display:none;margin-left:auto;width:44px;height:44px;border:1px solid var(--line);align-items:center;justify-content:center;flex-direction:column;gap:5px;background:#fff}
 .burger span{display:block;width:16px;height:1.5px;background:var(--ink)}
 
-.hero{display:grid;grid-template-columns:minmax(28px,1fr) minmax(0,560px) minmax(0,680px) minmax(28px,1fr);column-gap:72px;align-items:center;padding:calc(var(--head) + 72px) 0 36px}
-.hero-copy{grid-column:2}
+.hero{padding:calc(var(--head) + 56px) 0 40px}
+.hero-grid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);column-gap:56px;align-items:center}
 .hero h1{font-size:clamp(42px,5vw,68px);line-height:1.08;font-weight:750;letter-spacing:-.045em;margin:18px 0 16px}
 .hero .en{font-size:clamp(17px,1.5vw,20px);margin-bottom:18px;color:var(--navy)}
 .hero .lead{max-width:36rem;color:var(--dim);font-size:17px}
@@ -77,14 +77,14 @@ h2{text-wrap:balance}
 .btn.s{background:transparent;border:1px solid var(--navy);color:var(--navy)}
 .btn.s:hover{background:var(--bg2)}
 .btn[disabled]{background:var(--bg2);color:#8d8d8d;border:1px solid var(--line);cursor:default}
-.film{grid-column:3 / 5;margin-right:28px;position:relative}
+.film{position:relative;margin:0}
 .hero-film,.hero-still{width:100%;height:auto;border:0;border-radius:20px;background:var(--navy);box-shadow:0 30px 70px rgba(11,31,58,.16)}
 .hero-still{display:none}
-.film figcaption{position:absolute;left:0;right:0;bottom:0;margin:0;padding:56px 22px 16px;border-radius:0 0 20px 20px;background:linear-gradient(transparent,rgba(7,20,34,.78));color:#fff;font-size:13px;line-height:1.45}
+.film figcaption{margin:10px 0 0;color:var(--dim);font-size:13px;line-height:1.45}
 
 .stats{background:#fff}
 .stats .grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.stat{padding:28px 8px 26px}
+.stat{padding:28px 8px 26px 0}
 .stat + .stat{border-left:1px solid var(--line);padding-left:28px}
 .stat .n{font-weight:750;font-size:clamp(40px,4.6vw,64px);letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
 .stat .l{margin-top:10px;font-size:14px;color:var(--dim)}
@@ -122,7 +122,6 @@ h2{text-wrap:balance}
 #command .en,#command .sub,#command .note{color:rgba(255,255,255,.74)}
 #command h2{color:#fff}
 .phones{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:start}
-.phones .phone:nth-child(2){transform:translateY(28px)}
 .feats{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:56px;list-style:none}
 #command .feats .card{background:transparent;border:0;border-top:1px solid rgba(255,255,255,.22);padding:18px 8px 0 0;color:#fff}
 #command .feats .card p{color:rgba(255,255,255,.72)}
@@ -130,7 +129,8 @@ h2{text-wrap:balance}
 .bezel{background:#070b12;border-radius:36px;padding:14px 12px 18px;box-shadow:0 28px 60px rgba(0,0,0,.35)}
 .phone-top{display:flex;justify-content:space-between;align-items:center;font-family:"JetBrains Mono",monospace;font-size:11px;color:rgba(255,255,255,.62);padding:2px 10px 12px}
 .notch{width:72px;height:10px;background:#000;border-radius:8px}
-.screen{background:#f4f6f8;border:0;border-radius:24px;min-height:300px;padding:18px;display:flex;flex-direction:column;gap:10px;color:var(--ink)}
+.screen{position:relative;background:#f4f6f8;border:0;border-radius:24px;min-height:300px;padding:18px;display:flex;flex-direction:column;gap:10px;color:var(--ink)}
+.spark{position:absolute;top:16px;right:16px;width:16px;height:16px}
 .screen .k{font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.14em;color:var(--navy);font-weight:700}
 .screen h3{font-size:22px;letter-spacing:-.03em;line-height:1.3;color:var(--ink)}
 .screen .body{color:var(--dim);font-size:14px}
@@ -201,7 +201,7 @@ td.us{font-weight:700;background:#f4f7ff;color:var(--navy)}
 
 footer{background:var(--navy-2);color:#b7c0cc;padding:56px 0 32px}
 .foot{display:grid;grid-template-columns:1.2fr 2fr;gap:32px}
-.brand{font-family:"Pretendard Variable",Pretendard,sans-serif;color:#fff;letter-spacing:-.03em;font-weight:750;font-size:20px;margin-bottom:8px}
+.footmark{height:36px;width:auto;display:block;margin-bottom:14px}
 footer a:hover{color:#fff}
 .footlinks{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 16px;font-size:14px}
 .copy{grid-column:1 / -1;border-top:1px solid rgba(255,255,255,.14);padding-top:16px;font-size:13px}
@@ -223,7 +223,8 @@ footer a:hover{color:#fff}
   #sitenav{display:none;position:absolute;top:var(--head);left:0;right:0;margin:0;flex-direction:column;align-items:stretch;gap:4px;background:#fff;border-bottom:1px solid var(--line);padding:12px 16px 16px}
   #sitenav.open{display:flex}
   #sitenav > a{padding:12px 4px}
-  .hero{display:block;padding:calc(var(--head) + 36px) 20px 28px}
+  .hero{padding:calc(var(--head) + 28px) 0 20px}
+  .hero-grid{display:block}
   .film{margin:28px 0 0}
   .film figcaption{position:static;padding:10px 0 0;background:none;color:var(--dim);border-radius:0}
   .cards,.cards .card:first-child,.steps,.phones,.cases,.feats,.foot,.callout,.inquiry{display:block}
@@ -231,7 +232,6 @@ footer a:hover{color:#fff}
   .cards .card:first-child{display:flex;grid-column:auto}
   .cards .card:first-child .cardshot{aspect-ratio:4/3;min-height:0}
   .card .pad{padding:22px 20px 24px}
-  .phones .phone:nth-child(2){transform:none}
   .phone + .phone{margin-top:28px}
   .stat + .stat{border-left:0;border-top:1px solid var(--line);padding-left:8px}
   .stats .grid{grid-template-columns:1fr}
@@ -250,7 +250,7 @@ footer a:hover{color:#fff}
 <a class="skip" href="#main">본문으로</a>
 <header class="topbar" id="topbar">
   <div class="inner">
-    <a class="logo" href="#top"><img class="mark" src="assets/brand/logo-a.png" alt="carusworks" width="818" height="301"></a>
+    <a class="logo" href="#top"><img class="mark" src="assets/brand/logo-b.png" alt="carusworks" width="750" height="323"></a>
     <button class="burger" type="button" aria-label="메뉴 열기" aria-expanded="false" aria-controls="sitenav"><span></span><span></span><span></span></button>
     <nav id="sitenav">
       <a href="#solutions">솔루션</a>
@@ -265,6 +265,7 @@ footer a:hover{color:#fff}
 
 <main id="main">
 <section class="hero" id="top">
+  <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="kicker">AI Agentic Solutions for Government, Business &amp; Everyone</p>
       <h1>일하는 AI를 만들고, 손안에서 지휘하세요.</h1>
@@ -276,13 +277,14 @@ footer a:hover{color:#fff}
       </div>
     </div>
     <figure class="film">
-      <video class="hero-film" autoplay muted loop playsinline preload="metadata" poster="assets/library/04-hero.jpg?v=ko" width="1280" height="720">
-        <source src="assets/library/04-hero.webm?v=ko" type="video/webm">
-        <source src="assets/library/04-hero.mp4?v=ko" type="video/mp4">
+      <video class="hero-film" autoplay muted loop playsinline preload="metadata" poster="assets/library/04-hero.jpg?v=b2" width="1280" height="720">
+        <source src="assets/library/04-hero.webm?v=b2" type="video/webm">
+        <source src="assets/library/04-hero.mp4?v=b2" type="video/mp4">
       </video>
-      <img class="hero-still" src="assets/library/04-hero.jpg?v=ko" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
+      <img class="hero-still" src="assets/library/04-hero.jpg?v=b2" alt="" width="1280" height="720" fetchpriority="high" decoding="async">
       <figcaption>휴대폰으로 에이전트 작업을 보고 승인하는 장면입니다. 글자가 있는 화면 예시는 아래 모바일 제어에 있습니다.</figcaption>
     </figure>
+  </div>
 </section>
 
 <section class="stats" aria-label="확인된 규모">
@@ -304,7 +306,7 @@ footer a:hover{color:#fff}
     <p class="sub">같은 에이전틱 엔진 위에, 공공·기업·개인의 업무 방식에 맞춘 세 가지 솔루션을 만듭니다.</p>
     <div class="cards">
       <article class="card">
-        <img class="cardshot" src="assets/library/05-b2g.jpg?v=ko" alt="밝은 민원 창구에서 한국인 담당자가 휴대폰으로 업무를 검토하는 장면" width="1109" height="832" loading="lazy" decoding="async">
+        <img class="cardshot" src="assets/library/05-b2g.jpg?v=b2" alt="공공 사무실에서 한국인 담당자가 파란 스파크가 있는 휴대폰을 보는 장면" width="1109" height="832" loading="lazy" decoding="async">
         <div class="pad">
         <p class="kicker">B2G</p>
         <h3>민원과 행정, 에이전트가 먼저 처리합니다.</h3>
@@ -319,7 +321,7 @@ footer a:hover{color:#fff}
         </div>
       </article>
       <article class="card">
-        <img class="cardshot" src="assets/library/06-b2b.jpg?v=ko" alt="유리 사무실을 걸으며 휴대폰으로 업무 현황을 보는 한국인 관리자" width="1109" height="832" loading="lazy" decoding="async">
+        <img class="cardshot" src="assets/library/06-b2b.jpg?v=b2" alt="유리 사무실을 걸으며 휴대폰으로 업무 현황을 보는 한국인 관리자" width="1109" height="832" loading="lazy" decoding="async">
         <div class="pad">
         <p class="kicker">B2B</p>
         <h3>팀 하나만큼 일하는 AI 스태프.</h3>
@@ -334,7 +336,7 @@ footer a:hover{color:#fff}
         </div>
       </article>
       <article class="card">
-        <img class="cardshot" src="assets/library/07-b2c.jpg?v=ko" alt="빵집 카운터에서 한국인 사장님이 거치된 태블릿에 말하는 장면" width="1109" height="832" loading="lazy" decoding="async">
+        <img class="cardshot" src="assets/library/07-b2c.jpg?v=b2" alt="빵집 카운터에서 한국인 사장님이 거치된 태블릿에 말하는 장면" width="1109" height="832" loading="lazy" decoding="async">
         <div class="pad">
         <p class="kicker">B2C</p>
         <h3>태블릿 한 대, 말 한마디로 가게 운영.</h3>
@@ -377,7 +379,8 @@ footer a:hover{color:#fff}
         <div class="bezel">
           <div class="phone-top"><span>B2G</span><span class="notch" aria-hidden="true"></span><span></span></div>
           <div class="screen">
-            <p class="k">APPROVE</p>
+            <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A12FF" d="M12 1.2 13.8 9.2 22 12l-8.2 2.8L12 22.8 10.2 14.8 2 12l8.2-2.8z"/></svg>
+                        <p class="k">APPROVE</p>
             <h3>민원 답변</h3>
             <p class="body">초안이 도착했습니다. 발송 전에 담당자가 확인합니다.</p>
             <div class="row">담당 배정 <span>완료</span></div>
@@ -390,7 +393,8 @@ footer a:hover{color:#fff}
         <div class="bezel">
           <div class="phone-top"><span>B2B</span><span class="notch" aria-hidden="true"></span><span></span></div>
           <div class="screen">
-            <p class="k">STATUS</p>
+            <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A12FF" d="M12 1.2 13.8 9.2 22 12l-8.2 2.8L12 22.8 10.2 14.8 2 12l8.2-2.8z"/></svg>
+                        <p class="k">STATUS</p>
             <h3>오늘 진행</h3>
             <div class="row">견적 초안 <span>승인 대기</span></div>
             <div class="row">고객 회신 <span>실행 중</span></div>
@@ -403,7 +407,8 @@ footer a:hover{color:#fff}
         <div class="bezel">
           <div class="phone-top"><span>B2C</span><span class="notch" aria-hidden="true"></span><span></span></div>
           <div class="screen">
-            <p class="k">VOICE</p>
+            <svg class="spark" viewBox="0 0 24 24" aria-hidden="true"><path fill="#1A12FF" d="M12 1.2 13.8 9.2 22 12l-8.2 2.8L12 22.8 10.2 14.8 2 12l8.2-2.8z"/></svg>
+                        <p class="k">VOICE</p>
             <h3>말로 지시</h3>
             <p class="voice">“오늘 메뉴 올려 줘”</p>
             <p class="body">메뉴판 초안이 준비됐습니다. 게시는 사장님 승인 뒤입니다.</p>
@@ -614,7 +619,7 @@ footer a:hover{color:#fff}
 <footer>
   <div class="wrap foot">
     <div>
-      <div class="brand">carusworks</div>
+      <a href="#top"><img class="footmark" src="assets/brand/logo-b-light.png" alt="carusworks" width="750" height="323"></a>
       <p>카루스웍스 — AI Agentic Solutions. Built to act, controlled from anywhere.</p>
     </div>
     <div class="footlinks">
