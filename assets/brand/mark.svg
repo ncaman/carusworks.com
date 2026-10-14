@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="carusworks">
+  <path d="M 23.66 9.57 L 18.25 6.26 L 11.93 6.86 L 7.25 11.15 L 6.10 17.39 L 8.93 23.07 L 14.61 25.90 L 20.85 24.75 L 25.14 20.07" fill="none" stroke="#0B1F3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="23.66" cy="9.57" r="3.6" fill="none" stroke="#2F6BFF" stroke-width="1.4"/><circle cx="23.66" cy="9.57" r="2.15" fill="#2F6BFF"/><circle cx="18.25" cy="6.26" r="1.85" fill="#0B1F3A"/><circle cx="11.93" cy="6.86" r="1.85" fill="#0B1F3A"/><circle cx="7.25" cy="11.15" r="1.85" fill="#0B1F3A"/><circle cx="6.10" cy="17.39" r="1.85" fill="#0B1F3A"/><circle cx="8.93" cy="23.07" r="1.85" fill="#0B1F3A"/><circle cx="14.61" cy="25.90" r="1.85" fill="#0B1F3A"/><circle cx="20.85" cy="24.75" r="1.85" fill="#0B1F3A"/><circle cx="25.14" cy="20.07" r="1.85" fill="#0B1F3A"/>
+</svg>
