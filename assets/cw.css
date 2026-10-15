@@ -960,3 +960,14 @@ thead th{font-size:12.5px}
   .emus::-webkit-scrollbar{display:none}
   .emu{flex:0 0 86%;scroll-snap-align:start}
 }
+
+/* 라인업 (메인·AS·SMOS 공통) */
+.lu{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.lu a{border:1px solid var(--line);padding:24px 22px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s,background .2s}
+.lu a:hover{border-color:var(--ink)}
+.lu a.on{border:2px solid var(--blue);background:var(--blue10)}
+.lu .dk{font-family:var(--m);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.lu h3{font-size:21px}
+.lu p:not(.dk){font-size:14.5px;color:var(--dim)}
+.lu span{margin-top:auto;font-size:13px;font-weight:700;color:var(--blue)}
+@media (max-width:1000px){.lu{grid-template-columns:1fr}}
