@@ -113,7 +113,18 @@ var FORM_ENDPOINT = "";
     };
     var mail = function(d){
       var body = Object.keys(d).map(function(k){ return k + ": " + d[k]; }).join("\n");
-      window.location.href = "mailto:contact@carusworks.com?subject=" + encodeURIComponent("carusworks 도입 상담") + "&body=" + encodeURIComponent(body);
+      document.getElementById("wizokh").textContent = "마지막 단계입니다.";
+      document.getElementById("wizokp").textContent = "아래 내용을 메일로 보내 주시면 접수가 끝납니다. 진단 상담을 준비해 회신드립니다.";
+      document.getElementById("wizsum").textContent = body;
+      document.getElementById("wizmailto").href = "mailto:contact@carusworks.com?subject=" + encodeURIComponent("carusworks 도입 상담") + "&body=" + encodeURIComponent(body);
+      document.getElementById("wizmailbox").hidden = false;
+      var cp = document.getElementById("wizcopy");
+      cp.onclick = function(){
+        var ok = function(){ cp.textContent = "복사했습니다"; };
+        if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText("받는 곳: contact@carusworks.com\n제목: carusworks 도입 상담\n\n" + body).then(ok, function(){ cp.textContent = "직접 선택해 복사해 주세요"; }); }
+        else cp.textContent = "직접 선택해 복사해 주세요";
+      };
+      done();
     };
     prev.addEventListener("click", function(){ if(step > 0){ step--; draw(); } });
     next.addEventListener("click", function(){

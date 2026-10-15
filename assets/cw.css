@@ -421,3 +421,14 @@ td.us,th.us{color:var(--ink);font-weight:700;background:var(--blue10)}
 @media (max-width:1000px){.proof .wrap{grid-template-columns:1fr 1fr}.proof .pf:nth-child(3){padding-left:0;border-left:0}.proof .src{grid-column:1 / -1;border-left:0;border-top:1px solid var(--line);padding:16px 0}.pnl{grid-template-columns:1fr;gap:40px}}
 @media (max-width:760px){.proof .pf{padding:20px 14px 18px 0}.proof .pf + .pf{padding-left:14px}.dcard .o{grid-template-columns:64px minmax(0,1fr);}.dcard .o em{grid-column:2}}
 @media (max-width:760px){.proof .pf:nth-child(3){padding-left:0;border-left:0}}
+
+/* ── 법적 문서·폼 완료 ── */
+.prose{max-width:760px}
+.prose h2{font-size:20px;letter-spacing:-.03em;margin:40px 0 12px;padding-top:24px;border-top:1px solid var(--line)}
+.prose h2:first-child{margin-top:0;border-top:0;padding-top:0}
+.prose p,.prose li{color:var(--ink2);font-size:15.5px;line-height:1.75}
+.prose ul{padding-left:20px;display:grid;gap:4px;margin-top:8px}
+.prose .upd{margin-top:48px;font-family:var(--m);font-size:12.5px;color:var(--faint)}
+.lnk{color:var(--blue);border-bottom:1px solid currentColor}
+.lnk:hover{color:var(--ink)}
+.sum{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);padding:14px 16px;font-family:var(--m);font-size:12.5px;color:var(--ink2);margin:16px 0;max-height:240px;overflow:auto}
