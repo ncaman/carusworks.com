@@ -734,3 +734,8 @@ thead th{font-size:12.5px}
   .fab td:first-child{width:27%;font-size:13px}
   .fab td.v{font-size:12.5px}
 }
+/* 첫 화면: 팹 방식 한 줄 풀이, 시연 탭 한 줄 고정 */
+.hero .fabline{margin:-24px 0 32px;font-size:14px;color:#a9c2b6;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.hero .fabline b{font-size:12px;font-weight:800;color:#04261a;background:#6fd3a4;padding:2px 8px}
+.dtabs{flex-wrap:nowrap}
+.dtabs button{flex:1;padding:7px 6px;text-align:center}
