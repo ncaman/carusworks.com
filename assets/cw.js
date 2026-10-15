@@ -401,3 +401,10 @@ var FORM_ENDPOINT = "";
     io.observe(app);
   }
 })();
+
+/* 아키텍처 도면 펼치기 */
+(function(){
+  var m = document.getElementById("mapprev"); if(!m) return;
+  var b = m.querySelector(".mapmore");
+  b.addEventListener("click", function(){ var o = m.classList.toggle("open"); b.setAttribute("aria-expanded", o); b.textContent = o ? "도면 접기" : "전체 도면 펼치기"; if(!o) m.scrollIntoView({block:"start"}); });
+})();

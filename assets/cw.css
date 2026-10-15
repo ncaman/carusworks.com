@@ -739,3 +739,68 @@ thead th{font-size:12.5px}
 .hero .fabline b{font-size:12px;font-weight:800;color:#04261a;background:#6fd3a4;padding:2px 8px}
 .dtabs{flex-wrap:nowrap}
 .dtabs button{flex:1;padding:7px 6px;text-align:center}
+
+/* ===== 가독성·길이 압축 ===== */
+.sec{padding:104px 0}
+.head2{margin-bottom:44px}
+@media (max-width:760px){
+  .sec{padding:64px 0}
+  .head2{margin-bottom:28px;gap:14px}
+  .head2 p{font-size:15.5px}
+}
+/* 아키텍처 도면 미리보기 */
+.mapprev{position:relative;margin-bottom:36px}
+.mapcap{font-size:13px;color:var(--dim);margin-bottom:12px;display:flex;gap:10px;align-items:baseline}
+.mapcap b{font-family:var(--m);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.mapprev .mapframe{max-height:430px;overflow:hidden;position:relative;transition:max-height .5s}
+.mapprev .mapframe::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(transparent,var(--bg2));pointer-events:none}
+.mapprev.open .mapframe{max-height:none}
+.mapprev.open .mapframe::after{display:none}
+.mapmore{display:block;margin:-22px auto 0;position:relative;z-index:2;background:var(--ink);color:#fff;font-weight:700;font-size:14px;padding:12px 22px;min-height:44px}
+.mapprev.open .mapmore{margin-top:16px}
+@media (max-width:999px){
+  .mapprev:not(.open) .mapdesk{display:block;padding:10px}
+  .mapprev:not(.open) .mapmob{display:none}
+  .mapprev .mapframe{max-height:260px}
+}
+/* 배포 방식: 한 줄 항목 */
+.dep{gap:10px}
+.dep > div{padding:18px;gap:8px}
+.dep h3{font-size:18px}
+.dep dl{font-size:13px}
+@media (max-width:760px){
+  .dep{grid-template-columns:1fr 1fr}
+  .dep dl{display:block}
+  .dep dt{display:none}
+  .dep dd:last-of-type{display:none}
+  .dep .fit{font-size:12px;padding-top:8px}
+  .dep .dk{display:none}
+}
+/* 비교표 모바일: carusworks + 리스크 대비만 */
+@media (max-width:760px){
+  .cmp td[data-l="일반 SI"],.cmp td[data-l="챗봇 도입"]{display:none}
+  .cmp tr{padding:10px 0}
+  .cmp tbody th{font-size:15.5px;padding-bottom:4px}
+  .cmp td{grid-template-columns:80px minmax(0,1fr);font-size:14px;padding:4px 8px}
+}
+/* 진행 단계 모바일: 한 줄씩 */
+@media (max-width:760px){
+  .steps:not(.four){gap:0;display:block}
+  .steps:not(.four) > div{display:grid;grid-template-columns:32px 72px minmax(0,1fr);gap:8px;align-items:baseline;padding:12px 0;border-top:1px solid var(--line);border-left:0}
+  .steps:not(.four) > div + div{padding-left:0}
+  .steps:not(.four) > div p{display:none}
+  .steps:not(.four) h3{font-size:16px;margin:0}
+  .steps:not(.four) em{font-size:13px;margin:0}
+}
+/* 앱 문단 */
+.core .c3{padding:44px 0}
+@media (max-width:760px){.core .c3{padding:30px 0;gap:18px}.core h3{font-size:24px}}
+/* 증거 띠 모바일 2×2 */
+@media (max-width:760px){
+  .facts .wrap{grid-template-columns:1fr 1fr}
+  .facts .wrap > div{padding:12px 8px 12px 0}
+  .facts .wrap > div:nth-child(even){padding-left:12px;border-left:1px solid var(--line)}
+  .facts .wrap > div + div{border-top:0}
+  .facts .wrap > div:nth-child(n+3){border-top:1px solid var(--line)}
+  .facts strong{font-size:13.5px}
+}
