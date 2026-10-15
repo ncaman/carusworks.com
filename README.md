@@ -10,9 +10,12 @@ solutions/index.html       솔루션 — 서비스 7개(아코디언), 구축 5�
 platform/index.html        플랫폼 — Carusmap 구성도, 계층별 설명(아코디언)
 trust/index.html           안전한 실행 — 절차·가상 검증·승인·실행, 보안 5가지, 비교표
 contact/index.html         도입 상담 — 4단계 문의 폼, FAQ(아코디언, JSON-LD)
+privacy/ · terms/          개인정보처리방침 · 이용약관
+404.html · sitemap.xml · robots.txt
 assets/
   cw.css · cw.js           모든 페이지가 함께 쓰는 스타일과 스크립트(메뉴, 예시 화면, 문의 폼)
-  brand/                   로고(logo-b, logo-b-light), mark.svg, og.jpg, 아이콘
+  brand/                   그린 로고 logo-g·logo-g-light, mark-g.svg(파비콘), og-g.jpg(링크 공유) — 옛 파란 로고는 그대로 보관
+  motion/                  적용 분야 숫자 모션그래픽 영상 3편(mp4·webm·포스터)
   library/                 사진·영상 에셋 + 에셋 목록 페이지 index.html
   architecture/            Carusmap — AI 플랫폼 아키텍처 구성도 SVG
   _archive/                지금 쓰지 않는 옛 에셋 (지우지 않고 보관)
@@ -30,7 +33,7 @@ docs/                      개발법 공개판, 제품기획, 정부과제, MCP 
 ## 고칠 때 규칙
 - `index.html`(코드)과 `assets/library/`(사진·영상)는 한 쪽씩 맡습니다. 같은 파일을 두 사람이 동시에 고치지 않습니다.
 - 작업 브랜치에서 고치고 PR로 `main`에 넣습니다. `main`에 바로 올리지 않습니다.
-- 에셋을 바꾸면 쿼리 버전을 올립니다(사진·영상 `?v=b3`, 공통 스타일·스크립트 `?v=4`).
+- 에셋을 바꾸면 쿼리 버전을 올립니다(공통 스타일·스크립트 `?v=10`, 모션 영상 `?m=2`).
 - 페이지 다섯 개는 같은 머리·꼬리를 씁니다. 메뉴를 바꾸면 다섯 곳을 같이 고칩니다.
 - 페이지에 쓰지 않는 말: 지주, 본사, 대기, 브랜치, 레인, 공장, 진열, 쿠폰 한 장, Holding, Standby.
 - 확인되지 않은 수치·고객 로고·성과는 넣지 않습니다. 예시는 "예시"라고 적습니다.
@@ -40,3 +43,7 @@ docs/                      개발법 공개판, 제품기획, 정부과제, MCP 
 2. 위 금지어 0건
 3. JSON-LD(Organization, FAQPage)가 파싱되고, FAQPage가 화면의 FAQ와 같음
 4. 콘솔 오류 0
+
+## 남은 결정
+- 문의 폼 접수 주소(`assets/cw.js`의 `FORM_ENDPOINT`): 비어 있으면 작성 내용을 보여 주고 메일 앱·복사로 보내게 한다. 접수 서비스를 쓰면 개인정보처리방침의 '처리 위탁' 항목을 먼저 고친다.
+- 사업자 정보(대표자·사업자번호·주소)는 확정되면 꼬리와 개인정보처리방침에 넣는다.

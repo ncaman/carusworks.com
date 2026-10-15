@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /assets/library/
+
+Sitemap: https://carusworks.com/sitemap.xml
