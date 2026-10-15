@@ -285,7 +285,7 @@ var FORM_ENDPOINT = "";
   if(document.readyState === "complete") setTimeout(go, 300); else window.addEventListener("load", function(){ setTimeout(go, 300); });
 })();
 
-/* ===== 분야별 운영 앱 — 핵심 3가지(휴대폰 지시 · 팹 운영 체계 · 경영 보고)를 같은 숫자로 계산 =====
+/* ===== 분야별 운영 앱 — 핵심 3가지(모바일 지시 · 팹 운영 체계 · 경영 보고)를 같은 숫자로 계산 =====
    계산식은 화면 아래에 공개. 기본값은 예시이며 진단 때 현장 값으로 바꾼다. */
 (function(){
   var app = document.getElementById("app"); if(!app) return;
@@ -354,7 +354,7 @@ var FORM_ENDPOINT = "";
     var best = m.rec ? m.rec(V, O) : O.slice().sort(function(a,b){ return b.y1 - a.y1; })[0].k;
     var B = O.filter(function(o){ return o.k === best; })[0];
     $("appUnit").textContent = m.unit+" · "+m.lossLabel; $("appLoss").textContent = "월 "+won(L);
-    // 01 휴대폰 지시·승인
+    // 01 모바일 지시·승인
     var noneC = !(B.s*12 - B.c >= 0 || B.s*60 - B.c >= 0);
     var chat = '<p class="me">'+m.ask+'</p><p class="ai"><small>carusworks</small>'+m.kpiName+' '+m.kpi(V)+'% · '+m.lossLabel+' 월 '+won(L)+'<br>'+(noneC ? '권고: 투자 보류 · 손실 규모가 작아 지표만 계속 봅니다' : '권고: '+B.n+' ('+(B.pt||"")+')')+'<br>승인하면 실행 절차를 시작합니다.<span class="bt"><button type="button" data-a="ok">승인</button><button type="button" data-a="hold">보류</button></span></p>';
     if(approved) chat += '<p class="me">'+(approved.a === "ok" ? "승인" : "보류")+'</p><p class="ai ok"><small>carusworks</small>'+(approved.a === "ok" ? "✓ "+approved.n+" 실행 절차 시작 · 이력 #"+approved.h : "보류 기록 · 다음 주 같은 지표로 다시 보고합니다")+'</p>';
@@ -435,13 +435,13 @@ var FORM_ENDPOINT = "";
     clear(); play.innerHTML = "<i>▶</i> 요청 처리 흐름 보기"; t.classList.add("hot"); cap.innerHTML = "<b>"+(t.querySelector("h5,b") ? t.querySelector("h5,b").textContent : t.childNodes[0].textContent)+"</b> "+t.dataset.d;
   });
   var steps = [
-    [["phone","svc-civil"], "① 담당자가 휴대폰으로 말합니다. “지난달 반복 민원 정리하고 줄일 방법 보고해 줘.”"],
+    [["phone","svc-civil"], "① 담당자가 모바일(휴대폰·태블릿)로 말합니다. “지난달 반복 민원 정리하고 줄일 방법 보고해 줘.”"],
     [["mcp"], "② 요청은 표준 프로토콜(MCP)로 에이전트 공정에 전달됩니다."],
     [["a1","a2"], "③ 접수·분류 에이전트(A1)가 민원을 유형별로 나누고, 절차 작성 에이전트(A2)가 표준 절차(레시피)로 계획을 씁니다."],
     [["route","onto","data"], "④ 사내 SLM이 민원 기록을 표준 규격으로 읽고, 온톨로지에서 ‘주차 민원 – 담당 부서 – 처리 규정’ 관계를 찾습니다."],
     [["a3","a5"], "⑤ 사전 검증(A3)으로 권한·범위를 확인하고, 품질 관리(A5)가 재문의율 관리도 이탈을 잡아냅니다."],
     [["a6","svc-report"], "⑥ 원가·보고(A6)가 “반복 문의로 매달 480만 원, 자동 답변 초안이면 3.1개월 회수”로 경영 보고를 만듭니다."],
-    [["phone","a4","a7"], "⑦ 담당자가 휴대폰에서 승인하면 실행·연동(A4)이 적용하고, 모든 단계가 이력(A7)으로 남습니다. ✓"]
+    [["phone","a4","a7"], "⑦ 담당자가 모바일에서 승인하면 실행·연동(A4)이 적용하고, 모든 단계가 이력(A7)으로 남습니다. ✓"]
   ];
   var run = function(){
     clear(); a.classList.add("run"); play.innerHTML = "<i>■</i> 재생 중";
