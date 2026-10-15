@@ -451,7 +451,7 @@ var FORM_ENDPOINT = "";
   }
 })();
 
-/* 운영 시나리오 에뮬레이터 — 8주 운영을 주 단위로 구동, 4주차 경영 보고에서 승인 대기 */
+/* 운영 시나리오 에뮬레이터 — 8주 운영을 주 단위로 구동, 4주차 경영 보고에서 승인 요청 */
 (function(){
   var cards = document.querySelectorAll(".emu"); if(!cards.length) return;
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -483,7 +483,7 @@ var FORM_ENDPOINT = "";
     var step = function(){
       wk++; var v = val(wk); pts.push(v); draw(); kv.textContent = Math.round(v)+"%"; wkE.textContent = wk+"주차";
       var li = document.createElement("li"); li.textContent = wk+"주 · "+c.ev[wk-1]; if(c.ev[wk-1].charAt(0) === "⚠") li.className = "warn"; lg.insertBefore(li, lg.firstChild);
-      if(wk === 4){ gate.hidden = false; el.classList.add("wait"); btn.textContent = "승인 대기"; gate.querySelector(".ok").onclick = function(){ gate.hidden = true; el.classList.remove("wait"); btn.textContent = "운영 중…"; var l2 = document.createElement("li"); l2.className = "okk"; l2.textContent = "✓ 승인 · 이력 기록"; lg.insertBefore(l2, lg.firstChild); tm = setTimeout(step, reduce ? 0 : 650); }; return; }
+      if(wk === 4){ gate.hidden = false; el.classList.add("wait"); btn.textContent = "승인 요청 중"; gate.querySelector(".ok").onclick = function(){ gate.hidden = true; el.classList.remove("wait"); btn.textContent = "운영 중…"; var l2 = document.createElement("li"); l2.className = "okk"; l2.textContent = "✓ 승인 · 이력 기록"; lg.insertBefore(l2, lg.firstChild); tm = setTimeout(step, reduce ? 0 : 650); }; return; }
       if(wk < 8){ tm = setTimeout(step, reduce ? 0 : 650); return; }
       var saved = c.loss*c.cut;
       res.hidden = false; res.innerHTML = '<div><span>'+c.kpi+'</span><b>'+c.base+'% → '+c.after+'%</b></div><div><span>월 손실</span><b>'+won(c.loss)+' → '+won(c.loss-saved)+'</b></div><div><span>투자 회수</span><b>'+(c.cost/saved).toFixed(1)+'개월</b></div>';
