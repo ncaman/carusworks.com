@@ -408,3 +408,92 @@ var FORM_ENDPOINT = "";
   var b = m.querySelector(".mapmore");
   b.addEventListener("click", function(){ var o = m.classList.toggle("open"); b.setAttribute("aria-expanded", o); b.textContent = o ? "도면 접기" : "전체 도면 펼치기"; if(!o) m.scrollIntoView({block:"start"}); });
 })();
+
+/* 핵심 3가지 탭 */
+(function(){
+  var w = document.querySelector(".pwrap"); if(!w) return;
+  var tabs = w.querySelectorAll(".ptabs button"), panes = w.querySelectorAll(".pp");
+  [].forEach.call(tabs, function(t){ t.addEventListener("click", function(){
+    [].forEach.call(tabs, function(x){ x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+    [].forEach.call(panes, function(p){ p.classList.toggle("on", p.dataset.p === t.dataset.p); });
+  }); });
+})();
+
+/* 아키텍처 도식: 요소 설명 + 요청 처리 흐름 재생 */
+(function(){
+  var a = document.getElementById("arch"); if(!a) return;
+  var cap = document.getElementById("archCap"), play = document.getElementById("archPlay"), timers = [];
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var clear = function(){ timers.forEach(clearTimeout); timers = []; [].forEach.call(a.querySelectorAll(".hot"), function(e){ e.classList.remove("hot"); }); a.classList.remove("run"); };
+  var hot = function(ids){ [].forEach.call(a.querySelectorAll(".hot"), function(e){ e.classList.remove("hot"); }); ids.forEach(function(id){ var e = a.querySelector('[data-id="'+id+'"]'); if(e) e.classList.add("hot"); }); };
+  a.addEventListener("click", function(e){
+    var t = e.target.closest("[data-d]"); if(!t || t === play) return;
+    clear(); t.classList.add("hot"); cap.innerHTML = "<b>"+(t.querySelector("h5,b") ? t.querySelector("h5,b").textContent : t.childNodes[0].textContent)+"</b> "+t.dataset.d;
+  });
+  var steps = [
+    [["svc-energy"], "① 담당자가 말합니다. “내일 오전 3층 회의실 냉방 미리 켜 줘.” 에너지·환경 제어 서비스가 받습니다."],
+    [["mcp"], "② 요청은 표준 프로토콜(MCP)로 에이전트 계층에 전달됩니다."],
+    [["a3","a4"], "③ 에너지 최적화 에이전트(A3)가 맡고, 공간 지능 에이전트(A4)에 내일 재실 예측을 A2A로 요청합니다."],
+    [["route","onto"], "④ 사내 SLM이 실행 절차를 작성합니다. 온톨로지에서 ‘3층 회의실 – 냉방기 2대’ 관계를 찾습니다."],
+    [["data"], "⑤ 회의 일정·재실·온습도·장비 상태를 표준 규격으로 읽습니다."],
+    [["svc-twin"], "⑥ 디지털 트윈에서 절차를 먼저 돌려 설정 범위와 안전 기준을 확인합니다."],
+    [["svc-energy"], "⑦ 담당자가 휴대폰에서 승인하면 냉방이 예약되고, 모든 단계가 이력으로 남습니다. ✓"]
+  ];
+  var run = function(){
+    clear(); a.classList.add("run"); play.innerHTML = "<i>■</i> 재생 중";
+    steps.forEach(function(s, i){ timers.push(setTimeout(function(){ hot(s[0]); cap.innerHTML = s[1]; }, i*(reduce ? 0 : 2100))); });
+    timers.push(setTimeout(function(){ a.classList.remove("run"); play.innerHTML = "<i>▶</i> 다시 보기"; }, steps.length*(reduce ? 0 : 2100)));
+  };
+  play.addEventListener("click", run);
+  if(!reduce && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){ if(es[0].isIntersecting){ io.disconnect(); run(); } }, {threshold: .45});
+    io.observe(a);
+  }
+})();
+
+/* 운영 시나리오 에뮬레이터 — 8주 운영을 주 단위로 구동, 4주차 경영 보고에서 승인 대기 */
+(function(){
+  var cards = document.querySelectorAll(".emu"); if(!cards.length) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var won = function(v){ return Math.round(v).toLocaleString()+"만 원"; };
+  var C = {
+    pub: { t:"공공 민원 센터", prob:"같은 질문 재문의가 40%, 담당자 시간이 반복 응대에 묶임", mods:"민원 분류 에이전트 · 자동 답변 초안", fix:"자동 답변 초안", kpi:"1회 처리 완결률", base:60, after:84, loss:480, cut:.6, cost:900,
+      ev:["민원 1,200건 수집 · 유형 자동 분류 시작","분류 기준 학습 · 담당 배정 자동화","⚠ 주차 민원 재문의율 관리도 이탈 감지","경영 보고 생성","자동 답변 초안 적용 · 담당자 검토 후 발송","재문의 감소 시작","FAQ 레시피 갱신 · 신규 유형 2개 추가","8주 결과 집계"] },
+    con: { t:"영상 콘텐츠 제작 라인", prob:"반려·재작업 25%, 편집자 시간의 상당 부분이 다시 만들기에 소모", mods:"품질 게이트 · 제작 레시피", fix:"품질 게이트", kpi:"1차 통과율", base:75, after:90, loss:180, cut:.6, cost:300,
+      ev:["주 10편 제작 · 반려 사유 수집","자막·음량·규격 검수 항목 정의","⚠ 자막 오류 반려 연속 4건 · 관리도 이탈","경영 보고 생성","품질 게이트 적용 · 발행 전 자동 검수","반려 감소 시작","레시피 고정 · 템플릿 3종 표준화","8주 결과 집계"] },
+    res: { t:"연구실 인터뷰 분석", prob:"재코딩 30%, 코더마다 기준이 달라 연구 시간이 다시 분석에 쓰임", mods:"코딩북 표준화 · AI 1차 코딩 + 연구자 검수", fix:"AI 1차 코딩", kpi:"1차 코딩 통과율", base:70, after:94, loss:540, cut:.8, cost:1200,
+      ev:["전사본 200건 수집 · 개인정보 비식별","코딩북 버전 고정 · 분석 이력 기록 시작","⚠ 코더 간 일치도 κ 0.74 · 기준 0.80 미달","경영 보고 생성","AI 1차 코딩 + 연구자 검수 적용","재코딩 감소 시작","불일치 사례로 코딩북 개정","8주 결과 집계"] }
+  };
+  function render(el){
+    var c = C[el.dataset.case];
+    el.innerHTML = '<div class="eb"><i></i><i></i><i></i><span>carusworks · 시나리오</span></div>'
+      + '<h3>'+c.t+'</h3><dl><dt>문제</dt><dd>'+c.prob+'</dd><dt>투입</dt><dd>'+c.mods+'</dd><dt>기간</dt><dd>8주</dd></dl>'
+      + '<div class="scr"><div class="kp"><span>'+c.kpi+'</span><b class="kv">'+c.base+'%</b><em class="wk">0주차</em></div>'
+      + '<svg class="ch" viewBox="0 0 280 90" preserveAspectRatio="none" aria-hidden="true"><line class="tg" x1="0" y1="'+(90-(c.after-50)*1.6)+'" x2="280" y2="'+(90-(c.after-50)*1.6)+'"/><polyline class="ln" points=""/></svg>'
+      + '<ol class="lg" aria-live="polite"></ol>'
+      + '<div class="gate" hidden><p><small>carusworks 경영 보고</small>반복 업무로 <b>매달 '+won(c.loss)+'</b>이 새고 있습니다. '+c.fix+'('+won(c.cost)+')이면 <b>'+(c.cost/(c.loss*c.cut)).toFixed(1)+'개월</b>에 회수됩니다.</p><button type="button" class="ok">승인</button></div>'
+      + '<div class="res" hidden></div></div>'
+      + '<button type="button" class="runb">▶ 8주 운영 실행</button>';
+  }
+  function start(el){
+    var c = C[el.dataset.case], wk = 0, pts = [], lg = el.querySelector(".lg"), ln = el.querySelector(".ln"), kv = el.querySelector(".kv"), wkE = el.querySelector(".wk"), gate = el.querySelector(".gate"), res = el.querySelector(".res"), btn = el.querySelector(".runb"), tm;
+    lg.innerHTML = ""; res.hidden = true; gate.hidden = true; btn.disabled = true; btn.textContent = "운영 중…"; el.classList.add("running");
+    var val = function(w){ return w <= 3 ? c.base - (w === 3 ? 4 : w) : w <= 4 ? c.base - 4 : c.base + (c.after - c.base) * Math.min(1, (w-4)/4); };
+    var draw = function(){ ln.setAttribute("points", pts.map(function(v, i){ return (i*40).toFixed(0)+","+(90-(v-50)*1.6).toFixed(1); }).join(" ")); };
+    var step = function(){
+      wk++; var v = val(wk); pts.push(v); draw(); kv.textContent = Math.round(v)+"%"; wkE.textContent = wk+"주차";
+      var li = document.createElement("li"); li.textContent = wk+"주 · "+c.ev[wk-1]; if(c.ev[wk-1].charAt(0) === "⚠") li.className = "warn"; lg.insertBefore(li, lg.firstChild);
+      if(wk === 4){ gate.hidden = false; el.classList.add("wait"); btn.textContent = "승인 대기"; gate.querySelector(".ok").onclick = function(){ gate.hidden = true; el.classList.remove("wait"); btn.textContent = "운영 중…"; var l2 = document.createElement("li"); l2.className = "okk"; l2.textContent = "✓ 승인 · 이력 기록"; lg.insertBefore(l2, lg.firstChild); tm = setTimeout(step, reduce ? 0 : 650); }; return; }
+      if(wk < 8){ tm = setTimeout(step, reduce ? 0 : 650); return; }
+      var saved = c.loss*c.cut;
+      res.hidden = false; res.innerHTML = '<div><span>'+c.kpi+'</span><b>'+c.base+'% → '+c.after+'%</b></div><div><span>월 손실</span><b>'+won(c.loss)+' → '+won(c.loss-saved)+'</b></div><div><span>투자 회수</span><b>'+(c.cost/saved).toFixed(1)+'개월</b></div>';
+      btn.disabled = false; btn.textContent = "↻ 다시 실행"; el.classList.remove("running");
+    };
+    pts.push(c.base); draw(); step();
+  }
+  [].forEach.call(cards, function(el){ render(el); el.addEventListener("click", function(e){ var b = e.target.closest(".runb"); if(b && !b.disabled){ render(el); start(el); } }); });
+  if(!reduce && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(en){ if(en.isIntersecting){ io.unobserve(en.target); start(en.target); } }); }, {threshold: .5});
+    [].forEach.call(cards, function(el){ io.observe(el); });
+  }
+})();
