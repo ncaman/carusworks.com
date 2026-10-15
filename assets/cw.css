@@ -616,3 +616,45 @@ thead th{font-size:12.5px}
   .fields::-webkit-scrollbar{display:none}
   .fields figure{flex:0 0 72%;scroll-snap-align:start}
 }
+
+/* ===== 핵심 3가지 (모바일 지휘 · 팹 운영 체계 · 경영 보고) ===== */
+.core .c3{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center;padding:56px 0;border-top:1px solid var(--line)}
+.core .head2 + .c3{border-top:1px solid var(--ink)}
+.core .c3.rev .c3t{order:2}
+.core .n{font-family:var(--m);font-size:12px;font-weight:700;letter-spacing:.12em;color:var(--blue);text-transform:uppercase}
+.core h3{font-size:clamp(26px,2.6vw,34px);line-height:1.22;margin:12px 0 16px}
+.core .c3t > p:not(.n):not(.vs){color:var(--dim);font-size:16.5px;max-width:46ch}
+.core .vs{margin-top:16px;font-size:14px;color:var(--faint);display:flex;gap:10px;align-items:baseline}
+.core .vs b{font-size:12px;color:#fff;background:var(--faint);padding:2px 7px;flex:none}
+.core .more{display:inline-block;margin-top:18px}
+.c3v{margin:0;background:var(--navy2);color:#dcebe3;padding:26px;box-shadow:0 30px 60px -30px rgba(6,26,19,.45)}
+.c3v figcaption{margin-top:14px;font-size:11.5px;color:#6f877b}
+.c3v .bt{display:flex;gap:6px;margin-top:10px}
+.c3v .bt i{font-style:normal;font-size:12px;font-weight:800;padding:5px 14px;background:var(--blue);color:#fff}
+.c3v .bt i + i{background:transparent;border:1px solid #3d5a4d;color:#a9c2b6}
+/* 01 대화 */
+.chat{display:flex;flex-direction:column;gap:10px;border-radius:30px;max-width:420px;justify-self:center;width:100%}
+.chat p{max-width:84%;padding:11px 14px;font-size:14.5px;line-height:1.5;border-radius:16px}
+.chat .me{align-self:flex-end;background:var(--blue);color:#fff;border-bottom-right-radius:4px}
+.chat .ai{align-self:flex-start;background:#13342a;border-bottom-left-radius:4px}
+.chat .ai small{display:block;font-size:11px;font-weight:700;color:#6fd3a4;margin-bottom:3px}
+.chat .ai.ok{color:#cfe3d9}
+/* 02 팹 대응표 */
+.fab table{min-width:0;width:100%;font-size:14.5px}
+.fab th,.fab td{border-bottom:1px solid #1f3a30;padding:12px 10px;color:#dcebe3}
+.fab thead th{color:#7f988c;font-size:12px}
+.fab td:first-child{color:#6fd3a4;font-weight:700;width:34%;font-size:14.5px}
+/* 03 경영 보고 */
+.rep .old{border:1px dashed #3d5a4d;padding:14px}
+.rep small{display:block;font-size:11.5px;font-weight:700;color:#7f988c;margin-bottom:6px}
+.rep code{font-family:var(--m);font-size:12.5px;color:#a9c2b6;line-height:1.7}
+.rep .arw{text-align:center;color:#6fd3a4;font-size:20px;margin:6px 0}
+.rep .new{border:1px solid #2fbf7f;background:rgba(47,191,127,.08);padding:16px}
+.rep .new small{color:#6fd3a4}
+.rep .new p{font-size:16px;color:#fff;line-height:1.6}
+.rep .new b{color:#ffd27a}
+@media (max-width:1000px){
+  .core .c3{grid-template-columns:1fr;gap:28px;padding:40px 0}
+  .core .c3.rev .c3t{order:0}
+}
+.demo.phone .bar .notch{margin:0 auto}
