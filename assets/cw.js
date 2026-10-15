@@ -236,3 +236,12 @@ var FORM_ENDPOINT = "";
   });
   sel = null; calc();
 })();
+
+/* 화면에 보일 때만 재생하는 배경 영상 */
+(function(){
+  var vs = document.querySelectorAll("video[data-inview]"); if(!vs.length) return;
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){ var v = e.target;
+    if(e.isIntersecting){ if(v.preload === "none") v.preload = "auto"; var p = v.play(); if(p && p.catch) p.catch(function(){}); } else v.pause(); }); }, {threshold: .15});
+  [].forEach.call(vs, function(v){ io.observe(v); });
+})();
