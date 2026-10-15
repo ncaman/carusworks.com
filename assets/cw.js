@@ -276,6 +276,7 @@ var FORM_ENDPOINT = "";
   var v = document.querySelector("video[data-late]"); if(!v) return;
   var c = navigator.connection || {};
   if(window.matchMedia("(prefers-reduced-motion: reduce)").matches || c.saveData) return;
+  v.addEventListener("playing", function(){ v.classList.add("on"); }, {once: true});
   var go = function(){ v.preload = "auto"; v.load(); var p = v.play(); if(p && p.catch) p.catch(function(){}); };
   if(document.readyState === "complete") setTimeout(go, 300); else window.addEventListener("load", function(){ setTimeout(go, 300); });
 })();

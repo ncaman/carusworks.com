@@ -658,3 +658,13 @@ thead th{font-size:12.5px}
   .core .c3.rev .c3t{order:0}
 }
 .demo.phone .bar .notch{margin:0 auto}
+
+/* 첫 화면 성능: 포스터는 가벼운 배경 이미지로, 영상은 로드 후에 위에 겹침 */
+.hero.dark .hbg{background:var(--navy2) url("/assets/motion/00-hero-bg.webp?m=6") 62% 50% / cover no-repeat}
+.hero.dark .hbg video{opacity:0;transition:opacity .8s}
+.hero.dark .hbg video.on{opacity:1}
+@media (max-width:760px){
+  .hero.dark .hbg{background-image:url("/assets/motion/00-hero-bg-800.webp?m=6");background-position:70% 50%}
+  .hero p.lede{min-height:6.6em}
+}
+.demo.phone .say{min-height:78px}
