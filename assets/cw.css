@@ -357,3 +357,4 @@ td.us,th.us{color:var(--ink);font-weight:700;background:var(--blue10)}
 .cmx ol::before{left:6px}
 .cmx-dot{left:1px}
 .cmx-l .tag{margin-left:22px}
+.fields video{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;background:#071422;display:block}
