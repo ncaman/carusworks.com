@@ -25,8 +25,8 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/cw.css?v=10">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "카루스웍스는 어떤 회사인가요?", "acceptedAnswer": {"@type": "Answer", "text": "AI 에이전틱 SI 기업입니다. 기업과 기관의 업무 시스템에 AI 에이전트를 설계·구축·연동하고, 운영과 품질 관리까지 한 팀이 맡습니다."}}, {"@type": "Question", "name": "기존 시스템을 바꿔야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. 쓰고 계신 그룹웨어, 민원·예약·출입·설비 시스템의 데이터를 표준화해 연결하고, 에이전트는 MCP 표준으로 붙입니다."}}, {"@type": "Question", "name": "AI가 잘못 실행하면 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "실행 전에 절차를 가상 환경(디지털 트윈)에서 먼저 돌려 보고, 담당자가 승인한 절차만 실행됩니다. 가상 검증과 승인이 없으면 시스템이 실행을 거부합니다."}}, {"@type": "Question", "name": "데이터가 외부로 나가나요?", "acceptedAnswer": {"@type": "Answer", "text": "내부 서버에 소형 모델과 메모리·검색 데이터를 두는 구성을 기본으로 설계합니다. 어떤 일을 클라우드 모델로 보낼지는 고객이 정합니다."}}, {"@type": "Question", "name": "특정 AI 모델에 묶이나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. 일상 업무는 내부 소형 모델이 처리하고, 복잡한 추론만 라우터가 알맞은 모델로 보냅니다. 모델은 바꿔 끼울 수 있습니다."}}, {"@type": "Question", "name": "작게 시작할 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 업무 하나와 데이터 하나로 작은 검증(PoC)을 먼저 하고, 효과를 확인한 뒤 넓혀 갑니다."}}]}</script>
+<link rel="stylesheet" href="/assets/cw.css?v=11">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "카루스웍스는 어떤 회사인가요?", "acceptedAnswer": {"@type": "Answer", "text": "시설·설비 운영을 위한 AI 운영 플랫폼과 구축 서비스를 제공하는 AI 에이전틱 SI 기업입니다. 컨설팅부터 구축·연동·운영까지 한 팀이 맡습니다."}}, {"@type": "Question", "name": "기존 시스템을 바꿔야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. 쓰고 계신 그룹웨어, 민원·예약·출입·설비 시스템의 데이터를 표준화해 연결하고, 에이전트는 MCP 표준으로 연동합니다."}}, {"@type": "Question", "name": "AI가 잘못 실행하면 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "실행 전에 작업 절차를 디지털 트윈에서 사전 검증하고, 담당자가 승인한 절차만 실행됩니다. 검증 또는 승인이 빠지면 시스템이 실행을 차단합니다."}}, {"@type": "Question", "name": "데이터가 외부로 나가나요?", "acceptedAnswer": {"@type": "Answer", "text": "내부 서버에 소형 모델과 메모리·검색 데이터를 두는 구성을 기본으로 설계합니다. 어떤 일을 클라우드 모델로 보낼지는 고객이 정합니다."}}, {"@type": "Question", "name": "특정 AI 모델에 묶이나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. 일상 업무는 내부 소형 모델이 처리하고, 복잡한 추론만 라우터가 알맞은 모델로 보냅니다. 모델은 언제든 교체할 수 있습니다."}}, {"@type": "Question", "name": "작게 시작할 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 업무 하나와 데이터 하나로 작은 검증(PoC)을 먼저 하고, 효과를 확인한 뒤 넓혀 갑니다."}}]}</script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -59,8 +59,8 @@
     </div>
     <form class="wiz" id="wiz" novalidate>
       <div class="progress" aria-hidden="true"><span id="wizprog"></span></div>
-      <div class="q on"><p class="label">01 / 04</p><h3>어떤 곳인가요?</h3><div class="opts" data-k="type" data-mode="single"><button class="opt" type="button" aria-pressed="false">공공기관</button><button class="opt" type="button" aria-pressed="false">기업</button><button class="opt" type="button" aria-pressed="false">건물·시설 운영</button><button class="opt" type="button" aria-pressed="false">매장·소상공인</button></div></div>
-      <div class="q"><p class="label">02 / 04</p><h3>필요한 범위 (여러 개 선택)</h3><div class="opts" data-k="tasks" data-mode="multi"><button class="opt" type="button" aria-pressed="false">새 AI 시스템 구축</button><button class="opt" type="button" aria-pressed="false">기존 시스템 연동</button><button class="opt" type="button" aria-pressed="false">데이터 표준화·온톨로지</button><button class="opt" type="button" aria-pressed="false">내부 서버 AI</button><button class="opt" type="button" aria-pressed="false">디지털 트윈 연동</button><button class="opt" type="button" aria-pressed="false">작은 검증(PoC)부터</button><button class="opt" type="button" aria-pressed="false">운영 위탁</button><button class="opt" type="button" aria-pressed="false">아직 모르겠어요</button></div></div>
+      <div class="q on"><p class="label">01 / 04</p><h3>기관 유형</h3><div class="opts" data-k="type" data-mode="single"><button class="opt" type="button" aria-pressed="false">공공기관</button><button class="opt" type="button" aria-pressed="false">기업</button><button class="opt" type="button" aria-pressed="false">건물·시설 운영</button><button class="opt" type="button" aria-pressed="false">매장·소상공인</button></div></div>
+      <div class="q"><p class="label">02 / 04</p><h3>필요한 서비스 (복수 선택)</h3><div class="opts" data-k="tasks" data-mode="multi"><button class="opt" type="button" aria-pressed="false">새 AI 시스템 구축</button><button class="opt" type="button" aria-pressed="false">기존 시스템 연동</button><button class="opt" type="button" aria-pressed="false">데이터 표준화·온톨로지</button><button class="opt" type="button" aria-pressed="false">내부 서버 AI</button><button class="opt" type="button" aria-pressed="false">디지털 트윈 연동</button><button class="opt" type="button" aria-pressed="false">작은 검증(PoC)부터</button><button class="opt" type="button" aria-pressed="false">운영 위탁</button><button class="opt" type="button" aria-pressed="false">아직 모르겠어요</button></div></div>
       <div class="q"><p class="label">03 / 04</p><h3>규모와 시기</h3><div class="flds"><label>규모 또는 사용 인원<input id="wizscale" type="text" autocomplete="off" placeholder="예: 직원 300명, 시스템 4개"></label><label>희망 도입 시기<input id="wizwhen" type="text" autocomplete="off" placeholder="예: 내년 상반기"></label></div></div>
       <div class="q"><p class="label">04 / 04</p><h3>연락처</h3><div class="flds">
         <label>이름<input id="wizname" type="text" autocomplete="name" required></label>
@@ -82,11 +82,11 @@
   <div class="wrap">
     <div class="head2"><div><p class="label">FAQ</p><h2>자주 묻는 질문.</h2></div><p></p></div>
     <div class="acc">
-      <details><summary><span class="n">01</span><h3>카루스웍스는 어떤 회사인가요?</h3><span class="s"></span></summary><div class="body"><p>AI 에이전틱 SI 기업입니다. 기업과 기관의 업무 시스템에 AI 에이전트를 설계·구축·연동하고, 운영과 품질 관리까지 한 팀이 맡습니다.</p></div></details>
-      <details><summary><span class="n">02</span><h3>기존 시스템을 바꿔야 하나요?</h3><span class="s"></span></summary><div class="body"><p>아닙니다. 쓰고 계신 그룹웨어, 민원·예약·출입·설비 시스템의 데이터를 표준화해 연결하고, 에이전트는 MCP 표준으로 붙입니다.</p></div></details>
-      <details><summary><span class="n">03</span><h3>AI가 잘못 실행하면 어떻게 되나요?</h3><span class="s"></span></summary><div class="body"><p>실행 전에 절차를 가상 환경(디지털 트윈)에서 먼저 돌려 보고, 담당자가 승인한 절차만 실행됩니다. 가상 검증과 승인이 없으면 시스템이 실행을 거부합니다.</p></div></details>
+      <details><summary><span class="n">01</span><h3>카루스웍스는 어떤 회사인가요?</h3><span class="s"></span></summary><div class="body"><p>시설·설비 운영을 위한 AI 운영 플랫폼과 구축 서비스를 제공하는 AI 에이전틱 SI 기업입니다. 컨설팅부터 구축·연동·운영까지 한 팀이 맡습니다.</p></div></details>
+      <details><summary><span class="n">02</span><h3>기존 시스템을 바꿔야 하나요?</h3><span class="s"></span></summary><div class="body"><p>아닙니다. 쓰고 계신 그룹웨어, 민원·예약·출입·설비 시스템의 데이터를 표준화해 연결하고, 에이전트는 MCP 표준으로 연동합니다.</p></div></details>
+      <details><summary><span class="n">03</span><h3>AI가 잘못 실행하면 어떻게 되나요?</h3><span class="s"></span></summary><div class="body"><p>실행 전에 작업 절차를 디지털 트윈에서 사전 검증하고, 담당자가 승인한 절차만 실행됩니다. 검증 또는 승인이 빠지면 시스템이 실행을 차단합니다.</p></div></details>
       <details><summary><span class="n">04</span><h3>데이터가 외부로 나가나요?</h3><span class="s"></span></summary><div class="body"><p>내부 서버에 소형 모델과 메모리·검색 데이터를 두는 구성을 기본으로 설계합니다. 어떤 일을 클라우드 모델로 보낼지는 고객이 정합니다.</p></div></details>
-      <details><summary><span class="n">05</span><h3>특정 AI 모델에 묶이나요?</h3><span class="s"></span></summary><div class="body"><p>아닙니다. 일상 업무는 내부 소형 모델이 처리하고, 복잡한 추론만 라우터가 알맞은 모델로 보냅니다. 모델은 바꿔 끼울 수 있습니다.</p></div></details>
+      <details><summary><span class="n">05</span><h3>특정 AI 모델에 묶이나요?</h3><span class="s"></span></summary><div class="body"><p>아닙니다. 일상 업무는 내부 소형 모델이 처리하고, 복잡한 추론만 라우터가 알맞은 모델로 보냅니다. 모델은 언제든 교체할 수 있습니다.</p></div></details>
       <details><summary><span class="n">06</span><h3>작게 시작할 수 있나요?</h3><span class="s"></span></summary><div class="body"><p>네. 업무 하나와 데이터 하나로 작은 검증(PoC)을 먼저 하고, 효과를 확인한 뒤 넓혀 갑니다.</p></div></details>
     </div>
   </div>
@@ -98,11 +98,11 @@
       <div class="tbar"><i></i><i></i><i></i><span>carusworks — zsh</span></div>
       <div class="tbody">
         <p class="pr"><b>~/carusworks</b> <em>$</em> tree -L 1</p>
-        <p class="root">carusworks/ <span># AI 운영 체계 · 진단부터 운영까지</span></p>
+        <p class="root">carusworks/ <span># AI 운영 플랫폼 · 컨설팅부터 운영까지</span></p>
         <details><summary><span class="br">├──</span> company/</summary><ul>
           <li><span class="br">│   ├──</span> <a href="/solutions/">solutions</a> <span># 진단·구축·연동·운영</span></li>
-          <li><span class="br">│   ├──</span> <a href="/platform/">platform</a> <span># 네 계층 AI 플랫폼</span></li>
-          <li><span class="br">│   └──</span> <a href="/trust/">trust</a> <span># 검증 없이 실행 없음</span></li></ul></details>
+          <li><span class="br">│   ├──</span> <a href="/platform/">platform</a> <span># 4계층 AI 플랫폼</span></li>
+          <li><span class="br">│   └──</span> <a href="/trust/">trust</a> <span># 검증·승인 후 실행</span></li></ul></details>
         <details><summary><span class="br">├──</span> products/</summary><ul>
           <li><span class="br">│   ├──</span> <a href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">as</a> <span># 에이전틱 스태프</span></li>
           <li><span class="br">│   └──</span> <a href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">smos</a> <span># 턴키 디바이스</span></li></ul></details>
@@ -118,6 +118,6 @@
     <p class="copy">© 2026 carusworks</p>
   </div>
 </footer>
-<script src="/assets/cw.js?v=10" defer></script>
+<script src="/assets/cw.js?v=11" defer></script>
 </body>
 </html>

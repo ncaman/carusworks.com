@@ -20,20 +20,20 @@ var FORM_ENDPOINT = "";
     var p = v.play(); if(p && p.catch) p.catch(function(){});
   });
 
-  // 첫 화면 예시: 지시 → 계획 → 가상 검증 → 승인 → 실행
+  // 첫 화면 예시: 지시 → 계획 → 사전 검증 → 승인 → 실행
   var say = document.getElementById("saytext");
   if(say){
     var data = [
       {say:"지난주 민원 중에 주차 관련만 모아서 담당자별로 정리해 줘",
-       steps:[["계획","조회 → 분류 → 담당자별 정리 절차 작성",""],["검증","가상 실행 통과 · 조회 범위와 권한 확인","G"],
+       steps:[["계획","조회 → 분류 → 담당자별 정리 절차 작성",""],["검증","사전 검증 통과 · 조회 범위와 권한 확인","G"],
               ["실행","민원 시스템 조회","1,284건"],["실행","주차 관련 분류","213건"],["실행","담당자별 정리","4개 부서"]],
        done:"보고서 초안 완료 · 실행 기록 저장"},
       {say:"이번 달 미수금 거래처 뽑아서 영업 담당에게 알려 줘",
-       steps:[["계획","회계 조회 → 담당자 매칭 → 알림 절차 작성",""],["검증","가상 실행 통과 · 발송 대상과 문구 확인","G"],
+       steps:[["계획","회계 조회 → 담당자 매칭 → 알림 절차 작성",""],["검증","사전 검증 통과 · 발송 대상과 문구 확인","G"],
               ["실행","회계 시스템 조회","37곳"],["실행","거래처별 담당자 매칭","6명"],["실행","담당자별 알림 발송","6건"]],
        done:"알림 발송 완료 · 실행 기록 저장"},
       {say:"내일 오전 3층 회의실 냉방 미리 켜고, 방문객 출입 등록해 줘",
-       steps:[["계획","일정 확인 → 냉방 예약 → 출입 등록 절차 작성",""],["검증","가상 실행 통과 · 온도 범위와 출입 권한 확인","G"],
+       steps:[["계획","일정 확인 → 냉방 예약 → 출입 등록 절차 작성",""],["검증","사전 검증 통과 · 온도 범위와 출입 권한 확인","G"],
               ["실행","냉방 예약","08:30 · 24℃"],["실행","방문객 출입 등록","4명"],["실행","담당자 안내","1건"]],
        done:"예약·등록 완료 · 실행 기록 저장"}
     ];
@@ -63,7 +63,7 @@ var FORM_ENDPOINT = "";
         if(n <= d.say.length){ say.textContent = d.say.slice(0, n++); later(type, 36); return; }
         later(function(){ items[0].classList.add("on"); }, 300);
         later(function(){ items[1].classList.add("on"); }, 900);
-        later(function(){ okText.textContent = "가상 검증 통과 · 승인하시면 실행합니다"; ok.classList.add("on"); if(auto) later(approve, 1500); }, 1300);
+        later(function(){ okText.textContent = "사전 검증 통과 · 승인하면 실행됩니다"; ok.classList.add("on"); if(auto) later(approve, 1500); }, 1300);
       })();
     };
     show(0);
@@ -90,7 +90,7 @@ var FORM_ENDPOINT = "";
       });
     });
     var check = function(){
-      if(step === 0 && !picked(qs[0].querySelector(".opts")).length) return "어떤 곳인지 하나를 고르세요.";
+      if(step === 0 && !picked(qs[0].querySelector(".opts")).length) return "기관 유형을 선택하세요.";
       if(step === 1 && !picked(qs[1].querySelector(".opts")).length) return "필요한 범위를 하나 이상 고르세요.";
       if(step === 3){
         if(!val("wizname")) return "이름을 입력하세요.";
@@ -155,12 +155,12 @@ var FORM_ENDPOINT = "";
     });
   });
   var steps = [
-    ["svc", "① 사람이 쓰는 기능이 지시를 받습니다. 이번엔 '에너지·환경 제어' 서비스입니다."],
-    ["mcp", "② 표준 플러그(MCP)로 에이전트에게 넘깁니다. 어떤 시스템이든 같은 방식으로 꽂힙니다."],
-    ["agt", "③ 에너지 최적화 에이전트(A3)가 일을 맡고, 공간 지능 에이전트(A4)에게 내일 재실 예측을 묻습니다(A2A)."],
-    ["orc", "④ 내부 서버의 작은 AI(SLM)가 절차를 짭니다. 온톨로지에서 '3층 회의실 = 냉방기 2대' 관계를 찾고, 어려운 판단만 큰 클라우드 모델에 맡깁니다."],
-    ["dat", "⑤ 회의 일정, 재실, 온습도, 장비 상태 데이터를 같은 규격으로 읽습니다."],
-    ["svc", "⑥ 가상 검증과 담당자 승인을 거쳐 냉방이 예약됩니다. 결과와 기록이 서비스로 돌아옵니다.", "done"]
+    ["svc", "① 담당자가 '에너지·환경 제어' 서비스에 요청을 입력합니다."],
+    ["mcp", "② 요청은 표준 프로토콜(MCP)을 통해 에이전트로 전달됩니다. 어떤 시스템이든 같은 방식으로 연동됩니다."],
+    ["agt", "③ 에너지 최적화 에이전트(A3)가 업무를 맡고, 공간 지능 에이전트(A4)에 내일 재실 예측을 요청합니다(A2A)."],
+    ["orc", "④ 사내 서버의 소형 모델(SLM)이 실행 절차를 작성합니다. 온톨로지에서 '3층 회의실 – 냉방기 2대' 관계를 조회하고, 고난도 판단만 대형 모델(LLM)에 맡깁니다."],
+    ["dat", "⑤ 회의 일정·재실·온습도·장비 상태 데이터를 표준 규격으로 조회합니다."],
+    ["svc", "⑥ 디지털 트윈 검증과 담당자 승인을 거쳐 냉방이 예약되고, 결과와 이력이 서비스 화면에 표시됩니다.", "done"]
   ];
   var dot = cmx.querySelector(".cmx-dot"), play = document.getElementById("cmxplay"), timers = [], ran = false;
   var clear = function(){ timers.forEach(clearTimeout); timers = []; };
@@ -188,4 +188,51 @@ var FORM_ENDPOINT = "";
     var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !ran){ run(); io.disconnect(); } }); }, {threshold: .45});
     io.observe(cmx);
   }
+})();
+
+/* 결재 요청 시뮬레이터 — 공개 계산식(예시값) */
+(function(){
+  var r = document.getElementById("dsim"); if(!r) return;
+  function $(i){ return document.getElementById(i); }
+  var K = {D:$("kD"), P:$("kP"), H:$("kH"), T:$("kT")}, sel = null, best = null;
+  var won = function(v){ v = Math.round(v); if(v >= 1e8){ var e = Math.floor(v/1e8), m = Math.round((v%1e8)/1e7)*1000; return e+"억"+(m?" "+m.toLocaleString()+"만":"")+" 원"; } return Math.round(v/1e4).toLocaleString()+"만 원"; };
+  var pay = function(cost, save){ var m = cost/save; return m < 24 ? (m < 1 ? "회수 "+Math.max(1,Math.round(m*30))+"일" : "회수 "+m.toFixed(1)+"개월") : "회수 "+(m/12).toFixed(1)+"년"; };
+  function calc(){
+    var d = +K.D.value/100, P = +K.P.value, H = +K.H.value, T = +K.T.value;
+    $("oD").textContent = K.D.value+"%"; $("oP").textContent = P+" kW"; $("oH").textContent = H+"시간"; $("oT").textContent = T+"원/kWh";
+    var kwh = P*H*30*d, loss = kwh*T, base = P*H*30*T;
+    $("dsLoss").textContent = "월 "+won(loss); $("dsKwh").textContent = "(월 "+Math.round(kwh).toLocaleString()+" kWh 초과 사용)";
+    var o = {clean:{c:1.2e6, s:loss*.75}, replace:{c:3.5e8, s:loss+base*.2}};
+    $("e1").textContent = pay(o.clean.c, o.clean.s); $("e2").textContent = "점검 1시간"; $("e3").textContent = pay(o.replace.c, o.replace.s);
+    var mC = o.clean.c/o.clean.s, mR = o.replace.c/o.replace.s;
+    best = d >= .15 && mR < 60 ? "replace" : (d < .04 ? "check" : "clean");
+    var why = {clean:"세척 비용이 "+pay(o.clean.c, o.clean.s).replace("회수 ","")+" 안에 회수됩니다. 이번 주 세척을 권고합니다.",
+      check:"저하율이 낮아 원인 확인이 먼저입니다. 냉매 압력 점검 후 판단을 권고합니다.",
+      replace:"저하 폭이 커서 세척으로는 25%가 남습니다. 교체 회수 기간이 "+(mR/12).toFixed(1)+"년으로 5년 이내여서 교체 검토를 권고합니다."};
+    $("dsRec").textContent = "AI 권고 · "+why[best];
+    [].forEach.call(r.querySelectorAll(".o"), function(b){ b.classList.toggle("best", b.dataset.k === best); });
+    $("dsH").textContent = "냉방 효율 "+K.D.value+"% 저하, 4주 연속";
+    var pts = [], n = 8, cop0 = 4.6;
+    for(var i=0;i<n;i++){ var w = i < 4 ? 0 : (i-3)/4, cop = cop0*(1 - d*w) + (i%2 ? .04 : -.03); pts.push([i*(300/(n-1)), 32 - (cop-cop0)*(18/(.1*cop0))]); }
+    pts = pts.map(function(p){ return [p[0].toFixed(1), Math.max(4, Math.min(60, p[1])).toFixed(1)]; });
+    $("dsLine").setAttribute("points", pts.map(function(p){ return p.join(","); }).join(" "));
+    $("dsDot").setAttribute("cx", pts[n-1][0]); $("dsDot").setAttribute("cy", pts[n-1][1]);
+    upd();
+  }
+  function upd(){
+    var names = {clean:"응축기 세척", check:"냉매 압력 점검", replace:"설비 교체"};
+    [].forEach.call(r.querySelectorAll(".o"), function(b){ b.setAttribute("aria-checked", b.dataset.k === sel ? "true" : "false"); });
+    $("dsOk").disabled = !sel;
+    $("dsSel").textContent = sel ? "선택 · "+names[sel]+(sel !== best ? " (권고와 다름, 사유 기록)" : "") : "조치안을 선택하세요";
+  }
+  [].forEach.call(r.querySelectorAll(".o"), function(b){ b.addEventListener("click", function(){ sel = b.dataset.k; upd(); }); });
+  for(var k in K) K[k].addEventListener("input", calc);
+  $("dsOk").addEventListener("click", function(){
+    if(!sel) return;
+    var t = new Date(), h = 0, src = sel+K.D.value+K.P.value+K.H.value+K.T.value+t.getTime();
+    for(var i=0;i<src.length;i++){ h = (h*31 + src.charCodeAt(i)) >>> 0; }
+    var ts = t.toTimeString().slice(0,8);
+    $("dsLog").textContent = "✓ 승인 기록 "+ts+" · #"+h.toString(16).padStart(8,"0")+" · 계획→검증→승인 이력 저장";
+  });
+  sel = null; calc();
 })();
