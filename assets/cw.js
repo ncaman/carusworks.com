@@ -129,3 +129,52 @@ var FORM_ENDPOINT = "";
     draw();
   }
 })();
+
+// 아키텍처 탐색기: 계층 펼치기 + 지시 하나가 흐르는 길
+(function(){
+  var cmx = document.getElementById("cmx");
+  if(!cmx) return;
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var rows = Array.prototype.slice.call(cmx.querySelectorAll(".cmx-l, .cmx-link"));
+  cmx.querySelectorAll(".cmx-l > button").forEach(function(b){
+    b.addEventListener("click", function(){
+      var li = b.parentNode, open = !li.classList.contains("open");
+      cmx.querySelectorAll(".cmx-l.open").forEach(function(o){ o.classList.remove("open"); o.querySelector("button").setAttribute("aria-expanded", "false"); });
+      if(open){ li.classList.add("open"); b.setAttribute("aria-expanded", "true"); }
+    });
+  });
+  var steps = [
+    ["svc", "① 사람이 쓰는 기능이 지시를 받습니다. 이번엔 '에너지·환경 제어' 서비스입니다."],
+    ["mcp", "② 표준 플러그(MCP)로 에이전트에게 넘깁니다. 어떤 시스템이든 같은 방식으로 꽂힙니다."],
+    ["agt", "③ 에너지 최적화 에이전트(A3)가 일을 맡고, 공간 지능 에이전트(A4)에게 내일 재실 예측을 묻습니다(A2A)."],
+    ["orc", "④ 내부 서버의 작은 AI(SLM)가 절차를 짭니다. 온톨로지에서 '3층 회의실 = 냉방기 2대' 관계를 찾고, 어려운 판단만 큰 클라우드 모델에 맡깁니다."],
+    ["dat", "⑤ 회의 일정, 재실, 온습도, 장비 상태 데이터를 같은 규격으로 읽습니다."],
+    ["svc", "⑥ 가상 검증과 담당자 승인을 거쳐 냉방이 예약됩니다. 결과와 기록이 서비스로 돌아옵니다.", "done"]
+  ];
+  var dot = cmx.querySelector(".cmx-dot"), play = document.getElementById("cmxplay"), timers = [], ran = false;
+  var clear = function(){ timers.forEach(clearTimeout); timers = []; };
+  var row = function(k){ return cmx.querySelector('[data-l="' + k + '"]'); };
+  var reset = function(){ rows.forEach(function(r){ r.classList.remove("lit", "past", "done"); var c = r.querySelector(".cmx-cap"); if(c) c.textContent = ""; }); dot.style.opacity = 0; dot.classList.remove("back"); };
+  var go = function(i){
+    var s = steps[i], r = row(s[0]);
+    rows.forEach(function(x){ if(x.classList.contains("lit")){ x.classList.remove("lit"); x.classList.add("past"); } });
+    if(s[2]){ r.classList.add("done"); dot.classList.add("back"); }
+    r.classList.remove("past"); r.classList.add("lit");
+    r.querySelector(".cmx-cap").textContent = s[1];
+    dot.style.opacity = 1; dot.style.top = (r.offsetTop + (r.classList.contains("cmx-link") ? 18 : 30)) + "px";
+  };
+  var run = function(){
+    clear(); reset(); ran = true;
+    play.innerHTML = "<i>■</i> 멈춤";
+    if(reduce){ steps.forEach(function(_, i){ go(i); }); play.innerHTML = "<i>↻</i> 다시 보기"; return; }
+    steps.forEach(function(_, i){ timers.push(setTimeout(function(){ go(i); if(i === steps.length - 1) play.innerHTML = "<i>↻</i> 다시 보기"; }, i * 2600)); });
+  };
+  play.addEventListener("click", function(){
+    if(timers.length && play.textContent.indexOf("멈춤") > -1){ clear(); play.innerHTML = "<i>▶</i> 처음부터 다시"; return; }
+    run();
+  });
+  if("IntersectionObserver" in window && !reduce){
+    var io = new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting && !ran){ run(); io.disconnect(); } }); }, {threshold: .45});
+    io.observe(cmx);
+  }
+})();
