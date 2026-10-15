@@ -501,3 +501,15 @@ thead th{font-size:12.5px}
 .close.vid p{color:#cfe3d9}
 @media (max-width:760px){.close.vid{padding:110px 0}.close.vid .cbg::after{background:rgba(6,26,19,.74)}}
 @media (max-width:760px){.close.vid .cbg video{object-position:50% 40%}}
+
+/* 마무리 띠 압축 — 영상 원본 비율(4:3)에 맞춘 박스, 글자는 영상 위에 */
+.close.vid{padding:120px 0}
+@media (max-width:760px){
+  .close.vid{padding:24px 0;aspect-ratio:4 / 3;display:flex;align-items:center}
+  .close.vid .wrap{gap:14px}
+  .close.vid .cbg video{object-position:50% 50%}
+  .close.vid .cbg::after{background:linear-gradient(180deg,rgba(6,26,19,.55) 0%,rgba(6,26,19,.7) 100%)}
+  .close.vid h2{font-size:26px;line-height:1.2}
+  .close.vid p{font-size:14px;margin-top:8px;line-height:1.55}
+  .close.vid .btn{height:42px;padding:0 18px;font-size:14px}
+}
