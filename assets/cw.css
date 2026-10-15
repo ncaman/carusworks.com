@@ -291,3 +291,69 @@ td.us,th.us{color:var(--ink);font-weight:700;background:var(--blue10)}
 .flow{display:flex;align-items:center;justify-content:center;gap:8px;font-family:var(--m);font-size:10.5px;letter-spacing:.12em;color:var(--faint);padding:2px 0}
 .flow::before,.flow::after{content:"";height:14px;width:1.5px;background:#f2a33a}
 @media (min-width:600px) and (max-width:999px){.svc{grid-template-columns:1fr 1fr}.svc .tw{grid-column:1 / -1}.agts{grid-template-columns:repeat(7,minmax(0,1fr))}.dat{grid-template-columns:repeat(5,minmax(0,1fr))}.onto .cls{grid-template-columns:repeat(4,minmax(0,1fr))}}
+
+/* ── 아키텍처 탐색기: 접힌 네 계층 + 지시 하나가 흐르는 길 ── */
+.cmx{border-top:1px solid var(--ink)}
+.cmx-top{display:flex;align-items:center;gap:16px 20px;flex-wrap:wrap;padding:24px 0}
+.cmx-top .play{display:inline-flex;align-items:center;gap:10px;height:44px;padding:0 18px;background:var(--ink);color:#fff;font-weight:700;font-size:14px}
+.cmx-top .play:hover{background:#163255}
+.cmx-top .play i{font-style:normal;font-size:11px}
+.cmx-say{font-size:15.5px;font-weight:700;color:var(--ink)}
+.cmx-say small{display:block;font-family:var(--m);font-size:10.5px;letter-spacing:.14em;color:var(--faint);font-weight:700}
+.cmx ol{list-style:none;position:relative;border-top:1px solid var(--line)}
+.cmx ol::before{content:"";position:absolute;left:23px;top:0;bottom:0;width:2px;background:var(--line)}
+.cmx-dot{position:absolute;left:18px;top:0;width:12px;height:12px;border-radius:50%;background:var(--blue);box-shadow:0 0 0 6px rgba(47,107,255,.18);opacity:0;transition:top .7s cubic-bezier(.6,0,.2,1),opacity .3s,background .3s;z-index:2}
+.cmx-dot.back{background:#1f9d63;box-shadow:0 0 0 6px rgba(31,157,99,.18)}
+.cmx-l{position:relative;border-bottom:1px solid var(--line)}
+.cmx-l > button{width:100%;display:grid;grid-template-columns:52px 210px minmax(0,1fr) 28px;align-items:center;text-align:left;padding:22px 0}
+.cmx-l .tag{justify-self:start;margin-left:10px;font-family:var(--m);font-size:10.5px;font-weight:700;color:#fff;padding:3px 6px;position:relative;z-index:1}
+.cmx-l[data-l="svc"] .tag,.cmx-l[data-l="dat"] .tag{background:#3c4149}
+.cmx-l[data-l="agt"] .tag{background:#1d5bb0}
+.cmx-l[data-l="orc"] .tag{background:#0f2e66}
+.cmx-l strong{font-size:19px;letter-spacing:-.03em;color:var(--ink)}
+.cmx-l em{font-style:normal;font-size:15px;color:var(--dim)}
+.cmx-l em b{color:var(--ink);font-weight:700}
+.cmx-l > button::after{content:"+";justify-self:end;font-size:22px;font-weight:300;color:var(--ink);line-height:1}
+.cmx-l.open > button::after{content:"–"}
+.cmx-l > button:hover strong{color:var(--blue)}
+.cmx-link{position:relative;padding:12px 0 12px 62px;border-bottom:1px solid var(--line);font-size:13.5px;color:var(--dim);background:#fffdf3}
+.cmx-link b{font-family:var(--m);font-size:11px;letter-spacing:.1em;color:#8a6d00;margin-right:8px}
+.cmx-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.cmx-l.open .cmx-panel{grid-template-rows:1fr}
+.cmx-panel > div{overflow:hidden}
+.cmx-panel .in{padding:0 0 26px 62px;display:grid;gap:12px}
+.cmx-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.cmx-grid div{border:1px solid var(--line);padding:12px 14px;font-size:13.5px;color:var(--dim);line-height:1.5}
+.cmx-grid div b{display:block;color:var(--ink);font-size:14.5px;letter-spacing:-.02em}
+.cmx-grid div.tw{background:#eef5fd;border-color:#9bbbea}
+.cmx-grid div.on{border:2px solid #e05a5a;background:#fff6f6}
+.cmx-cap{display:none;margin:0 0 18px 62px;padding:11px 14px;font-size:14.5px;color:var(--ink);background:var(--blue10);border-left:2px solid var(--blue);line-height:1.55}
+.cmx-link .cmx-cap{margin:10px 0 0}
+.cmx-l.lit .cmx-cap,.cmx-l.past .cmx-cap,.cmx-link.lit .cmx-cap,.cmx-link.past .cmx-cap{display:block}
+.cmx-l.past .cmx-cap,.cmx-link.past .cmx-cap{opacity:.55}
+.cmx-l.lit strong{color:var(--blue)}
+.cmx-l.done .cmx-cap{background:#e9f8f0;border-color:#1f9d63;opacity:1}
+.cmx-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:28px}
+.full{margin-top:28px}
+.full > summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-weight:700;font-size:15px;color:var(--ink);border-bottom:1.5px solid var(--ink);padding-bottom:3px}
+.full > summary::-webkit-details-marker{display:none}
+.full > summary::after{content:"+";font-weight:400}
+.full[open] > summary::after{content:"–"}
+.full > summary:hover{color:var(--blue);border-color:var(--blue)}
+.full .mapframe{margin-top:24px}
+@media (max-width:760px){
+  .cmx-l > button{grid-template-columns:52px minmax(0,1fr) 24px;grid-template-rows:auto auto;row-gap:4px;padding:18px 0}
+  .cmx-l .tag{grid-row:1}
+  .cmx-l strong{grid-column:2;font-size:17px}
+  .cmx-l em{grid-column:2;grid-row:2;font-size:13.5px}
+  .cmx-l > button::after{grid-column:3;grid-row:1}
+  .cmx-panel .in,.cmx-cap{margin-left:0;padding-left:52px}
+  .cmx-cap{margin-left:52px;padding-left:12px;font-size:13.5px}
+  .cmx-link{padding-left:52px;font-size:12.5px}
+  .cmx-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.cmx-dot,.cmx-panel{transition:none}}
+.cmx-track{position:relative}
+.cmx ol::before{left:6px}
+.cmx-dot{left:1px}
+.cmx-l .tag{margin-left:22px}
