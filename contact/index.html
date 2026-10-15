@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/cw.css?v=7">
+<link rel="stylesheet" href="/assets/cw.css?v=8">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "카루스웍스는 어떤 회사인가요?", "acceptedAnswer": {"@type": "Answer", "text": "AI 에이전틱 SI 기업입니다. 기업과 기관의 업무 시스템에 AI 에이전트를 설계·구축·연동하고, 운영과 품질 관리까지 한 팀이 맡습니다."}}, {"@type": "Question", "name": "기존 시스템을 바꿔야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. 쓰고 계신 그룹웨어, 민원·예약·출입·설비 시스템의 데이터를 표준화해 연결하고, 에이전트는 MCP 표준으로 붙입니다."}}, {"@type": "Question", "name": "AI가 잘못 실행하면 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "실행 전에 절차를 가상 환경(디지털 트윈)에서 먼저 돌려 보고, 담당자가 승인한 절차만 실행됩니다. 가상 검증과 승인이 없으면 시스템이 실행을 거부합니다."}}, {"@type": "Question", "name": "데이터가 외부로 나가나요?", "acceptedAnswer": {"@type": "Answer", "text": "내부 서버에 소형 모델과 메모리·검색 데이터를 두는 구성을 기본으로 설계합니다. 어떤 일을 클라우드 모델로 보낼지는 고객이 정합니다."}}, {"@type": "Question", "name": "특정 AI 모델에 묶이나요?", "acceptedAnswer": {"@type": "Answer", "text": "아닙니다. 일상 업무는 내부 소형 모델이 처리하고, 복잡한 추론만 라우터가 알맞은 모델로 보냅니다. 모델은 바꿔 끼울 수 있습니다."}}, {"@type": "Question", "name": "작게 시작할 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "네. 업무 하나와 데이터 하나로 작은 검증(PoC)을 먼저 하고, 효과를 확인한 뒤 넓혀 갑니다."}}]}</script>
 </head>
 <body>
@@ -90,18 +90,29 @@
   </div>
 </section>
 </main>
-<footer class="foot">
+<footer class="foot term">
   <div class="wrap">
-    <div>
-      <img src="/assets/brand/logo-b.png" alt="carusworks" width="750" height="323" loading="lazy">
-      <p>AI 에이전틱 SI. 진단부터 운영까지.</p>
+    <div class="tw">
+      <div class="tbar"><i></i><i></i><i></i><span>carusworks — zsh</span></div>
+      <div class="tbody">
+        <p class="pr"><b>~/carusworks</b> <em>$</em> tree -L 1</p>
+        <p class="root">carusworks/ <span># AI 에이전틱 SI · 진단부터 운영까지</span></p>
+        <details><summary><span class="br">├──</span> company/</summary><ul>
+          <li><span class="br">│   ├──</span> <a href="/solutions/">solutions</a> <span># 진단·구축·연동·운영</span></li>
+          <li><span class="br">│   ├──</span> <a href="/platform/">platform</a> <span># 네 계층 AI 플랫폼</span></li>
+          <li><span class="br">│   └──</span> <a href="/trust/">trust</a> <span># 검증 없이 실행 없음</span></li></ul></details>
+        <details><summary><span class="br">├──</span> products/</summary><ul>
+          <li><span class="br">│   ├──</span> <a href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">as</a> <span># 에이전틱 스태프</span></li>
+          <li><span class="br">│   └──</span> <a href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">smos</a> <span># 턴키 디바이스</span></li></ul></details>
+        <details><summary><span class="br">└──</span> contact/</summary><ul>
+          <li><span class="br">    ├──</span> <a href="/contact/">inquiry</a> <span># 도입 상담</span></li>
+          <li><span class="br">    └──</span> <a href="mailto:contact@carusworks.com">contact@carusworks.com</a></li></ul></details>
+        <p class="pr last"><b>~/carusworks</b> <em>$</em> <span class="cur" aria-hidden="true"></span></p>
+      </div>
     </div>
-    <div><h4>Company</h4><ul><li><a href="/solutions/">솔루션</a></li><li><a href="/platform/">플랫폼</a></li><li><a href="/trust/">안전한 실행</a></li></ul></div>
-    <div><h4>Products</h4><ul><li><a href="https://ncaman.github.io/carusworks-AS/" target="_blank" rel="noopener">AS · 에이전틱 스태프</a></li><li><a href="https://ncaman.github.io/carusworks-SMOS/" target="_blank" rel="noopener">SMOS · 턴키 디바이스</a></li></ul></div>
-    <div><h4>Contact</h4><ul><li><a href="/contact/">도입 상담</a></li><li><a href="mailto:contact@carusworks.com">contact@carusworks.com</a></li></ul></div>
     <p class="copy">© 2026 carusworks</p>
   </div>
 </footer>
-<script src="/assets/cw.js?v=7" defer></script>
+<script src="/assets/cw.js?v=8" defer></script>
 </body>
 </html>
