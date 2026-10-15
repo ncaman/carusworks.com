@@ -432,3 +432,45 @@ td.us,th.us{color:var(--ink);font-weight:700;background:var(--blue10)}
 .lnk{color:var(--blue);border-bottom:1px solid currentColor}
 .lnk:hover{color:var(--ink)}
 .sum{white-space:pre-wrap;background:var(--bg2);border:1px solid var(--line);padding:14px 16px;font-family:var(--m);font-size:12.5px;color:var(--ink2);margin:16px 0;max-height:240px;overflow:auto}
+
+/* 한글 줄바꿈: 단어 중간에서 끊지 않고, 마지막 줄 한 단어 남김 방지 */
+body{word-break:keep-all;overflow-wrap:break-word}
+p,li,dd,figcaption,td,th,span{text-wrap:pretty}
+h4,.lede{text-wrap:balance}
+
+/* 결재 요청 시뮬레이터 */
+.dcard.sim{padding:24px 24px 18px}
+.sim .spark{margin:14px 0 4px}
+.sim .spark svg{width:100%;height:64px;display:block;background:rgba(255,255,255,.02);border:1px solid #1c3329}
+.sim .spark line{stroke-width:1;stroke-dasharray:3 4}.sim .ucl{stroke:#2f4a3e}.sim .lcl{stroke:#c9643a}
+.sim .spark polyline{fill:none;stroke:#6fd3a4;stroke-width:2;vector-effect:non-scaling-stroke;transition:all .4s}
+.sim .spark circle{fill:#f2b632;transition:all .4s}
+.sim .spark span{display:block;font-family:var(--m);font-size:10.5px;letter-spacing:.08em;color:#7f988c;margin-top:6px}
+.sim .knobs{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px;margin:14px 0 6px}
+.sim .knobs label{display:grid;grid-template-columns:1fr auto;align-items:baseline;font-size:12px;color:#a9c2b6;gap:2px 8px}
+.sim .knobs output{font-family:var(--m);font-size:12px;color:#fff;font-weight:700}
+.sim .knobs input{grid-column:1 / -1;width:100%;accent-color:#2fbf7f;height:18px;cursor:pointer}
+.sim .loss{font-size:13px;color:#a9c2b6;margin:8px 0 2px;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:baseline}
+.sim .loss b{font-size:20px;color:#fff;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.sim .loss span{font-family:var(--m);font-size:11px;color:#7f988c}
+.sim .o{width:100%;text-align:left;color:#dcebe3;cursor:pointer;background:transparent;transition:border-color .2s,background .2s}
+.sim .o:hover{border-color:#3d6a57}
+.sim .o span small{display:block;font-size:11px;color:#7f988c;margin-top:2px}
+.sim .o i{color:#a9c2b6}
+.sim .o.best i::after{content:" · 권고";color:#6fd3a4}
+.sim .o[aria-checked="true"]{border-color:#2fbf7f;background:rgba(47,191,127,.1)}
+.sim .o[aria-checked="true"] i{color:#6fd3a4}
+.sim .rec{font-size:12.5px;color:#cfe3d9;margin-top:12px;padding-left:10px;border-left:2px solid #2fbf7f}
+.sim .foot2 button[disabled]{opacity:.35;cursor:not-allowed}
+.sim .audit{font-family:var(--m);font-size:10.5px;color:#6fd3a4;margin-top:10px;min-height:1em;word-break:break-all}
+.sim figcaption{font-size:11px;color:#6f877b;margin-top:10px;border-top:1px solid #1c3329;padding-top:10px}
+@media (max-width:760px){.sim .knobs{grid-template-columns:1fr}}
+
+/* 한글이 섞인 소제목은 고정폭 글꼴·넓은 자간을 쓰지 않음 (글자 사이가 벌어져 보이는 문제) */
+.demo .bar span,.proof .src,.dcard .dt,.sim .spark span,.sim .o i,thead th{font-family:var(--f);letter-spacing:-.005em;text-transform:none}
+.dcard .dt{font-size:12px;font-weight:600}
+.sim .o i{font-size:12px}
+.sim .o.best i::after{content:"권고";display:block;font-size:10.5px;font-weight:700;color:#6fd3a4;margin-top:2px}
+.proof .src{font-size:12.5px}
+thead th{font-size:12.5px}
+.proof .pf span small{display:block;font-family:var(--f);font-variant-numeric:tabular-nums;font-size:12.5px;color:var(--faint);margin-top:2px;white-space:nowrap;letter-spacing:0}
