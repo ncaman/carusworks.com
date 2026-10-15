@@ -28,10 +28,14 @@ var FORM_ENDPOINT = "";
        steps:[["계획","조회 → 분류 → 담당자별 정리 절차 작성",""],["검증","사전 검증 통과 · 조회 범위와 권한 확인","G"],
               ["실행","민원 시스템 조회","1,284건"],["실행","주차 관련 분류","213건"],["실행","담당자별 정리","4개 부서"]],
        done:"보고서 초안 완료 · 실행 기록 저장"},
-      {say:"이번 달 미수금 거래처 뽑아서 영업 담당에게 알려 줘",
-       steps:[["계획","회계 조회 → 담당자 매칭 → 알림 절차 작성",""],["검증","사전 검증 통과 · 발송 대상과 문구 확인","G"],
-              ["실행","회계 시스템 조회","37곳"],["실행","거래처별 담당자 매칭","6명"],["실행","담당자별 알림 발송","6건"]],
-       done:"알림 발송 완료 · 실행 기록 저장"},
+      {say:"이번 주 신규 영상 3편 검수하고, 통과한 것만 발행 예약해 줘",
+       steps:[["계획","검수 체크리스트 → 발행 예약 절차 작성",""],["검증","사전 검증 통과 · 채널 권한과 예약 시간 확인","G"],
+              ["실행","자막·음량·규격 검수","3편"],["실행","검수 통과","2편"],["실행","발행 예약 · 반려 사유 기록","2건 · 1건"]],
+       done:"발행 예약 완료 · 제작 이력 저장"},
+      {say:"인터뷰 전사본 40건 1차 코딩하고, 코더 간 불일치만 모아 줘",
+       steps:[["계획","코딩북 확인 → 1차 코딩 → 불일치 추출 절차 작성",""],["검증","사전 검증 통과 · 개인정보 비식별 확인","G"],
+              ["실행","전사본 1차 코딩","40건"],["실행","코더 간 불일치 추출","7건"],["실행","연구자 검토 목록 작성","1건"]],
+       done:"검토 목록 완료 · 분석 이력 저장"},
       {say:"내일 오전 3층 회의실 냉방 미리 켜고, 방문객 출입 등록해 줘",
        steps:[["계획","일정 확인 → 냉방 예약 → 출입 등록 절차 작성",""],["검증","사전 검증 통과 · 온도 범위와 출입 권한 확인","G"],
               ["실행","냉방 예약","08:30 · 24℃"],["실행","방문객 출입 등록","4명"],["실행","담당자 안내","1건"]],
@@ -279,4 +283,121 @@ var FORM_ENDPOINT = "";
   v.addEventListener("playing", function(){ v.classList.add("on"); }, {once: true});
   var go = function(){ v.preload = "auto"; v.load(); var p = v.play(); if(p && p.catch) p.catch(function(){}); };
   if(document.readyState === "complete") setTimeout(go, 300); else window.addEventListener("load", function(){ setTimeout(go, 300); });
+})();
+
+/* ===== 분야별 운영 앱 — 핵심 3가지(휴대폰 지시 · 팹 운영 체계 · 경영 보고)를 같은 숫자로 계산 =====
+   계산식은 화면 아래에 공개. 기본값은 예시이며 진단 때 현장 값으로 바꾼다. */
+(function(){
+  var app = document.getElementById("app"); if(!app) return;
+  var $ = function(i){ return document.getElementById(i); };
+  var won = function(v){ v = Math.round(v); if(v >= 1e8){ var e = Math.floor(v/1e8), m = Math.round((v%1e8)/1e6)*100; return e+"억"+(m ? " "+m.toLocaleString()+"만" : "")+" 원"; } return Math.max(0, Math.round(v/1e4)).toLocaleString()+"만 원"; };
+  var payT = function(mo){ if(!(mo > 0) || !isFinite(mo)) return "회수 불가"; if(mo < 1) return Math.max(1, Math.round(mo*30))+"일"; if(mo < 24) return mo.toFixed(1)+"개월"; return (mo/12).toFixed(1)+"년"; };
+  var esc = function(t){ return String(t).replace(/</g,"&lt;"); };
+  var M = {
+    fac: { unit:"냉동기 2호기", lossLabel:"추가 전력비",
+      knobs:[["d","효율 저하율",2,20,1,8,"%"],["p","정격 전력",100,1000,50,350," kW"],["h","일 운전 시간",4,24,1,12,"시간"],["t","전력 단가",100,250,10,150,"원/kWh"]],
+      loss:function(v){ return v.p*v.h*30*v.d/100*v.t; },
+      opts:function(v,L){ var base=v.p*v.h*30*v.t; return [{k:"a",n:"응축기 세척",c:1.2e6,mo:0,s:L*.75,d:"저하분 75% 회복"},{k:"b",n:"냉매 압력 점검",c:1.5e5,mo:0,s:L*.3,d:"원인 확인 후 결정"},{k:"c",n:"설비 교체",c:3.5e8,mo:0,s:L+base*.2,d:"효율 20% 개선"}]; },
+      rec:function(v,O){ if(v.d < 4) return "b"; if(v.d >= 15 && O[2].c/O[2].s < 60) return "c"; return "a"; },
+      ask:"냉동기 2호기 효율 떨어진 거, 어떻게 할지 정리해 줘",
+      tech:function(v){ return "AHU-02 COP 4.6 → "+(4.6*(1-v.d/100)).toFixed(2)+" (−"+v.d+"%)<br>응축 압력 상승 · ΔT 편차 경보 "+Math.max(1,Math.round(v.d/3))+"건"; },
+      exec:function(v,L){ return "냉방 2호기 때문에 <b>매달 "+won(L)+"</b>이 더 나갑니다."; },
+      kpi:function(v){ return 100-v.d; }, kpiName:"성능 유지율",
+      fab:function(v){ return [["레시피","냉방 운전 표준 절차","고정"],["공정 라우팅","점검 → 세척 → 재측정","3단계"],["SPC 관리도","성능계수(COP) 추이","4주 연속 하락"],["수율","성능 유지율",(100-v.d)+"%"],["로트 추적","설비별 조치 이력","전 건 기록"],["표준원가","월 전력비 기준 차이","+"+v.d+"%"]]; },
+      formula:"추가 전력비 = 정격 전력 × 일 운전 시간 × 30일 × 저하율 × 전력 단가" },
+    con: { unit:"영상 제작 라인", lossLabel:"재작업 비용",
+      knobs:[["n","월 제작 편수",10,200,5,40,"편"],["c","편당 제작 원가",10,200,5,30,"만 원"],["r","재작업률",5,50,1,25,"%"]],
+      loss:function(v){ return v.n*v.r/100*v.c*1e4*.6; },
+      opts:function(v,L){ return [{k:"a",n:"품질 게이트 도입",c:3e6,mo:0,s:L*.6,d:"검수 기준 자동 점검, 재작업 60% 감소"},{k:"b",n:"제작 레시피 표준화",c:8e6,mo:0,s:L*.8,d:"공법 고정, 재작업 80% 감소"},{k:"c",n:"검수 인력 1명 충원",c:0,mo:3.5e6,s:L*.5-3.5e6,d:"재작업 50% 감소"}]; },
+      ask:"이번 달 영상 재작업이 왜 이렇게 많은지 보고해 줘",
+      tech:function(v){ return "반려 "+Math.round(v.n*v.r/100)+"건 / 제작 "+v.n+"건<br>사유: 자막 오탈자 · 음량 편차 · 썸네일 규격 위반"; },
+      exec:function(v,L){ return "재작업 때문에 <b>매달 "+won(L)+"</b>가 새고 있습니다."; },
+      kpi:function(v){ return 100-v.r; }, kpiName:"1차 통과율",
+      fab:function(v){ return [["레시피","기획·대본·제작·배포 공법","편마다 동일"],["공정 라우팅","편집 → 검수 → 발행","3단계"],["SPC 관리도","재작업률 추이",(v.r > 15 ? "기준 15% 초과" : "기준 이내")],["수율","1차 통과율",(100-v.r)+"%"],["로트 추적","원본 출처·버전 이력","편별 기록"],["표준원가","편당 원가 대비 재작업",""+Math.round(v.c*v.r/100*.6)+"만 원/편"]]; },
+      formula:"재작업 비용 = 월 제작 편수 × 재작업률 × 편당 원가 × 60%(재작업에 드는 비중)" },
+    res: { unit:"인터뷰·문헌 분석", lossLabel:"재분석 연구 시간",
+      knobs:[["n","월 분석 자료 수",50,500,10,200,"건"],["h","건당 분석 시간",1,8,.5,3,"시간"],["r","재분석 비율",5,60,1,30,"%"],["w","연구 인력 시간당 비용",2,8,.5,3,"만 원"]],
+      loss:function(v){ return v.n*v.r/100*v.h*v.w*1e4; },
+      opts:function(v,L){ return [{k:"a",n:"코딩북·분석 프로토콜 표준화",c:5e6,mo:0,s:L*.5,d:"재분석 50% 감소"},{k:"b",n:"AI 1차 코딩 + 연구자 검수",c:1.2e7,mo:0,s:L*.8,d:"재분석 80% 감소, 판단은 연구자"},{k:"c",n:"연구보조원 1명 충원",c:0,mo:2.5e6,s:L*.4-2.5e6,d:"재분석 40% 감소"}]; },
+      ask:"이번 학기 인터뷰 분석 진행 상황이랑 병목 정리해 줘",
+      tech:function(v){ return "전사본 "+v.n+"건 중 재코딩 "+Math.round(v.n*v.r/100)+"건<br>코더 간 일치도 κ = "+(0.86-v.r/250).toFixed(2); },
+      exec:function(v,L){ return "재분석에 <b>매달 "+won(L)+"</b>어치 연구 시간이 쓰입니다."; },
+      kpi:function(v){ return 100-v.r; }, kpiName:"1차 코딩 통과율",
+      fab:function(v){ return [["레시피","연구 프로토콜·코딩북","자료마다 동일"],["공정 라우팅","수집 → 전사 → 코딩 → 분석","4단계"],["SPC 관리도","코더 간 일치도 추이","κ "+(0.86-v.r/250).toFixed(2)],["수율","1차 코딩 통과율",(100-v.r)+"%"],["로트 추적","자료 출처·인용·분석 이력","건별 기록"],["표준원가","건당 분석 시간 기준",v.h+"시간/건"]]; },
+      formula:"재분석 연구 시간 = 월 분석 자료 수 × 재분석 비율 × 건당 분석 시간 × 시간당 비용" },
+    pub: { unit:"민원 처리", lossLabel:"반복 문의 처리 시간",
+      knobs:[["n","월 민원 건수",300,5000,100,1200,"건"],["m","건당 처리 시간",5,60,1,20,"분"],["r","반복 문의 비율",10,70,1,40,"%"],["w","시간당 업무 비용",2,6,.5,3,"만 원"]],
+      loss:function(v){ return v.n*v.r/100*v.m/60*v.w*1e4; },
+      opts:function(v,L){ return [{k:"a",n:"자동 답변 초안 + 담당자 검토",c:9e6,mo:0,s:L*.6,d:"반복 문의 처리 60% 단축"},{k:"b",n:"민원 분류 에이전트",c:6e6,mo:0,s:L*.35,d:"담당 배정 자동화, 35% 단축"},{k:"c",n:"상담 인력 1명 충원",c:0,mo:3e6,s:L*.3-3e6,d:"반복 문의 30% 단축"}]; },
+      ask:"지난달 반복 민원 정리하고 줄일 방법 알려 줘",
+      tech:function(v){ return "민원 "+v.n.toLocaleString()+"건 · 평균 처리 "+v.m+"분<br>동일 유형 재문의 "+Math.round(v.n*v.r/100).toLocaleString()+"건"; },
+      exec:function(v,L){ return "같은 질문에 답하느라 <b>매달 "+won(L)+"</b>어치 업무 시간이 쓰입니다."; },
+      kpi:function(v){ return 100-v.r; }, kpiName:"1회 처리 완결률",
+      fab:function(v){ return [["레시피","민원 유형별 처리 절차","유형마다 동일"],["공정 라우팅","접수 → 분류 → 답변 → 검토","4단계"],["SPC 관리도","유형별 재문의율 추이",(v.r > 30 ? "기준 30% 초과" : "기준 이내")],["수율","1회 처리 완결률",(100-v.r)+"%"],["로트 추적","민원별 처리·승인 이력","건별 기록"],["표준원가","건당 처리 시간 기준",v.m+"분/건"]]; },
+      formula:"반복 문의 처리 시간 = 월 민원 건수 × 반복 문의 비율 × 건당 처리 시간 × 시간당 비용" }
+  };
+  var cur = "fac", V = {}, sel = null, approved = null, touched = false;
+  var tabs = app.querySelectorAll(".stabs button");
+  function build(){
+    var m = M[cur]; V = {};
+    $("appKnobs").innerHTML = m.knobs.map(function(k){ V[k[0]] = k[5];
+      return '<label><span>'+k[1]+'</span><output id="ko-'+k[0]+'"></output><input type="range" data-k="'+k[0]+'" min="'+k[2]+'" max="'+k[3]+'" step="'+k[4]+'" value="'+k[5]+'"></label>'; }).join("");
+    [].forEach.call($("appKnobs").querySelectorAll("input"), function(i){ i.addEventListener("input", function(){ V[i.dataset.k] = +i.value; approved = null; calc(); }); i.addEventListener("pointerdown", function(){ touched = true; }); });
+    [].forEach.call(tabs, function(t){ t.setAttribute("aria-selected", t.dataset.s === cur ? "true" : "false"); });
+    sel = null; approved = null; calc();
+  }
+  function calc(){
+    var m = M[cur], L = m.loss(V), O = m.opts(V, L);
+    m.knobs.forEach(function(k){ var o = $("ko-"+k[0]); if(o) o.textContent = (+V[k[0]]).toLocaleString()+k[6]; });
+    O.forEach(function(o){ o.pm = o.s > 0 ? (o.c > 0 ? o.c/o.s : 0.0001) : Infinity; o.pt = o.c > 0 || o.mo > 0 ? (o.s > 0 ? (o.c > 0 ? "회수 "+payT(o.pm) : "월 "+won(o.s)+" 절감") : "회수 불가") : ""; });
+    O.forEach(function(o){ o.y1 = o.s*12 - o.c; });  // 1년 순효과 = 월 절감 × 12 − 초기 비용
+    var best = m.rec ? m.rec(V, O) : O.slice().sort(function(a,b){ return b.y1 - a.y1; })[0].k;
+    var B = O.filter(function(o){ return o.k === best; })[0];
+    $("appUnit").textContent = m.unit+" · "+m.lossLabel; $("appLoss").textContent = "월 "+won(L);
+    // 01 휴대폰 지시·승인
+    var chat = '<p class="me">'+m.ask+'</p><p class="ai"><small>carusworks</small>'+m.kpiName+' '+m.kpi(V)+'% · '+m.lossLabel+' 월 '+won(L)+'<br>권고: '+B.n+' ('+(B.pt||"")+')<br>승인하면 실행 절차를 시작합니다.<span class="bt"><button type="button" data-a="ok">승인</button><button type="button" data-a="hold">보류</button></span></p>';
+    if(approved) chat += '<p class="me">'+(approved.a === "ok" ? "승인" : "보류")+'</p><p class="ai ok"><small>carusworks</small>'+(approved.a === "ok" ? "✓ "+approved.n+" 실행 절차 시작 · 이력 #"+approved.h : "보류 기록 · 다음 주 같은 지표로 다시 보고합니다")+'</p>';
+    $("appChat").innerHTML = chat + '<figcaption>예시 화면 · 숫자는 위 입력값으로 계산</figcaption>';
+    // 02 팹 대응표
+    var k = m.kpi(V), pts = [], n = 8;
+    for(var i=0;i<n;i++){ var w = i < 4 ? 0 : (i-3)/4, y = 100 - (100-k)*w + (i%2 ? .6 : -.5); pts.push((i*300/(n-1)).toFixed(1)+","+(10+(100-y)*1.1).toFixed(1)); }
+    $("appFab").innerHTML = '<table><thead><tr><th scope="col">반도체 팹</th><th scope="col">'+m.unit+' 운영</th><th scope="col">지금 값</th></tr></thead><tbody>'
+      + m.fab(V).map(function(r){ return '<tr><td>'+r[0]+'</td><td>'+r[1]+'</td><td class="v">'+r[2]+'</td></tr>'; }).join("")
+      + '</tbody></table><div class="spark2"><svg viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><line x1="0" y1="16" x2="300" y2="16"/><polyline points="'+pts.join(" ")+'"/></svg><span>관리도 · 최근 8주 '+m.kpiName+'</span></div>';
+    // 03 경영 보고
+    var r = '<div class="old"><small>일반 시스템 보고</small><code>'+m.tech(V)+'</code></div><div class="arw" aria-hidden="true">↓</div><div class="new"><small>carusworks 경영 보고</small><p>'+m.exec(V, L)+'</p><div class="ops" role="radiogroup" aria-label="조치안">';
+    r += O.map(function(o){ return '<button type="button" role="radio" data-k="'+o.k+'" aria-checked="'+(sel === o.k)+'" class="'+(o.k === best ? "best" : "")+'"><span>'+o.n+'<small>'+(o.c ? won(o.c) : "")+(o.c && o.mo ? " · " : "")+(o.mo ? "월 "+won(o.mo) : "")+' · '+o.d+'</small></span><em>'+o.pt+'</em></button>'; }).join("");
+    r += '</div><p class="rec2">AI 권고 · '+B.n+(B.c > 0 && B.s > 0 ? " — "+payT(B.pm)+" 안에 회수, " : B.s > 0 ? " — 매달 "+won(B.s)+" 절감, " : " — ")+'1년 순효과 '+(B.y1 >= 0 ? "+" : "−")+won(Math.abs(B.y1))+'</p>';
+    var pick = sel ? O.filter(function(o){ return o.k === sel; })[0] : null;
+    r += '<div class="go"><span>'+(pick ? "선택 · "+pick.n+(sel !== best ? " (권고와 다름 · 사유 기록)" : "") : "조치안을 고르세요")+'</span><button type="button" data-a="ok2"'+(pick ? "" : " disabled")+'>승인</button></div>';
+    if(approved && approved.a === "ok") r += '<p class="log">✓ 승인 기록 '+approved.t+' · #'+approved.h+' · 계획 → 검증 → 승인 이력 저장</p>';
+    $("appRep").innerHTML = r + '</div><figcaption>예시 · 계산식은 아래 공개</figcaption>';
+    $("appNote").innerHTML = '계산식 · '+m.formula+'. AI 권고는 1년 순효과(월 절감 × 12 − 초기 비용)가 가장 큰 안입니다. 조치 비용과 감소율은 기본값이며, 진단 때 현장 견적과 실측으로 바꿉니다.';
+    app._best = best;
+  }
+  function approve(a, key){
+    var m = M[cur], L = m.loss(V), O = m.opts(V, L), o = O.filter(function(x){ return x.k === key; })[0];
+    var t = new Date(), h = 0, src = cur+key+JSON.stringify(V)+t.getTime(); for(var i=0;i<src.length;i++) h = (h*31 + src.charCodeAt(i)) >>> 0;
+    approved = {a:a, n:o.n, t:t.toTimeString().slice(0,8), h:h.toString(16).padStart(8,"0")}; sel = key; calc();
+  }
+  app.addEventListener("click", function(e){
+    var b = e.target.closest("button"); if(!b || !app.contains(b)) return; touched = true;
+    if(b.dataset.s){ cur = b.dataset.s; build(); return; }
+    if(b.dataset.a === "ok") return approve("ok", app._best);
+    if(b.dataset.a === "hold") return approve("hold", app._best);
+    if(b.dataset.a === "ok2" && sel) return approve("ok", sel);
+    if(b.dataset.k && b.getAttribute("role") === "radio"){ sel = b.dataset.k; approved = null; calc(); }
+  });
+  document.querySelectorAll("[data-go]").forEach(function(a){ a.addEventListener("click", function(){ cur = a.dataset.go; build(); }); });
+  build();
+  // 처음 보일 때 첫 입력값을 한 번 움직여 계산이 바뀌는 걸 보여 줌 (손대면 즉시 중단)
+  if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){ if(!es[0].isIntersecting) return; io.disconnect();
+      var k = M[cur].knobs[0], lo = k[5], hi = Math.min(k[3], k[5] + (k[3]-k[2])*.5), seq = [], i;
+      for(i=1;i<=5;i++) seq.push(lo + (hi-lo)*i/5); for(i=4;i>=0;i--) seq.push(lo + (hi-lo)*i/5);
+      var tm = setInterval(function(){ if(touched || !seq.length){ clearInterval(tm); return; }
+        var val = Math.round(seq.shift()/k[4])*k[4]; V[k[0]] = val; var inp = $("appKnobs").querySelector("input"); if(inp) inp.value = val; calc(); }, 340);
+    }, {threshold: .35});
+    io.observe(app);
+  }
 })();

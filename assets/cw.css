@@ -668,3 +668,69 @@ thead th{font-size:12.5px}
   .hero p.lede{min-height:6.6em}
 }
 .demo.phone .say{min-height:78px}
+
+/* ===== 분야별 운영 앱 ===== */
+.app{border-top:1px solid var(--ink)}
+.appbar{position:sticky;top:var(--head);z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:18px 0 16px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px 28px;align-items:center}
+.stabs{display:flex;gap:6px;flex-wrap:wrap}
+.stabs button{font-size:14px;font-weight:700;color:var(--dim);border:1px solid var(--line);padding:9px 14px;min-height:40px;transition:all .2s}
+.stabs button[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.knobs2{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px 18px}
+.knobs2 label{display:grid;grid-template-columns:1fr auto;gap:0 6px;font-size:12px;color:var(--dim);align-items:baseline}
+.knobs2 output{font-size:12.5px;font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums}
+.knobs2 input{grid-column:1 / -1;width:100%;accent-color:var(--blue);height:20px;cursor:pointer}
+.appsum{text-align:right;line-height:1.25}
+.appsum span{display:block;font-size:12px;color:var(--faint);font-weight:600}
+.appsum b{font-size:24px;color:var(--ink);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.app .c3:first-of-type{border-top:0}
+.c3v button{font:inherit;cursor:pointer}
+.chat .bt button{font-size:12px;font-weight:800;padding:6px 16px;background:var(--blue);color:#fff;border:0}
+.chat .bt button + button{background:transparent;border:1px solid #3d5a4d;color:#a9c2b6}
+.fab table{font-size:14px}
+.fab td.v{color:#fff;font-weight:700;text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+.spark2{margin-top:14px}
+.spark2 svg{width:100%;height:64px;display:block;border:1px solid #1f3a30}
+.spark2 line{stroke:#c9643a;stroke-dasharray:3 4;stroke-width:1}
+.spark2 polyline{fill:none;stroke:#6fd3a4;stroke-width:2;vector-effect:non-scaling-stroke}
+.spark2 span{display:block;margin-top:6px;font-size:11.5px;color:#7f988c}
+.rep .ops{display:grid;gap:7px;margin-top:14px}
+.rep .ops button{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;align-items:center;text-align:left;border:1px solid #2a4a3d;background:transparent;color:#dcebe3;padding:10px 12px;font-size:13.5px;transition:all .2s}
+.rep .ops button small{display:block;font-size:11px;color:#7f988c;margin-top:2px}
+.rep .ops button em{font-style:normal;font-size:12.5px;font-weight:700;color:#c6d8cf;white-space:nowrap}
+.rep .ops button.best{border-color:#2fbf7f}
+.rep .ops button.best span::after{content:"권고";margin-left:8px;font-size:10.5px;font-weight:800;color:#04261a;background:#6fd3a4;padding:1px 6px;vertical-align:1px}
+.rep .ops button[aria-checked="true"]{background:rgba(47,191,127,.16);border-color:#6fd3a4}
+.rep .rec2{margin-top:12px;font-size:13px;color:#cfe3d9;border-left:2px solid #2fbf7f;padding-left:10px}
+.rep .go{margin-top:12px;display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:12.5px;color:#a9c2b6}
+.rep .go button{background:var(--blue);color:#fff;font-weight:800;font-size:12.5px;padding:8px 18px;border:0}
+.rep .go button[disabled]{opacity:.35;cursor:not-allowed}
+.rep .log{margin-top:10px;font-family:var(--m);font-size:11px;color:#6fd3a4;word-break:break-all}
+.appnote{margin-top:8px;padding:16px 0 0;border-top:1px solid var(--line);font-size:13px;color:var(--faint)}
+/* 적용 분야 카드 */
+.sects{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.sects a{border:1px solid var(--line);padding:22px 20px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s,background .2s;min-height:190px}
+.sects a:hover{border-color:var(--ink);background:var(--bg2)}
+.sects .dk{font-family:var(--m);font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.sects h3{font-size:20px}
+.sects p:not(.dk){font-size:14px;color:var(--dim)}
+.sects span{margin-top:auto;font-size:13px;font-weight:700;color:var(--blue)}
+.sects span::after{content:" →"}
+@media (max-width:1100px){
+  .appbar{grid-template-columns:1fr auto}
+  .knobs2{grid-column:1 / -1;grid-row:2}
+  .sects{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .appbar{position:static;grid-template-columns:1fr;padding:14px 0}
+  .appsum{text-align:left}
+  .knobs2{grid-template-columns:1fr 1fr;grid-row:auto}
+  .stabs button{font-size:13px;padding:8px 11px}
+  .sects{grid-template-columns:1fr 1fr}
+  .sects a{min-height:0}
+}
+@media (max-width:760px){
+  .c3v{padding:20px 16px}
+  .fab th,.fab td{padding:10px 5px;font-size:13px}
+  .fab td:first-child{width:27%;font-size:13px}
+  .fab td.v{font-size:12.5px}
+}
