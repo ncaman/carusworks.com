@@ -41,8 +41,11 @@ var FORM_ENDPOINT = "";
         okText = document.getElementById("oktext"), okBtn = document.getElementById("okbtn"), timers = [], cur = 0, auto = !reduce;
     var later = function(fn, ms){ timers.push(setTimeout(fn, ms)); };
     var clear = function(){ timers.forEach(clearTimeout); timers = []; };
+    var tabs = document.querySelectorAll(".dtabs button");
+    [].forEach.call(tabs, function(t){ t.addEventListener("click", function(){ auto = false; show(+t.dataset.i); }); });
     var show = function(i){
       clear(); cur = i; var d = data[i];
+      [].forEach.call(tabs, function(t, j){ t.setAttribute("aria-selected", j === i ? "true" : "false"); });
       list.innerHTML = d.steps.map(function(s){
         var g = s[2] === "G";
         return '<li class="' + (g ? "chk" : "") + '"><b>' + (g ? "◆" : "✓") + '</b><span>' + s[0] + ' · ' + s[1] + '</span><em>' + (g ? "" : s[2]) + '</em></li>';
@@ -253,4 +256,17 @@ var FORM_ENDPOINT = "";
   var io = new IntersectionObserver(function(es){ es.forEach(function(e){ var v = e.target;
     if(e.isIntersecting){ if(v.preload === "none") v.preload = "auto"; var p = v.play(); if(p && p.catch) p.catch(function(){}); } else v.pause(); }); }, {threshold: .15});
   [].forEach.call(vs, function(v){ io.observe(v); });
+})();
+
+
+/* 모바일 하단 고정 버튼: 첫 화면을 지나면 보이고, 마무리 띠·바닥글에서는 숨김 */
+(function(){
+  var st = document.getElementById("stick"); if(!st) return;
+  var end = document.querySelector("section.close, footer");
+  var upd = function(){
+    var past = window.scrollY > window.innerHeight * .8;
+    var nearEnd = end && end.getBoundingClientRect().top < window.innerHeight;
+    st.classList.toggle("on", past && !nearEnd);
+  };
+  window.addEventListener("scroll", upd, {passive: true}); upd();
 })();
