@@ -513,3 +513,24 @@ thead th{font-size:12.5px}
   .close.vid p{font-size:14px;margin-top:8px;line-height:1.55}
   .close.vid .btn{height:42px;padding:0 18px;font-size:14px}
 }
+
+/* 시뮬레이터 설명: 안내 한 줄 + 카드 속 번호 + 읽는 법 */
+.simwrap{display:grid;gap:14px;min-width:0}
+.simhint{font-size:14px;color:var(--dim);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.simhint b{background:var(--blue);color:#fff;font-size:12px;font-weight:800;padding:4px 10px;animation:hintp 2.4s ease-in-out infinite}
+@keyframes hintp{50%{background:#0f6e4c}}
+.sim .n,.simkey .n{display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;background:#f2b632;color:#2e2100;font-style:normal;font-family:var(--m);font-size:11px;font-weight:800;flex:none;vertical-align:2px;margin-right:8px}
+.sim h4{display:flex;align-items:center}
+.sim .optk{font-size:12px;color:#a9c2b6;margin-top:14px;display:flex;align-items:center}
+.sim .foot2 .n{margin-right:-4px}
+.sim .foot2 span{margin-right:auto}
+.simkey{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:12px 18px;border-top:1px solid var(--line);padding-top:16px}
+.simkey li{display:flex;gap:2px;align-items:flex-start}
+.simkey .n{margin-top:3px}
+.simkey strong{display:block;font-size:14px;color:var(--ink)}
+.simkey span{font-size:13px;color:var(--dim);line-height:1.55}
+@media (max-width:760px){.simkey{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.simhint b{animation:none}}
+.pnl .simkey li{display:flex;padding:0;border:0;grid-template-columns:none;gap:2px}
+.pnl .simkey li strong{font-size:14px}
+.pnl .simkey li span{font-size:13px}

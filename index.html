@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/assets/cw.css?v=12">
+<link rel="stylesheet" href="/assets/cw.css?v=13">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "name": "carusworks", "alternateName": "카루스웍스", "url": "https://carusworks.com/", "logo": "https://carusworks.com/assets/brand/logo-g.png", "email": "contact@carusworks.com", "description": "기업과 기관의 업무 시스템에 AI 에이전트를 설계·구축·연동하고 운영하는 AI 에이전틱 SI 기업."}</script>
 </head>
 <body>
@@ -86,9 +86,11 @@
         <li><b>04</b><div><strong>감사 추적(Audit Trail)</strong><span>모든 판단과 승인 이력이 위변조 방지 기록으로 남아 언제든 재검증할 수 있습니다.</span></div></li>
       </ul>
     </div>
+    <div class="simwrap">
+    <p class="simhint"><b>직접 해 보세요</b> 효율 저하율을 움직이면 손실액과 AI 권고가 바뀝니다.</p>
     <figure class="dcard sim" id="dsim" aria-label="결재 요청 시뮬레이터">
       <div class="dt"><span>결재 요청 · 시뮬레이터</span><span>냉동기 2호기</span></div>
-      <h4 id="dsH">냉방 효율 4주 연속 저하</h4>
+      <h4><i class="n">1</i><span id="dsH">냉방 효율 4주 연속 저하</span></h4>
       <div class="spark"><svg viewBox="0 0 300 64" preserveAspectRatio="none" aria-hidden="true"><line class="ucl" x1="0" y1="14" x2="300" y2="14"/><line class="lcl" x1="0" y1="50" x2="300" y2="50"/><polyline id="dsLine" points=""/><circle id="dsDot" r="3.5" cx="0" cy="0"/></svg><span>관리도 · 최근 8주 성능계수(COP)</span></div>
       <div class="knobs">
         <label><span>효율 저하율</span><output id="oD">8%</output><input type="range" id="kD" min="2" max="20" step="1" value="8"></label>
@@ -96,17 +98,25 @@
         <label><span>일 운전 시간</span><output id="oH">12시간</output><input type="range" id="kH" min="4" max="24" step="1" value="12"></label>
         <label><span>전력 단가</span><output id="oT">150원/kWh</output><input type="range" id="kT" min="100" max="250" step="10" value="150"></label>
       </div>
-      <p class="loss">추가 전력비 <b id="dsLoss">월 151만 원</b><span id="dsKwh">(월 10,080 kWh 초과 사용)</span></p>
+      <p class="loss"><i class="n">2</i>추가 전력비 <b id="dsLoss">월 151만 원</b><span id="dsKwh">(월 10,080 kWh 초과 사용)</span></p>
+      <p class="optk"><i class="n">3</i>조치안 비교 · 회수 기간</p>
       <div class="opt3" role="radiogroup" aria-label="조치안 선택">
         <button type="button" class="o" data-k="clean" role="radio"><i>세척</i><span>응축기 세척<small>비용 120만 원 · 저하분 75% 회복</small></span><em id="e1">-</em></button>
         <button type="button" class="o" data-k="check" role="radio"><i>점검</i><span>냉매 압력 점검<small>비용 15만 원 · 1시간</small></span><em id="e2">-</em></button>
         <button type="button" class="o" data-k="replace" role="radio"><i>교체</i><span>설비 교체<small>비용 3억 5천만 원 · 효율 20% 개선</small></span><em id="e3">-</em></button>
       </div>
       <p class="rec" id="dsRec">AI 권고 · -</p>
-      <div class="foot2"><span id="dsSel">조치안을 선택하세요</span><button type="button" id="dsOk">승인</button></div>
+      <div class="foot2"><i class="n">4</i><span id="dsSel">조치안을 선택하세요</span><button type="button" id="dsOk">승인</button></div>
       <p class="audit" id="dsLog" aria-live="polite"></p>
-      <figcaption>입력값을 바꾸면 원가와 회수 기간이 다시 계산됩니다. 계산식이 공개된 예시이며, 실제 현장값이 아닙니다.</figcaption>
+      <figcaption>추가 전력비 = 정격 전력 × 일 운전 시간 × 30일 × 저하율 × 전력 단가. 조치 비용은 기본값이며, 진단 때 현장 견적으로 바꿉니다.</figcaption>
     </figure>
+    <ol class="simkey">
+      <li><i class="n">1</i><div><strong>이상 감지</strong><span>관리도가 4주 연속 떨어지면 AI가 결재 요청을 올립니다.</span></div></li>
+      <li><i class="n">2</i><div><strong>손실 환산</strong><span>효율 저하를 매달 새는 전력비로 바꿔 보여 줍니다.</span></div></li>
+      <li><i class="n">3</i><div><strong>조치 비교·권고</strong><span>세척·점검·교체를 회수 기간으로 비교해 하나를 권고합니다.</span></div></li>
+      <li><i class="n">4</i><div><strong>승인·기록</strong><span>담당자가 고르고 승인하면 이력이 남습니다. 권고와 다르면 사유를 남깁니다.</span></div></li>
+    </ol>
+    </div>
   </div>
 </section>
 
@@ -253,6 +263,6 @@
     <p class="copy">© 2026 carusworks</p>
   </div>
 </footer>
-<script src="/assets/cw.js?v=12" defer></script>
+<script src="/assets/cw.js?v=13" defer></script>
 </body>
 </html>

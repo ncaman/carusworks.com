@@ -235,6 +235,15 @@ var FORM_ENDPOINT = "";
     $("dsLog").textContent = "✓ 승인 기록 "+ts+" · #"+h.toString(16).padStart(8,"0")+" · 계획→검증→승인 이력 저장";
   });
   sel = null; calc();
+  /* 처음 보일 때 저하율을 한 번 움직여 숫자·권고가 바뀌는 걸 보여 줌 (손대면 즉시 중단) */
+  var touched = false; [].forEach.call(r.querySelectorAll("input,button"), function(el){ el.addEventListener("pointerdown", function(){ touched = true; }); });
+  if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(es){ if(!es[0].isIntersecting) return; io.disconnect();
+      var seq = [10,12,14,16,18,18,18,16,14,12,10,8], i = 0;
+      var tm = setInterval(function(){ if(touched || i >= seq.length){ clearInterval(tm); return; } K.D.value = seq[i++]; calc(); }, 320);
+    }, {threshold: .6});
+    io.observe(r);
+  }
 })();
 
 /* 화면에 보일 때만 재생하는 배경 영상 */
