@@ -367,12 +367,12 @@ var FORM_ENDPOINT = "";
     // 03 경영 보고
     var r = '<div class="old"><small>일반 시스템 보고</small><code>'+m.tech(V)+'</code></div><div class="arw" aria-hidden="true">↓</div><div class="new"><small>carusworks 경영 보고</small><p>'+m.exec(V, L)+'</p><div class="ops" role="radiogroup" aria-label="조치안">';
     r += O.map(function(o){ return '<button type="button" role="radio" data-k="'+o.k+'" aria-checked="'+(sel === o.k)+'" class="'+(o.k === best ? "best" : "")+'"><span>'+o.n+'<small>'+(o.c ? won(o.c) : "")+(o.c && o.mo ? " · " : "")+(o.mo ? "월 "+won(o.mo) : "")+' · '+o.d+'</small></span><em>'+o.pt+'</em></button>'; }).join("");
-    r += '</div><p class="rec2">AI 권고 · '+B.n+(B.c > 0 && B.s > 0 ? " — "+payT(B.pm)+" 안에 회수, " : B.s > 0 ? " — 매달 "+won(B.s)+" 절감, " : " — ")+'1년 순효과 '+(B.y1 >= 0 ? "+" : "−")+won(Math.abs(B.y1))+'</p>';
+    r += '</div><p class="rec2">AI 권고 · '+B.n+(B.c > 0 && B.s > 0 ? " — "+payT(B.pm)+" 안에 회수, " : B.s > 0 ? " — 매달 "+won(B.s)+" 절감, " : " — ")+(B.y1 >= 0 ? '1년 순효과 +'+won(B.y1) : '장기 투자 · 5년 순효과 '+(B.s*60-B.c >= 0 ? "+" : "−")+won(Math.abs(B.s*60-B.c)))+'</p>';
     var pick = sel ? O.filter(function(o){ return o.k === sel; })[0] : null;
     r += '<div class="go"><span>'+(pick ? "선택 · "+pick.n+(sel !== best ? " (권고와 다름 · 사유 기록)" : "") : "조치안을 고르세요")+'</span><button type="button" data-a="ok2"'+(pick ? "" : " disabled")+'>승인</button></div>';
     if(approved && approved.a === "ok") r += '<p class="log">✓ 승인 기록 '+approved.t+' · #'+approved.h+' · 계획 → 검증 → 승인 이력 저장</p>';
     $("appRep").innerHTML = r + '</div><figcaption>예시 · 계산식은 아래 공개</figcaption>';
-    $("appNote").innerHTML = '계산식 · '+m.formula+'. AI 권고는 1년 순효과(월 절감 × 12 − 초기 비용)가 가장 큰 안입니다. 조치 비용과 감소율은 기본값이며, 진단 때 현장 견적과 실측으로 바꿉니다.';
+    $("appNote").innerHTML = '계산식 · '+m.formula+'. AI 권고는 1년 순효과(월 절감 × 12 − 초기 비용)가 가장 큰 안이며, 회수에 1년 이상 걸리는 장기 투자는 5년 순효과로 표시합니다. 조치 비용과 감소율은 기본값이며, 진단 때 현장 견적과 실측으로 바꿉니다.';
     app._best = best;
   }
   function approve(a, key){
