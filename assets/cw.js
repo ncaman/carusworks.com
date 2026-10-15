@@ -270,3 +270,12 @@ var FORM_ENDPOINT = "";
   };
   window.addEventListener("scroll", upd, {passive: true}); upd();
 })();
+
+/* 첫 화면 배경 영상: 페이지 로드가 끝난 뒤에 받기 시작 (데이터 절약 모드·움직임 줄이기면 포스터만) */
+(function(){
+  var v = document.querySelector("video[data-late]"); if(!v) return;
+  var c = navigator.connection || {};
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches || c.saveData) return;
+  var go = function(){ v.preload = "auto"; v.load(); var p = v.play(); if(p && p.catch) p.catch(function(){}); };
+  if(document.readyState === "complete") setTimeout(go, 300); else window.addEventListener("load", function(){ setTimeout(go, 300); });
+})();
