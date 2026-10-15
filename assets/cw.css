@@ -971,3 +971,38 @@ thead th{font-size:12.5px}
 .lu p:not(.dk){font-size:14.5px;color:var(--dim)}
 .lu span{margin-top:auto;font-size:13px;font-weight:700;color:var(--blue)}
 @media (max-width:1000px){.lu{grid-template-columns:1fr}}
+
+/* 라인업 조직도 (메인·AS·SMOS 공통) */
+.sec.slim{padding:72px 0}
+.orgw{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:48px;align-items:center}
+.orgh h2{font-size:clamp(26px,2.6vw,34px);line-height:1.2;margin:12px 0 10px}
+.orgh p:not(.label){font-size:15px;color:var(--dim);max-width:34ch}
+.org{position:relative;display:grid;justify-items:center;gap:34px}
+.org-r{position:relative}
+.org-r::after{content:"";position:absolute;left:50%;top:100%;height:17px;border-left:2px solid var(--line)}
+.org-c{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%;position:relative;padding-top:17px}
+.org-c::before{content:"";position:absolute;top:0;left:25%;right:25%;border-top:2px solid var(--line)}
+.org-c > div{position:relative;display:flex;justify-content:center}
+.org-c > div::before{content:"";position:absolute;bottom:100%;left:50%;height:17px;border-left:2px solid var(--line)}
+.onode{display:grid;gap:2px;text-align:center;border:1px solid var(--line);background:#fff;padding:14px 20px;min-width:220px;transition:border-color .2s,transform .2s,box-shadow .2s;position:relative}
+.onode b{font-size:16px;color:var(--ink);letter-spacing:-.02em}
+.onode small{font-size:12.5px;color:var(--dim)}
+.onode em{font-style:normal;font-size:11px;font-weight:800;color:#fff;background:var(--blue);padding:1px 8px;position:absolute;top:-10px;left:50%;transform:translateX(-50%);white-space:nowrap}
+.onode:hover{border-color:var(--ink);transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(6,26,19,.35)}
+.onode.on{border:2px solid var(--blue);background:var(--blue10)}
+.org-r .onode{background:var(--ink);border-color:var(--ink);min-width:260px}
+.org-r .onode b{color:#fff;font-size:18px}
+.org-r .onode small{color:#a9c2b6}
+.org-r .onode.on{background:var(--ink);border-color:var(--blue)}
+.org-c::after{content:"";position:absolute;top:-2px;left:25%;width:8px;height:8px;border-radius:50%;background:var(--blue);transform:translate(-3px,-3px);animation:orgrun 3s linear infinite}
+@keyframes orgrun{from{left:25%}to{left:75%}}
+@media (max-width:1000px){.orgw{grid-template-columns:1fr;gap:24px}}
+@media (max-width:560px){
+  .sec.slim{padding:52px 0}
+  .org-c{gap:10px}
+  .onode{min-width:0;padding:12px 10px}
+  .org-r .onode{min-width:0}
+  .onode b{font-size:14.5px}
+  .onode small{font-size:11.5px}
+}
+@media (prefers-reduced-motion:reduce){.org-c::after{animation:none;display:none}}

@@ -355,7 +355,8 @@ var FORM_ENDPOINT = "";
     var B = O.filter(function(o){ return o.k === best; })[0];
     $("appUnit").textContent = m.unit+" · "+m.lossLabel; $("appLoss").textContent = "월 "+won(L);
     // 01 휴대폰 지시·승인
-    var chat = '<p class="me">'+m.ask+'</p><p class="ai"><small>carusworks</small>'+m.kpiName+' '+m.kpi(V)+'% · '+m.lossLabel+' 월 '+won(L)+'<br>권고: '+B.n+' ('+(B.pt||"")+')<br>승인하면 실행 절차를 시작합니다.<span class="bt"><button type="button" data-a="ok">승인</button><button type="button" data-a="hold">보류</button></span></p>';
+    var noneC = !(B.s*12 - B.c >= 0 || B.s*60 - B.c >= 0);
+    var chat = '<p class="me">'+m.ask+'</p><p class="ai"><small>carusworks</small>'+m.kpiName+' '+m.kpi(V)+'% · '+m.lossLabel+' 월 '+won(L)+'<br>'+(noneC ? '권고: 투자 보류 · 손실 규모가 작아 지표만 계속 봅니다' : '권고: '+B.n+' ('+(B.pt||"")+')')+'<br>승인하면 실행 절차를 시작합니다.<span class="bt"><button type="button" data-a="ok">승인</button><button type="button" data-a="hold">보류</button></span></p>';
     if(approved) chat += '<p class="me">'+(approved.a === "ok" ? "승인" : "보류")+'</p><p class="ai ok"><small>carusworks</small>'+(approved.a === "ok" ? "✓ "+approved.n+" 실행 절차 시작 · 이력 #"+approved.h : "보류 기록 · 다음 주 같은 지표로 다시 보고합니다")+'</p>';
     $("appChat").innerHTML = chat + '<figcaption>예시 화면 · 숫자는 위 입력값으로 계산</figcaption>';
     // 02 팹 대응표
@@ -367,11 +368,14 @@ var FORM_ENDPOINT = "";
     // 03 경영 보고
     var r = '<div class="old"><small>일반 시스템 보고</small><code>'+m.tech(V)+'</code></div><div class="arw" aria-hidden="true">↓</div><div class="new"><small>carusworks 경영 보고</small><p>'+m.exec(V, L)+'</p><div class="ops" role="radiogroup" aria-label="조치안">';
     r += O.map(function(o){ return '<button type="button" role="radio" data-k="'+o.k+'" aria-checked="'+(sel === o.k)+'" class="'+(o.k === best ? "best" : "")+'"><span>'+o.n+'<small>'+(o.c ? won(o.c) : "")+(o.c && o.mo ? " · " : "")+(o.mo ? "월 "+won(o.mo) : "")+' · '+o.d+'</small></span><em>'+o.pt+'</em></button>'; }).join("");
+    var none = !(B.y1 >= 0 || B.s*60 - B.c >= 0);
+    if(none) r += '</div><p class="rec2">AI 권고 · 지금 규모(월 '+won(L)+')에서는 어느 안도 5년 안에 비용을 회수하지 못합니다. 투자를 보류하고 지표만 계속 봅니다.</p>'; else
     r += '</div><p class="rec2">AI 권고 · '+B.n+(B.c > 0 && B.s > 0 ? " — "+payT(B.pm)+" 안에 회수, " : B.s > 0 ? " — 매달 "+won(B.s)+" 절감, " : " — ")+(B.y1 >= 0 ? '1년 순효과 +'+won(B.y1) : '장기 투자 · 5년 순효과 '+(B.s*60-B.c >= 0 ? "+" : "−")+won(Math.abs(B.s*60-B.c)))+'</p>';
     var pick = sel ? O.filter(function(o){ return o.k === sel; })[0] : null;
     r += '<div class="go"><span>'+(pick ? "선택 · "+pick.n+(sel !== best ? " (권고와 다름 · 사유 기록)" : "") : "조치안을 고르세요")+'</span><button type="button" data-a="ok2"'+(pick ? "" : " disabled")+'>승인</button></div>';
     if(approved && approved.a === "ok") r += '<p class="log">✓ 승인 기록 '+approved.t+' · #'+approved.h+' · 계획 → 검증 → 승인 이력 저장</p>';
     $("appRep").innerHTML = r + '</div><figcaption>예시 · 계산식은 아래 공개</figcaption>';
+    if(none) [].forEach.call($("appRep").querySelectorAll(".best"), function(b){ b.classList.remove("best"); });
     $("appNote").innerHTML = '계산식 · '+m.formula+'. AI 권고는 1년 순효과(월 절감 × 12 − 초기 비용)가 가장 큰 안이며, 회수에 1년 이상 걸리는 장기 투자는 5년 순효과로 표시합니다. 조치 비용과 감소율은 기본값이며, 진단 때 현장 견적과 실측으로 바꿉니다.';
     app._best = best;
   }
@@ -428,7 +432,7 @@ var FORM_ENDPOINT = "";
   var hot = function(ids){ [].forEach.call(a.querySelectorAll(".hot"), function(e){ e.classList.remove("hot"); }); ids.forEach(function(id){ var e = a.querySelector('[data-id="'+id+'"]'); if(e) e.classList.add("hot"); }); };
   a.addEventListener("click", function(e){
     var t = e.target.closest("[data-d]"); if(!t || t === play) return;
-    clear(); t.classList.add("hot"); cap.innerHTML = "<b>"+(t.querySelector("h5,b") ? t.querySelector("h5,b").textContent : t.childNodes[0].textContent)+"</b> "+t.dataset.d;
+    clear(); play.innerHTML = "<i>▶</i> 요청 처리 흐름 보기"; t.classList.add("hot"); cap.innerHTML = "<b>"+(t.querySelector("h5,b") ? t.querySelector("h5,b").textContent : t.childNodes[0].textContent)+"</b> "+t.dataset.d;
   });
   var steps = [
     [["svc-energy"], "① 담당자가 말합니다. “내일 오전 3층 회의실 냉방 미리 켜 줘.” 에너지·환경 제어 서비스가 받습니다."],
